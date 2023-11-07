@@ -1,0 +1,12 @@
+# Ignore everything by default
+*
+
+# Git aliases, identification info
+!.gitconfig
+!.gitignore
+!.gitexcludes
+!.gitattributes
+
+# .config
+!.config
+!.config/nvim
