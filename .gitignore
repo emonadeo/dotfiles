@@ -1,7 +1,7 @@
-# Ignore everything by default
+# ignore everything by default
 *
 
-# Git aliases, identification info
+# git aliases, identification info
 !.gitconfig
 !.gitignore
 !.gitexcludes
@@ -9,4 +9,22 @@
 
 # .config
 !.config
+
+# kitty
+!.config/kitty
+!.config/kitty/catppuccin
+!.config/kitty/kitty.conf
+
+# neovide
+!.config/neovide
+!.config/neovide/*
+
+# neovim
 !.config/nvim
+
+# yabai
+!.yabairc
+
+# zsh
+!.zshrc
+

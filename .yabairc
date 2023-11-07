@@ -1,0 +1,13 @@
+# bsp or float (default: float)
+yabai -m config layout bsp
+
+# Override default layout for space 2 only
+# yabai -m config --space 2 layout float
+
+yabai -m config top_padding    16
+yabai -m config bottom_padding 16
+yabai -m config left_padding   16
+yabai -m config right_padding  16
+yabai -m config window_gap     16
+
+yabai -m rule --add app="^Neovide$" manage=on
