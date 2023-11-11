@@ -22,6 +22,9 @@
 # neovim
 !.config/nvim
 
+# skhdrc
+!.skhdrc
+
 # yabai
 !.yabairc
 
