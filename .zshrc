@@ -37,3 +37,7 @@ export PATH="$PATH:$HOME/go/bin"
 # jenv {
 eval "$(jenv init -)"
 # }
+
+# ruby {
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+# }

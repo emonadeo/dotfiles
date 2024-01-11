@@ -1,1 +1,8 @@
-frame = "Buttonless"
+frame = "buttonless"
+
+[font]
+normal = "GeistMono Nerd Font Mono"
+size = 16
+
+[font.features]
+"GeistMono Nerd Font Mono" = ["-liga"]
