@@ -1,4 +1,5 @@
 frame = "buttonless"
+title-hidden = true
 
 [font]
 normal = "GeistMono Nerd Font Mono"
