@@ -2,7 +2,7 @@ frame = "buttonless"
 title-hidden = true
 
 [font]
-normal = "GeistMono Nerd Font Mono"
+normal = ["GeistMono Nerd Font Mono"]
 size = 16
 
 [font.features]
