@@ -26,6 +26,9 @@
 # neovim
 !.config/nvim
 
+# starship
+!.config/starship.toml
+
 # skhdrc
 !.skhdrc
 

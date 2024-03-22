@@ -14,4 +14,4 @@ yabai -m config window_shadow  on
 yabai -m config window_animation_duration 0.1
 yabai -m config window_animation_frame_rate  120
 
-yabai -m rule --add app="^Neovide$" manage=on
+yabai -m rule --add app="neovide" manage=on
