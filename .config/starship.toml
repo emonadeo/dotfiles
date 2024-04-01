@@ -1,170 +1,35 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# TODO: custom prompt
-# format = """"""
+format = """
+[](fg:red)\
+$directory\
+[ ](fg:red bg:yellow)\
+$git_branch\
+[│](fg:base bg:yellow)\
+$git_status\
+[ ](fg:yellow bg:blue)\
+$c\
+$dart\
+$deno\
+$elixir\
+$golang\
+$haskell\
+$java\
+$kotlin\
+$lua\
+$nodejs\
+$ocaml\
+$php\
+$python\
+$rust\
+$zig\
+[](fg:blue)\
+$line_break$character\
+"""
+
+# palettes
 
 palette = "catppuccin"
-
-[aws]
-symbol = "  "
-
-[buf]
-symbol = " "
-
-[c]
-symbol = " "
-
-[conda]
-symbol = " "
-
-[crystal]
-symbol = " "
-
-[dart]
-symbol = " "
-
-[directory]
-read_only = " 󰌾"
-
-[docker_context]
-symbol = " "
-
-[elixir]
-symbol = " "
-
-[elm]
-symbol = " "
-
-[fennel]
-symbol = " "
-
-[fossil_branch]
-symbol = " "
-
-[git_branch]
-symbol = " "
-
-[golang]
-symbol = " "
-
-[guix_shell]
-symbol = " "
-
-[haskell]
-symbol = " "
-
-[haxe]
-symbol = " "
-
-[hg_branch]
-symbol = " "
-
-[hostname]
-ssh_symbol = " "
-
-[java]
-symbol = " "
-
-[julia]
-symbol = " "
-
-[kotlin]
-symbol = " "
-
-[lua]
-symbol = " "
-
-[memory_usage]
-symbol = "󰍛 "
-
-[meson]
-symbol = "󰔷 "
-
-[nim]
-symbol = "󰆥 "
-
-[nix_shell]
-symbol = " "
-
-[nodejs]
-symbol = " "
-
-[ocaml]
-symbol = " "
-
-[os.symbols]
-Alpaquita = " "
-Alpine = " "
-Amazon = " "
-Android = " "
-Arch = " "
-Artix = " "
-CentOS = " "
-Debian = " "
-DragonFly = " "
-Emscripten = " "
-EndeavourOS = " "
-Fedora = " "
-FreeBSD = " "
-Garuda = "󰛓 "
-Gentoo = " "
-HardenedBSD = "󰞌 "
-Illumos = "󰈸 "
-Linux = " "
-Mabox = " "
-Macos = " "
-Manjaro = " "
-Mariner = " "
-MidnightBSD = " "
-Mint = " "
-NetBSD = " "
-NixOS = " "
-OpenBSD = "󰈺 "
-openSUSE = " "
-OracleLinux = "󰌷 "
-Pop = " "
-Raspbian = " "
-Redhat = " "
-RedHatEnterprise = " "
-Redox = "󰀘 "
-Solus = "󰠳 "
-SUSE = " "
-Ubuntu = " "
-Unknown = " "
-Windows = "󰍲 "
-
-[package]
-symbol = "󰏗 "
-
-[perl]
-symbol = " "
-
-[php]
-symbol = " "
-
-[pijul_channel]
-symbol = " "
-
-[python]
-symbol = " "
-
-[rlang]
-symbol = "󰟔 "
-
-[ruby]
-symbol = " "
-
-[rust]
-symbol = " "
-
-[scala]
-symbol = " "
-
-[swift]
-symbol = " "
-
-[zig]
-symbol = " "
 
 [palettes.catppuccin]
 rosewater = "#f5e0dc"
@@ -193,3 +58,126 @@ surface0 = "#313244"
 base = "#1e1e2e"
 mantle = "#181825"
 crust = "#11111b"
+
+[line_break]
+disabled = false
+
+[character]
+disabled = false
+format = '$symbol'
+success_symbol = '[↳](bold fg:green)'
+error_symbol = '[↳](bold fg:red)'
+vimcmd_symbol = '[↳](bold fg:blue)'
+vimcmd_replace_one_symbol = '[↳](bold fg:purple)'
+vimcmd_replace_symbol = '[↳](bold fg:purple)'
+vimcmd_visual_symbol = '[↳](bold fg:yellow)'
+
+# disabled modules
+[time]
+disabled = true
+
+# 1: directory
+
+[directory]
+read_only = "󰌾"
+style = "bg:red fg:base"
+format = "[$path ]($style)"
+
+[directory.substitutions]
+"Desktop" = ""
+"Documents" = "󰈙"
+"Downloads" = ""
+"Games" = ""
+"Music" = "󰝚"
+"Movies" = ""
+"Pictures" = ""
+"Development" = "󰲋"
+
+# 2: git
+
+[git_branch]
+symbol = ""
+style = "fg:base bg:yellow"
+format = "[$symbol $branch(:$remote_branch)]($style)"
+
+[git_status]
+style = "fg:base bg:yellow"
+format = "[$all_status$ahead_behind ]($style)"
+
+# 3: language/runtime
+
+[c]
+symbol = ""
+style = "fg:base bg:blue"
+format = '[$symbol $version ]($style)'
+
+[dart]
+symbol = ""
+style = "fg:base bg:blue"
+format = '[$symbol $version ]($style)'
+
+[deno]
+symbol = ""
+style = "fg:base bg:blue"
+format = '[$symbol $version ]($style)'
+
+[elixir]
+symbol = ""
+style = "fg:base bg:blue"
+format = '[$symbol $version ]($style)'
+
+[golang]
+symbol = ""
+style = "fg:base bg:blue"
+format = '[$symbol $version ]($style)'
+
+[haskell]
+symbol = ""
+style = "fg:base bg:blue"
+format = '[$symbol $version ]($style)'
+
+[java]
+symbol = ""
+style = "fg:base bg:blue"
+format = '[$symbol $version ]($style)'
+
+[kotlin]
+symbol = ""
+style = "fg:base bg:blue"
+format = '[$symbol $version ]($style)'
+
+[lua]
+symbol = ""
+style = "fg:base bg:blue"
+format = '[$symbol $version ]($style)'
+
+[nodejs]
+symbol = ""
+style = "fg:base bg:blue"
+format = '[$symbol $version ]($style)'
+
+[ocaml]
+symbol = ""
+style = "fg:base bg:blue"
+format = '[$symbol $version ]($style)'
+
+[php]
+symbol = ""
+style = "fg:base bg:blue"
+format = '[$symbol $version ]($style)'
+
+[python]
+symbol = ""
+style = "fg:base bg:blue"
+format = '[$symbol $version ]($style)'
+
+[rust]
+symbol = ""
+style = "fg:base bg:blue"
+format = '[$symbol $version ]($style)'
+
+[zig]
+symbol = ""
+style = "fg:base bg:blue"
+format = '[$symbol $version ]($style)'
+
