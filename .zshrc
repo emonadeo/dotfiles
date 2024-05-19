@@ -3,11 +3,6 @@
 eval "$(/opt/homebrew/bin/brew shellenv)" 
 # }
 
-# neovide {
-# BUG: cargo install neovide is detected by yabai as a background process and discarded
-alias neovide="~/Development/neovide/target/release/bundle/osx/Neovide.app/Contents/MacOS/neovide"
-# }
-
 # nvm {
 export NVM_DIR="$HOME/.nvm"
     [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh" # This loads nvm

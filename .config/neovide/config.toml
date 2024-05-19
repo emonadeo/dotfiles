@@ -1,9 +1,10 @@
 frame = "buttonless"
 title-hidden = true
+fork = true
 
 [font]
-normal = ["GeistMono Nerd Font Mono"]
+normal = ["GeistMono Nerd Font"]
 size = 16
 
 [font.features]
-"GeistMono Nerd Font Mono" = ["-liga"]
+"GeistMono Nerd Font" = ["-liga"]
