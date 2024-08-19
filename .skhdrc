@@ -3,12 +3,19 @@ ctrl - h: yabai -m window --focus west
 ctrl - j: yabai -m window --focus south
 ctrl - k: yabai -m window --focus north
 ctrl - l: yabai -m window --focus east
+ctrl - return: yabai -m window --focus first
 
-# move focused window
+# swap focused window
 ctrl + alt - h: yabai -m window --swap west
 ctrl + alt - j: yabai -m window --swap south
 ctrl + alt - k: yabai -m window --swap north
 ctrl + alt - l: yabai -m window --swap east
+
+# warp focused window
+ctrl + alt + shift - h: yabai -m window --warp west
+ctrl + alt + shift - j: yabai -m window --warp south
+ctrl + alt + shift - k: yabai -m window --warp north
+ctrl + alt + shift - l: yabai -m window --warp east
 
 # send window to space
 ctrl + alt - 1: yabai -m window --space 1 # editor

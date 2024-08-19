@@ -20,6 +20,10 @@ export PATH="$GOPATH/bin:$PATH"
 export PATH="$PATH:$HOME/go/bin"
 # }
 
+# gpg {
+export GPG_TTY=$(tty)
+# }
+
 # jenv {
 eval "$(jenv init -)"
 # }

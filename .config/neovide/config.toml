@@ -1,6 +1,7 @@
 frame = "buttonless"
 title-hidden = true
 fork = true
+tabs = false
 
 [font]
 normal = ["GeistMono Nerd Font"]
