@@ -10,10 +10,6 @@
 # .config
 !.config
 
-# himalaya
-!.config/himalaya/
-!.config/himalaya/config.toml
-
 # kitty
 !.config/kitty
 !.config/kitty/catppuccin
