@@ -10,11 +10,6 @@
 # .config
 !.config
 
-# kitty
-!.config/kitty
-!.config/kitty/catppuccin
-!.config/kitty/kitty.conf
-
 # neovide
 !.config/neovide
 !.config/neovide/*
@@ -27,6 +22,9 @@
 
 # skhdrc
 !.skhdrc
+
+# wezterm
+!.wezterm.lua
 
 # yabai
 !.yabairc
