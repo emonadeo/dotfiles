@@ -35,3 +35,7 @@ export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 # starship {
 eval "$(starship init zsh)"
 # }
+
+# fnm {
+eval "$(fnm env --use-on-cd --shell zsh)"
+# }

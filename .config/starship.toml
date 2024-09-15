@@ -112,12 +112,12 @@ style = "fg:base bg:blue"
 format = '[$symbol $version ]($style)'
 
 [dart]
-symbol = ""
+symbol = ""
 style = "fg:base bg:blue"
 format = '[$symbol $version ]($style)'
 
 [deno]
-symbol = ""
+symbol = "󰛦"
 style = "fg:base bg:blue"
 format = '[$symbol $version ]($style)'
 
@@ -127,7 +127,7 @@ style = "fg:base bg:blue"
 format = '[$symbol $version ]($style)'
 
 [golang]
-symbol = ""
+symbol = "󰟓"
 style = "fg:base bg:blue"
 format = '[$symbol $version ]($style)'
 
@@ -152,7 +152,7 @@ style = "fg:base bg:blue"
 format = '[$symbol $version ]($style)'
 
 [nodejs]
-symbol = ""
+symbol = ""
 style = "fg:base bg:blue"
 format = '[$symbol $version ]($style)'
 
