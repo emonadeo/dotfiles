@@ -29,6 +29,10 @@
 # yabai
 !.yabairc
 
+# yazi
+!.config/yazi
+!.config/yazi/*
+
 # zsh
 !.zshrc
 
