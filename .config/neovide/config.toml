@@ -4,8 +4,16 @@ fork = true
 tabs = false
 
 [font]
-normal = ["GeistMono Nerd Font"]
+normal = ["GeistMono Nerd Font Propo"]
 size = 16
 
 [font.features]
-"GeistMono Nerd Font" = ["-liga"]
+"Geist Mono" = ["-liga", "-calt", "-clig"]
+"GeistMono Nerd Font" = ["-liga", "-calt", "-clig"]
+"GeistMono Nerd Font Mono" = ["-liga", "-calt", "-clig"]
+"GeistMono Nerd Font Propo" = ["-liga", "-calt", "-clig"]
+"JetBrains Mono" = ["-liga", "-calt", "-clig"]
+"JetBrains Mono Nerd Font" = ["-liga", "-calt", "-clig"]
+"JetBrains Mono Nerd Font Mono" = ["-liga", "-calt", "-clig"]
+"JetBrains Mono Nerd Font Propo" = ["-liga", "-calt", "-clig"]
+"Maple Mono" = ["-liga", "-calt", "-clig", "+cv01", "+cv03"]
