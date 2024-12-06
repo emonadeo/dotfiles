@@ -10,6 +10,10 @@
 # .config
 !.config
 
+# ghostty
+!.config/ghostty
+!.config/ghostty/*
+
 # neovide
 !.config/neovide
 !.config/neovide/*
@@ -22,9 +26,6 @@
 
 # skhdrc
 !.skhdrc
-
-# wezterm
-!.wezterm.lua
 
 # yabai
 !.yabairc

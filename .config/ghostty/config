@@ -1,0 +1,14 @@
+font-family = "Geist Mono Medium"
+font-feature = "-calt"
+font-feature = "-clig"
+font-feature = "-dlig"
+font-feature = "-liga"
+font-size = 16
+
+macos-titlebar-style = "hidden"
+
+theme = "catppuccin-mocha"
+
+window-padding-balance = true
+window-padding-x = 24
+window-padding-y = 24
