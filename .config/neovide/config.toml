@@ -4,7 +4,7 @@ fork = true
 tabs = false
 
 [font]
-normal = ["GeistMono Nerd Font Propo"]
+normal = ["GeistMono Nerd Font"]
 size = 16
 
 [font.features]

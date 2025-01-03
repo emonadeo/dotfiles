@@ -1,6 +1,9 @@
+[submodule ".config/bat/themes/catppuccin"]
+	path = .config/bat/themes/catppuccin
+	url = git@github.com:catppuccin/bat.git
+[submodule ".config/delta"]
+	path = .config/delta
+	url = git@github.com:catppuccin/delta.git
 [submodule ".config/nvim"]
 	path = .config/nvim
 	url = git@github.com:Emonadeo/nvim.git
-[submodule ".config/kitty/catppuccin"]
-	path = .config/kitty/catppuccin
-	url = git@github.com:catppuccin/kitty.git

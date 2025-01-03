@@ -1,14 +1,24 @@
 [user]
 	email = emonadeo@gmail.com
 	name = Emanuel Pilz
+[commit]
+	gpgsign = true
 [core]
 	editor = nvim
+	pager = delta
+[delta]
+	features = catppuccin-mocha
+	navigate = true  # use n and N to move between diff sections
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[include]
+	path = ~/.config/delta/catppuccin.gitconfig
 [init]
 	defaultBranch = main
-[commit]
-	gpgsign = true
+[interactive]
+	diffFilter = delta --color-only
+[merge]
+	conflictstyle = zdiff3
