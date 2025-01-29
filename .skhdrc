@@ -1,15 +1,9 @@
 # move focus
-ctrl - h: yabai -m window --focus west
-ctrl - j: yabai -m window --focus south
-ctrl - k: yabai -m window --focus north
-ctrl - l: yabai -m window --focus east
+ctrl + alt - h: yabai -m window --focus west
+ctrl + alt - j: yabai -m window --focus south
+ctrl + alt - k: yabai -m window --focus north
+ctrl + alt - l: yabai -m window --focus east
 ctrl - return: yabai -m window --focus first
-
-# swap focused window
-ctrl + alt - h: yabai -m window --swap west
-ctrl + alt - j: yabai -m window --swap south
-ctrl + alt - k: yabai -m window --swap north
-ctrl + alt - l: yabai -m window --swap east
 
 # warp focused window
 ctrl + alt + shift - h: yabai -m window --warp west
@@ -26,9 +20,9 @@ ctrl + alt - 5: yabai -m window --space 5 # chat
 ctrl + alt - 6: yabai -m window --space 6 # music
 
 # move focus to display
-ctrl - up: yabai -m display --focus next
-ctrl - down: yabai -m display --focus prev
+ctrl + alt - up: yabai -m display --focus next
+ctrl + alt - down: yabai -m display --focus prev
 
 # send window to display and move focus
-ctrl + alt - up: yabai -m window --display next; yabai -m display --focus next
-ctrl + alt - down: yabai -m window --display prev; yabai -m display --focus prev
+ctrl + alt + shift - up: yabai -m window --display next; yabai -m display --focus next
+ctrl + alt + shift - down: yabai -m window --display prev; yabai -m display --focus prev
