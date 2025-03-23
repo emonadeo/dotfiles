@@ -1,6 +1,8 @@
 [user]
 	email = emonadeo@gmail.com
 	name = Emanuel Pilz
+[branch]
+	sort = -committerdate
 [commit]
 	gpgsign = true
 [core]
