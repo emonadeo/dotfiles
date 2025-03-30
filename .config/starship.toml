@@ -1,17 +1,19 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-[ ](bg:red)\
 $directory\
-[ ](fg:red bg:yellow)\
 $git_branch\
-[│](fg:base bg:yellow)\
+[](fg:crust)\
+[ ]()\
+"""
+
+right_format = """
 $git_status\
-[ ](fg:yellow bg:blue)\
 $c\
 $dart\
 $deno\
 $elixir\
+$gleam\
 $golang\
 $haskell\
 $java\
@@ -23,161 +25,121 @@ $php\
 $python\
 $rust\
 $zig\
-[](fg:blue)\
-$line_break$character\
 """
-
-# palettes
 
 palette = "catppuccin"
 
 [palettes.catppuccin]
-rosewater = "#f5e0dc"
-flamingo = "#f2cdcd"
-pink = "#f5c2e7"
 mauve = "#cba6f7"
 red = "#f38ba8"
 maroon = "#eba0ac"
 peach = "#fab387"
 yellow = "#f9e2af"
 green = "#a6e3a1"
-teal = "#94e2d5"
-sky = "#89dceb"
-sapphire = "#74c7ec"
 blue = "#89b4fa"
 lavender = "#b4befe"
 text = "#cdd6f4"
-subtext1 = "#bac2de"
-subtext0 = "#a6adc8"
-overlay2 = "#9399b2"
-overlay1 = "#7f849c"
-overlay0 = "#6c7086"
-surface2 = "#585b70"
-surface1 = "#45475a"
-surface0 = "#313244"
-base = "#1e1e2e"
-mantle = "#181825"
+surface_1 = "#45475a"
 crust = "#11111b"
-
-[line_break]
-disabled = false
-
-[character]
-disabled = false
-format = '$symbol'
-success_symbol = '[↳](bold fg:green)'
-error_symbol = '[↳](bold fg:red)'
-vimcmd_symbol = '[↳](bold fg:blue)'
-vimcmd_replace_one_symbol = '[↳](bold fg:purple)'
-vimcmd_replace_symbol = '[↳](bold fg:purple)'
-vimcmd_visual_symbol = '[↳](bold fg:yellow)'
-
-# disabled modules
-[time]
-disabled = true
-
-# 1: directory
+base = "#1e1e2e"
 
 [directory]
-read_only = "󰌾"
-style = "bg:red fg:base"
-format = "[$path ]($style)"
-
-[directory.substitutions]
-"Desktop" = ""
-"Documents" = "󰈙"
-"Downloads" = ""
-"Games" = ""
-"Music" = "󰝚"
-"Movies" = ""
-"Pictures" = ""
-"Development" = "󰲋"
-
-# 2: git
+format = "[ $path]($style)[$read_only]($read_only_style)[ ]($style)"
+style = "bold fg:blue bg:crust"
+read_only = ""
+read_only_style = "fg:red"
 
 [git_branch]
+format = "[]($style fg:surface_1)[ $symbol $branch(:$remote_branch) ]($style)"
+style = "fg:green bg:crust"
 symbol = ""
-style = "fg:base bg:yellow"
-format = "[$symbol $branch(:$remote_branch)]($style)"
 
 [git_status]
-style = "fg:base bg:yellow"
-format = "[$all_status$ahead_behind ]($style)"
-
-# 3: language/runtime
+style = ""
+format = "[$all_status$ahead_behind]($style)"
+conflicted = "[](fg:red)"
+ahead = "↑$count"
+behind = "↓$count"
+diverged = "↑$ahead_count↓$behind_count"
+untracked = "[?$count](fg:red)"
+stashed = "[\\$$count](fg:peach)"
+modified = "[±$count](fg:yellow)"
+staged = "[+$count](fg:green)"
+renamed = "[~$count](fg:yellow)"
+deleted = "[-$count](fg:red)"
 
 [c]
+format = " [$symbol $version]($style)"
+style = "fg:blue"
 symbol = ""
-style = "fg:base bg:blue"
-format = '[$symbol $version ]($style)'
 
 [dart]
+format = " [$symbol $version]($style)"
+style = "fg:teal"
 symbol = ""
-style = "fg:base bg:blue"
-format = '[$symbol $version ]($style)'
 
 [deno]
+format = " [$symbol $version]($style)"
+style = "fg:text"
 symbol = "󰛦"
-style = "fg:base bg:blue"
-format = '[$symbol $version ]($style)'
 
 [elixir]
+format = " [$symbol $version]($style)"
+style = "fg:mauve"
 symbol = ""
-style = "fg:base bg:blue"
-format = '[$symbol $version ]($style)'
+
+[gleam]
+format = " [$symbol $version]($style)"
+style = "fg:mauve"
+symbol = "󰦥"
 
 [golang]
+format = " [$symbol $version]($style)"
+style = "fg:blue"
 symbol = "󰟓"
-style = "fg:base bg:blue"
-format = '[$symbol $version ]($style)'
 
 [haskell]
+format = " [$symbol $version]($style)"
+style = "fg:lavender"
 symbol = ""
-style = "fg:base bg:blue"
-format = '[$symbol $version ]($style)'
 
 [java]
+format = " [$symbol $version]($style)"
+style = "fg:blue"
 symbol = ""
-style = "fg:base bg:blue"
-format = '[$symbol $version ]($style)'
 
 [kotlin]
+format = " [$symbol $version]($style)"
+style = "fg:mauve"
 symbol = ""
-style = "fg:base bg:blue"
-format = '[$symbol $version ]($style)'
 
 [lua]
+format = " [$symbol $version]($style)"
+style = "fg:blue"
 symbol = ""
-style = "fg:base bg:blue"
-format = '[$symbol $version ]($style)'
 
 [nodejs]
+format = " [$symbol $version]($style)"
+style = "fg:green"
 symbol = ""
-style = "fg:base bg:blue"
-format = '[$symbol $version ]($style)'
 
 [ocaml]
+format = " [$symbol $version]($style)"
+style = "fg:peach"
 symbol = ""
-style = "fg:base bg:blue"
-format = '[$symbol $version ]($style)'
-
-[php]
-symbol = ""
-style = "fg:base bg:blue"
-format = '[$symbol $version ]($style)'
 
 [python]
+format = " [$symbol $version]($style)"
+style = "fg:yellow"
 symbol = ""
-style = "fg:base bg:blue"
-format = '[$symbol $version ]($style)'
 
 [rust]
+format = " [$symbol $version]($style)"
+style = "fg:maroon"
 symbol = ""
-style = "fg:base bg:blue"
-format = '[$symbol $version ]($style)'
 
 [zig]
+format = " [$symbol $version]($style)"
+style = "fg:peach"
 symbol = ""
-style = "fg:base bg:blue"
-format = '[$symbol $version ]($style)'
 

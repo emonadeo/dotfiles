@@ -7,7 +7,7 @@ font-size = 16
 
 macos-titlebar-style = "hidden"
 
-theme = "catppuccin-mocha"
+theme = "catppuccin-mocha.conf"
 
 window-padding-balance = true
 window-padding-x = 24
