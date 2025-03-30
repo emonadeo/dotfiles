@@ -1,3 +1,5 @@
+bindkey -v
+
 # homebrew {
 if [ "$(arch)" = "arm64" ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -21,4 +23,8 @@ eval "$(starship init zsh)"
 
 # fnm {
 eval "$(fnm env --use-on-cd --shell zsh)"
+# }
+
+# zoxide {
+eval "$(zoxide init zsh)"
 # }
