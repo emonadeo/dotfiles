@@ -12,3 +12,5 @@ theme = "catppuccin-mocha.conf"
 window-padding-balance = true
 window-padding-x = 24
 window-padding-y = 24
+
+window-inherit-working-directory = true
