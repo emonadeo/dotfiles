@@ -52,6 +52,7 @@
   # };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.defaultUserShell = pkgs.nushell;
   users.users.emonadeo = {
     isNormalUser = true;
     description = "Emanuel Pilz";
@@ -76,8 +77,15 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = [
+    pkgs.fd
     pkgs.ghostty
     pkgs.neovim
+    pkgs.nushell
+    pkgs.pulseaudio
+    pkgs.ripgrep
+    pkgs.unzip
+    pkgs.yazi
+    pkgs.zip
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -99,7 +107,22 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    audio.enable = true;
+    pulse.enable = true;
+  };
+
+  programs.gamemode.enable = true;
+
   programs.hyprland.enable = true;
+
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = true;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
