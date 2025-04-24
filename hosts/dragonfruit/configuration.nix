@@ -78,7 +78,6 @@
   # $ nix search wget
   environment.systemPackages = [
     pkgs.fd
-    pkgs.ghostty
     pkgs.neovim
     pkgs.nushell
     pkgs.pulseaudio
@@ -106,6 +105,8 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  services.blueman.enable = true;
 
   services.pipewire = {
     enable = true;

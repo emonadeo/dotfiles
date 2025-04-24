@@ -39,6 +39,7 @@
 
     inputs.zen-browser.packages.x86_64-linux.default
     pkgs.discord
+    pkgs.lutris
     pkgs.protonup
     pkgs.python312
     pkgs.telegram-desktop
@@ -58,6 +59,11 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+
+    ".local/share/icons/macos" = {
+      recursive = true;
+      source = ./macos_hyprcursor;
+    };
   };
 
   # Home Manager can also manage your environment variables through
@@ -76,16 +82,40 @@
   #
   #  /etc/profiles/per-user/emonadeo/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
-    
-  };
+  # BUG: This does not work with nushell
+  # (https://github.com/nix-community/home-manager/issues/4313)
+  home.sessionVariables = {};
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  programs.nushell.enable = true;
+  programs.nushell = {
+    enable = true;
+    extraEnv = ''
+      $env.EDITOR = "nvim";
+      $env.STEAM_EXTRA_COMPAT_TOOLS_PATHS = $env.HOME | path join ".steam/root/compatibilitytools.d";
+      $env.HYPRCURSOR_THEME = macos;
+      $env.HYPRCURSOR_SIZE = 24;
+    '';
+  };
+
+  programs.ghostty = {
+    enable = true;
+    settings = {
+      # font-family = "Geist Mono Medium";
+      # font-feature = "-calt";
+      # font-feature = "-clig";
+      # font-feature = "-dlig";
+      # font-feature = "-liga";
+      # font-size = 16;
+      # Use official `catppuccin-mocha.conf` instead of ported textmate theme
+      theme = "catppuccin-mocha";
+      window-padding-balance = true;
+      window-padding-x = 24;
+      window-padding-y = 24;
+      window-inherit-working-directory = true;
+    };
+  };
 
   programs.git = {
     enable = true;
