@@ -7,10 +7,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    macos_hyprland = {
-      url = "git+file:macos_hyprland";
-      flake = false;
-    };
     # TODO: Migrate to official flake once available
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";

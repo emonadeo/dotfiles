@@ -41,22 +41,6 @@
         "type": "github"
       }
     },
-    "macos_hyprland": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1718363426,
-        "narHash": "sha256-UxmmzJABKJDRqwVkwSru+h06sOx9yp89L28PfgQDqsM=",
-        "owner": "driedpampas",
-        "repo": "macOS-hyprcursor",
-        "rev": "94b831a2ac5acb9162862efb84102c2b88dc1fa2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "driedpampas",
-        "repo": "macOS-hyprcursor",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1744463964,
@@ -76,7 +60,6 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "macos_hyprland": "macos_hyprland",
         "nixpkgs": "nixpkgs",
         "zen-browser": "zen-browser"
       }

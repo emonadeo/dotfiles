@@ -38,6 +38,7 @@
     # '')
 
     inputs.zen-browser.packages.x86_64-linux.default
+    pkgs.apple-cursor
     pkgs.discord
     pkgs.lutris
     pkgs.protonup
@@ -62,7 +63,16 @@
 
     ".local/share/icons/macos" = {
       recursive = true;
-      source = ./macos_hyprcursor;
+      source = pkgs.fetchzip {
+        name = "hyprcursor_macos";
+        url = "https://github.com/driedpampas/macOS-hyprcursor/releases/download/v1/macOS.Hyprcursor.SVG.tar.gz";
+        hash = "sha256-Iv7DCpI0LKLljyz63V01Q9EWnx7jZRPOJiX78fJtQgg=";
+      };
+    };
+
+    ".local/share/wallpaper" = {
+      recursive = true;
+      source = ./wallpaper;
     };
   };
 
@@ -86,6 +96,21 @@
   # (https://github.com/nix-community/home-manager/issues/4313)
   home.sessionVariables = {};
 
+  home.pointerCursor = {
+    gtk.enable = true;
+    package = pkgs.apple-cursor;
+    name = "macOS";
+    size = 24;
+  };
+
+  gtk = {
+    enable = true;
+    theme = {
+      name = "catppuccin";
+      package = pkgs.catppuccin-gtk;
+    };
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -94,7 +119,7 @@
     extraEnv = ''
       $env.EDITOR = "nvim";
       $env.STEAM_EXTRA_COMPAT_TOOLS_PATHS = $env.HOME | path join ".steam/root/compatibilitytools.d";
-      $env.HYPRCURSOR_THEME = macos;
+      $env.HYPRCURSOR_THEME = "macos";
       $env.HYPRCURSOR_SIZE = 24;
     '';
   };
@@ -315,6 +340,16 @@
     };
   };
 
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      ipc = "on";
+      splash = false;
+      preload = ["~/.local/share/wallpaper/thebelsnickle1991_lofoten.png"];
+      wallpaper = [",~/.local/share/wallpaper/thebelsnickle1991_lofoten.png"];
+    };
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
@@ -331,6 +366,11 @@
         "$mod SHIFT, LEFT, movetoworkspace, -1"
         "$mod, SPACE, exec, tofi-drun --drun-launch=true"
       ];
+      input = {
+        kb_layout = "eu";
+	accel_profile = "flat";
+	force_no_accel = true;
+      };
       monitor = [
        "HDMI-A-1, preferred, 0x0, auto"
        "DP-2, preferred, auto-right, auto"
