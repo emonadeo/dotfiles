@@ -38,9 +38,9 @@
     # '')
 
     inputs.zen-browser.packages.x86_64-linux.default
-    pkgs.apple-cursor
     pkgs.discord
     pkgs.lutris
+    pkgs.neovide
     pkgs.protonup
     pkgs.python312
     pkgs.telegram-desktop
@@ -114,6 +114,16 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  programs.chromium = {
+    enable = true;
+    extensions = [
+      # uBlock Origin
+      { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; }
+      # Proton Pass
+      { id = "ghmbeldphafepmbegfdlkpapadhbakde"; }
+    ];
+  };
+
   programs.nushell = {
     enable = true;
     extraEnv = ''
@@ -136,8 +146,8 @@
       # Use official `catppuccin-mocha.conf` instead of ported textmate theme
       theme = "catppuccin-mocha";
       window-padding-balance = true;
-      window-padding-x = 24;
-      window-padding-y = 24;
+      window-padding-x = 16;
+      window-padding-y = 16;
       window-inherit-working-directory = true;
     };
   };
@@ -329,7 +339,7 @@
       padding-bottom = 16;
       padding-left = 16;
       clip-to-padding = true;
-      scale = false;
+      scale = true;
 
       # Window positioning
       anchor = "center";
@@ -343,21 +353,24 @@
   services.hyprpaper = {
     enable = true;
     settings = {
-      ipc = "on";
       splash = false;
       preload = ["~/.local/share/wallpaper/thebelsnickle1991_lofoten.png"];
       wallpaper = [",~/.local/share/wallpaper/thebelsnickle1991_lofoten.png"];
     };
   };
 
+
   wayland.windowManager.hyprland = {
     enable = true;
+    plugins = [
+      pkgs.hyprlandPlugins.borders-plus-plus
+    ];
     settings = {
       "$mod" = "SUPER";
       "$terminal" = "ghostty";
       bind = [
         "$mod, Q, killactive"
-        "$mod, M, exit"
+        "$mod SHIFT, Q, exit"
         "$mod, T, exec, $terminal"
         "$mod, F, fullscreen"
         "$mod, RIGHT, workspace, +1"
@@ -366,18 +379,51 @@
         "$mod SHIFT, LEFT, movetoworkspace, -1"
         "$mod, SPACE, exec, tofi-drun --drun-launch=true"
       ];
+      decoration = {
+        rounding = 8;
+	shadow = {
+	  enabled = false;
+	};
+      };
+      general = {
+        gaps_in = 8;
+        gaps_out = 24;
+      };
       input = {
         kb_layout = "eu";
 	accel_profile = "flat";
 	force_no_accel = true;
       };
       monitor = [
-       "HDMI-A-1, preferred, 0x0, auto"
-       "DP-2, preferred, auto-right, auto"
+       "HDMI-A-1, preferred, 0x0, 1.667"
+       "DP-2, preferred, auto-right, 1.667"
       ];
+      plugin = {
+        # TODO: Coonfigure
+        borders-plus-plus = {
+	  add_borders = 2;
+          "col.border_1" = "rgba(ffffff3F)";
+          "col.border_2" = "rgb(ffffff)";
+          border_size_1 = 8;
+          border_size_2 = -1;
+          natural_rounding = true;
+	};
+      };
       xwayland = {
         force_zero_scaling = true;
       };
+    };
+  };
+
+  xresources = {
+    properties = {
+      "Xft.dpi" = 168;
+      "Xft.autohint" = 0;
+      "Xft.lcdfilter" = "lcddefault";
+      "Xft.hintstyle" = "hintfull";
+      "Xft.hinting" = 1;
+      "Xft.antialias" = 1;
+      "Xft.rgba" = "rgb";
     };
   };
 }
