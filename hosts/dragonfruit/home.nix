@@ -39,6 +39,8 @@
 
     inputs.zen-browser.packages.x86_64-linux.default
     pkgs.discord
+    pkgs.geist-font
+    pkgs.inter
     pkgs.lutris
     pkgs.neovide
     pkgs.protonup
@@ -73,6 +75,10 @@
     ".local/share/wallpaper" = {
       recursive = true;
       source = ./wallpaper;
+    };
+
+    ".config/fontconfig/fonts.conf" = {
+      source = ./fonts.conf;
     };
   };
 
@@ -363,7 +369,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     plugins = [
-      pkgs.hyprlandPlugins.borders-plus-plus
+      inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
     ];
     settings = {
       "$mod" = "SUPER";
@@ -383,9 +389,13 @@
         rounding = 8;
 	shadow = {
 	  enabled = false;
+	  # range = 8;
+	  # render_power = 1;
+	  # color = "0x3F000000";
 	};
       };
       general = {
+        border_size = 2;
         gaps_in = 8;
         gaps_out = 24;
       };
@@ -398,17 +408,6 @@
        "HDMI-A-1, preferred, 0x0, 1.667"
        "DP-2, preferred, auto-right, 1.667"
       ];
-      plugin = {
-        # TODO: Coonfigure
-        borders-plus-plus = {
-	  add_borders = 2;
-          "col.border_1" = "rgba(ffffff3F)";
-          "col.border_2" = "rgb(ffffff)";
-          border_size_1 = 8;
-          border_size_2 = -1;
-          natural_rounding = true;
-	};
-      };
       xwayland = {
         force_zero_scaling = true;
       };
@@ -416,6 +415,8 @@
   };
 
   xresources = {
+    # HACK: `.XResources` is not loaded properly in xwayland
+    path = "$HOME/.Xdefaults";
     properties = {
       "Xft.dpi" = 168;
       "Xft.autohint" = 0;
