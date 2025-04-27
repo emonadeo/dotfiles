@@ -1,4 +1,10 @@
-{ config, pkgs, inputs, lib, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -38,15 +44,32 @@
     # '')
 
     inputs.zen-browser.packages.x86_64-linux.default
+    pkgs.astro-language-server
+    pkgs.bat
+    pkgs.biome
+    pkgs.deno
+    pkgs.delta
     pkgs.discord
+    pkgs.emmet-language-server
     pkgs.geist-font
+    pkgs.gleam
+    pkgs.go
     pkgs.inter
     pkgs.lutris
     pkgs.neovide
+    pkgs.nil
+    pkgs.nixfmt-rfc-style
+    pkgs.nodejs
+    pkgs.nufmt
     pkgs.protonup
     pkgs.python312
+    pkgs.ruff
+    pkgs.rustup
+    pkgs.taplo
     pkgs.telegram-desktop
     pkgs.spotify
+    pkgs.vscode-langservers-extracted
+    pkgs.vtsls
     pkgs.yazi
   ];
 
@@ -88,11 +111,12 @@
 
     ".config/nvim" = {
       recursive = true;
+      # TODO: Use submodule instead of `fetchFromGitHub` for better convenience
       source = pkgs.fetchFromGitHub {
         owner = "emonadeo";
-		repo = "nvim";
-		rev = "main";
-        hash = "sha256-rDYvImEyg4QkZ9b75I1ldm0hf+FRugQPJ+kizYvYf/E=";
+        repo = "nvim";
+        rev = "main";
+        hash = "sha256-xsk67mCWIr/ZYtyfpnzvwxxY5TvaZqQM3LL8MHJYVwY=";
       };
     };
   };
@@ -115,7 +139,7 @@
   #
   # BUG: This does not work with nushell
   # (https://github.com/nix-community/home-manager/issues/4313)
-  home.sessionVariables = {};
+  home.sessionVariables = { };
 
   home.pointerCursor = {
     gtk.enable = true;
@@ -159,7 +183,12 @@
     enable = true;
     settings = {
       font-family = "Geist Mono";
-      font-feature = [ "-calt" "-clig" "-dlig" "-liga" ];
+      font-feature = [
+        "-calt"
+        "-clig"
+        "-dlig"
+        "-liga"
+      ];
       font-size = 13.5;
       # Use official `catppuccin-mocha.conf` instead of ported textmate theme
       theme = "catppuccin-mocha";
@@ -278,7 +307,7 @@
       haskell = {
         format = " [$symbol $version]($style)";
         style = "fg:lavender";
-        symbol = "" ;
+        symbol = "";
       };
       java = {
         format = " [$symbol $version]($style)";
@@ -347,10 +376,10 @@
       width = 1280;
       height = 720;
       background-color = "#1e1e2e";
-      outline-width = 0;
-      outline-color = "#000000";
-      border-width = 0;
-      border-color = "#000000";
+      outline-width = 1;
+      outline-color = "#ffffff";
+      border-width = 1;
+      border-color = "#ff00ff";
       corner-radius = 8;
       padding-top = 16;
       padding-right = 16;
@@ -372,11 +401,10 @@
     enable = true;
     settings = {
       splash = false;
-      preload = ["~/.local/share/wallpaper/thebelsnickle1991_lofoten.png"];
-      wallpaper = [",~/.local/share/wallpaper/thebelsnickle1991_lofoten.png"];
+      preload = [ "~/.local/share/wallpaper/thebelsnickle1991_lofoten.png" ];
+      wallpaper = [ ",~/.local/share/wallpaper/thebelsnickle1991_lofoten.png" ];
     };
   };
-
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -399,12 +427,12 @@
       ];
       decoration = {
         rounding = 8;
-	shadow = {
-	  enabled = false;
-	  # range = 8;
-	  # render_power = 1;
-	  # color = "0x3F000000";
-	};
+        shadow = {
+          enabled = false;
+          # range = 8;
+          # render_power = 1;
+          # color = "0x3F000000";
+        };
       };
       general = {
         border_size = 2;
@@ -413,15 +441,20 @@
       };
       input = {
         kb_layout = "eu";
-	accel_profile = "flat";
-	force_no_accel = true;
+        accel_profile = "flat";
+        force_no_accel = true;
       };
       monitor = [
-       "HDMI-A-1, preferred, 0x0, 1.667"
-       "DP-2, preferred, auto-right, 1.667"
+        "HDMI-A-1, preferred, 0x0, 1.667"
+        "DP-2, preferred, auto-right, 1.667"
       ];
       xwayland = {
         force_zero_scaling = true;
+      };
+      misc = {
+        background_color = "0x000000";
+        disable_hyprland_logo = true;
+        disable_splash_rendering = true;
       };
     };
   };
@@ -439,4 +472,6 @@
       "Xft.rgba" = "rgb";
     };
   };
+
+  xdg.desktopEntries = { };
 }

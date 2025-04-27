@@ -19,15 +19,20 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
-    nixosConfigurations = {
-      dragonfruit = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; lib = nixpkgs.lib; };
-        modules = [
-	  ./hosts/dragonfruit/configuration.nix
-        ];
+  outputs =
+    { self, nixpkgs, ... }@inputs:
+    {
+      nixosConfigurations = {
+        dragonfruit = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs;
+            lib = nixpkgs.lib;
+          };
+          modules = [
+            ./hosts/dragonfruit/configuration.nix
+          ];
+        };
       };
     };
-  };
 }
