@@ -72,12 +72,12 @@
   # $ nix search wget
   environment.systemPackages = [
     pkgs.fd
+    pkgs.gcc
     pkgs.neovim
     pkgs.nushell
     pkgs.pulseaudio
     pkgs.ripgrep
     pkgs.unzip
-    pkgs.yazi
     pkgs.zip
   ];
 

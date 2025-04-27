@@ -1,0 +1,14 @@
+[font]
+normal = ["Geist Mono"]
+size = 13.5
+
+[font.features]
+"Geist Mono" = ["-liga", "-calt", "-clig"]
+"GeistMono Nerd Font" = ["-liga", "-calt", "-clig"]
+"GeistMono Nerd Font Mono" = ["-liga", "-calt", "-clig"]
+"GeistMono Nerd Font Propo" = ["-liga", "-calt", "-clig"]
+"JetBrains Mono" = ["-liga", "-calt", "-clig"]
+"JetBrains Mono Nerd Font" = ["-liga", "-calt", "-clig"]
+"JetBrains Mono Nerd Font Mono" = ["-liga", "-calt", "-clig"]
+"JetBrains Mono Nerd Font Propo" = ["-liga", "-calt", "-clig"]
+"Maple Mono" = ["-liga", "-calt", "-clig", "+cv01", "+cv03"]

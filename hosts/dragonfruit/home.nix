@@ -47,6 +47,7 @@
     pkgs.python312
     pkgs.telegram-desktop
     pkgs.spotify
+    pkgs.yazi
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -79,6 +80,20 @@
 
     ".config/fontconfig/fonts.conf" = {
       source = ./fonts.conf;
+    };
+
+    ".config/neovide/config.toml" = {
+      source = ./neovide.toml;
+    };
+
+    ".config/nvim" = {
+      recursive = true;
+      source = pkgs.fetchFromGitHub {
+        owner = "emonadeo";
+		repo = "nvim";
+		rev = "main";
+        hash = "sha256-rDYvImEyg4QkZ9b75I1ldm0hf+FRugQPJ+kizYvYf/E=";
+      };
     };
   };
 
@@ -143,12 +158,9 @@
   programs.ghostty = {
     enable = true;
     settings = {
-      # font-family = "Geist Mono Medium";
-      # font-feature = "-calt";
-      # font-feature = "-clig";
-      # font-feature = "-dlig";
-      # font-feature = "-liga";
-      # font-size = 16;
+      font-family = "Geist Mono";
+      font-feature = [ "-calt" "-clig" "-dlig" "-liga" ];
+      font-size = 13.5;
       # Use official `catppuccin-mocha.conf` instead of ported textmate theme
       theme = "catppuccin-mocha";
       window-padding-balance = true;
