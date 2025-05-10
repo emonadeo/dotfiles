@@ -16,10 +16,14 @@
     inputs.home-manager.nixosModules.default
   ];
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix.settings = {
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+    substituters = [ "https://hyprland.cachix.org" ];
+    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -73,8 +77,11 @@
     };
   };
 
-  # Enable automatic login for the user.
-  services.getty.autologinUser = "emonadeo";
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -84,9 +91,7 @@
   environment.systemPackages = [
     pkgs.fd
     pkgs.gcc
-    pkgs.neovim
     pkgs.nushell
-    pkgs.pulseaudio
     pkgs.ripgrep
     pkgs.unzip
     pkgs.zip
@@ -100,34 +105,32 @@
   #   enableSSHSupport = true;
   # };
 
-  # List services that you want to enable:
+  programs.dconf.enable = true;
 
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  services.blueman.enable = true;
-
-  services.pipewire = {
+  programs.neovim = {
     enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    audio.enable = true;
-    pulse.enable = true;
+    defaultEditor = true;
   };
 
   programs.gamemode.enable = true;
-
-  programs.hyprland.enable = true;
-
+  programs.gamescope.enable = true;
   programs.steam = {
     enable = true;
     gamescopeSession.enable = true;
+  };
+
+  # Enable automatic login for the user.
+  services.getty.autologinUser = "emonadeo";
+
+  services.openssh.enable = true;
+
+  services.pipewire = {
+    enable = true;
+    alsa = {
+      enable = true;
+      support32Bit = true;
+    };
+    pulse.enable = true;
   };
 
   # This value determines the NixOS release from which the default
@@ -137,4 +140,50 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
+
+  fonts = {
+    packages = [
+      inputs.apple-emoji.packages.x86_64-linux.default
+      pkgs.geist-font
+      pkgs.inter
+      pkgs.ipaexfont
+      pkgs.jetbrains-mono
+      pkgs.noto-fonts
+      pkgs.noto-fonts-cjk-sans
+      pkgs.noto-fonts-cjk-serif
+      pkgs.source-serif
+    ];
+    enableDefaultPackages = false;
+    fontconfig = {
+      enable = true;
+      localConf = ''
+        <match target="pattern">
+          <test qual="any" name="family"><string>Segoe UI</string></test>
+          <edit name="family" mode="assign" binding="same"><string>Inter</string></edit>
+        </match>
+      '';
+      defaultFonts = {
+        emoji = [ "Apple Color Emoji" ];
+        serif = [
+          "Source Serif"
+          "IPAexMincho"
+          "Noto Serif"
+          "Noto Serif CJK"
+        ];
+        sansSerif = [
+          "Inter"
+          "IPAexGothic"
+          "Noto Sans"
+          "Noto Sans CJK"
+        ];
+        monospace = [ "Geist Mono" ];
+      };
+      hinting = {
+        enable = true;
+      };
+      subpixel = {
+        rgba = "rgb";
+      };
+    };
+  };
 }

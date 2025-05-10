@@ -58,4 +58,6 @@
     enable = true;
     powerOnBoot = true;
   };
+
+  hardware.keyboard.qmk.enable = true;
 }

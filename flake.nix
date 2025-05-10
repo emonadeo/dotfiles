@@ -1,16 +1,23 @@
 {
-  description = "NixOS Configuration Flake";
+  description = "NixOS Configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    apple-emoji = {
+      url = "github:samuelngs/apple-emoji-linux";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "github:hyprwm/Hyprland";
-    split-monitor-workspaces = {
-      url = "github:Duckonaut/split-monitor-workspaces";
-      inputs.hyprland.follows = "hyprland";
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+    };
+    lix = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixos-unstable";
     };
     # TODO: Migrate to official flake once available
     zen-browser = {
@@ -20,7 +27,12 @@
   };
 
   outputs =
-    { self, nixpkgs, ... }@inputs:
+    {
+      self,
+      nixpkgs,
+      lix,
+      ...
+    }@inputs:
     {
       nixosConfigurations = {
         dragonfruit = nixpkgs.lib.nixosSystem {
@@ -30,6 +42,7 @@
             lib = nixpkgs.lib;
           };
           modules = [
+            lix.nixosModules.default
             ./hosts/dragonfruit/configuration.nix
           ];
         };

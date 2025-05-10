@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   inputs,
   lib,
@@ -44,33 +43,43 @@
     # '')
 
     inputs.zen-browser.packages.x86_64-linux.default
-    pkgs.astro-language-server
     pkgs.bat
-    pkgs.biome
     pkgs.deno
     pkgs.delta
     pkgs.discord
-    pkgs.emmet-language-server
-    pkgs.geist-font
-    pkgs.gleam
-    pkgs.go
-    pkgs.inter
+    pkgs.element-desktop
     pkgs.lutris
     pkgs.neovide
+    pkgs.rofi-wayland
+    pkgs.telegram-desktop
+    pkgs.spotify
+    pkgs.wl-clipboard
+    pkgs.yazi
+
+    # Screenshot
+    pkgs.slurp
+    pkgs.grim
+
+    # Gaming
+    pkgs.protonup
+
+    # Languages & Language Servers
+    pkgs.astro-language-server
+    pkgs.biome
+    pkgs.emmet-language-server
+    pkgs.gleam
+    pkgs.go
+    pkgs.just
     pkgs.nil
     pkgs.nixfmt-rfc-style
     pkgs.nodejs
     pkgs.nufmt
-    pkgs.protonup
     pkgs.python312
     pkgs.ruff
     pkgs.rustup
     pkgs.taplo
-    pkgs.telegram-desktop
-    pkgs.spotify
     pkgs.vscode-langservers-extracted
     pkgs.vtsls
-    pkgs.yazi
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -101,10 +110,6 @@
       source = ./wallpaper;
     };
 
-    ".config/fontconfig/fonts.conf" = {
-      source = ./fonts.conf;
-    };
-
     ".config/neovide/config.toml" = {
       source = ./neovide.toml;
     };
@@ -119,6 +124,10 @@
         hash = "sha256-xsk67mCWIr/ZYtyfpnzvwxxY5TvaZqQM3LL8MHJYVwY=";
       };
     };
+
+    # ".config/openvpn/tud.ovpn" = {
+    #   source = ./tud.ovpn;
+    # };
   };
 
   # Home Manager can also manage your environment variables through
@@ -162,10 +171,14 @@
   programs.chromium = {
     enable = true;
     extensions = [
-      # uBlock Origin
-      { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; }
+      # DeArrow
+      { id = "enamippconapkdmgfgjchkhakpfinmaj"; }
       # Proton Pass
       { id = "ghmbeldphafepmbegfdlkpapadhbakde"; }
+      # SponsorBlock
+      { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; }
+      # uBlock Origin
+      { id = "ddkjiahejlhfcafbddmgiahcphecmpfh"; }
     ];
   };
 
@@ -406,11 +419,12 @@
     };
   };
 
+  services.playerctld.enable = true;
+
   wayland.windowManager.hyprland = {
     enable = true;
-    plugins = [
-      inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
-    ];
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
     settings = {
       "$mod" = "SUPER";
       "$terminal" = "ghostty";
@@ -418,26 +432,62 @@
         "$mod, Q, killactive"
         "$mod SHIFT, Q, exit"
         "$mod, T, exec, $terminal"
+        "$mod, P, exec, nu -c \"slurp | grim -g \\$in - | wl-copy\""
         "$mod, F, fullscreen"
-        "$mod, RIGHT, workspace, +1"
-        "$mod, LEFT, workspace, -1"
-        "$mod SHIFT, RIGHT, movetoworkspace, +1"
-        "$mod SHIFT, LEFT, movetoworkspace, -1"
+        "$mod SHIFT, F, togglefloating"
+        "$mod, H, movefocus, l"
+        "$mod, J, movefocus, d"
+        "$mod, K, movefocus, u"
+        "$mod, L, movefocus, r"
+        "$mod SHIFT, H, movewindow, l"
+        "$mod SHIFT, J, movewindow, d"
+        "$mod SHIFT, K, movewindow, u"
+        "$mod SHIFT, L, movewindow, r"
+        "$mod, 1, workspace, 1"
+        "$mod, 2, workspace, 2"
+        "$mod, 3, workspace, 3"
+        "$mod, 4, workspace, 4"
+        "$mod, 5, workspace, 5"
+        "$mod, 6, workspace, 6"
+        "$mod, 7, workspace, 7"
+        "$mod, 8, workspace, 8"
+        "$mod, 9, workspace, 9"
+        "$mod, 0, workspace, 10"
+        "$mod SHIFT, 1, movetoworkspace, 1"
+        "$mod SHIFT, 2, movetoworkspace, 2"
+        "$mod SHIFT, 3, movetoworkspace, 3"
+        "$mod SHIFT, 4, movetoworkspace, 4"
+        "$mod SHIFT, 5, movetoworkspace, 5"
+        "$mod SHIFT, 6, movetoworkspace, 6"
+        "$mod SHIFT, 7, movetoworkspace, 7"
+        "$mod SHIFT, 8, movetoworkspace, 8"
+        "$mod SHIFT, 9, movetoworkspace, 9"
+        "$mod SHIFT, 0, movetoworkspace, 10"
+        "$mod, NEXT, focusmonitor, +1"
+        "$mod, PRIOR, focusmonitor, -1"
+        "$mod SHIFT, NEXT, movecurrentworkspacetomonitor, +1"
+        "$mod SHIFT, PRIOR, movecurrentworkspacetomonitor, -1"
+        "$mod SHIFT, HOME, movecurrentworkspacetomonitor, +1"
+        "$mod SHIFT, END, movecurrentworkspacetomonitor, -1"
         "$mod, SPACE, exec, tofi-drun --drun-launch=true"
+        "$mod SHIFT, SPACE, exec, rofi -show drun"
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ", XF86AudioPlay, exec, playerctl play-pause"
+        ", XF86AudioPrev, exec, playerctl previous"
+        ", XF86AudioNext, exec, playerctl next"
       ];
       decoration = {
-        rounding = 8;
-        shadow = {
-          enabled = false;
-          # range = 8;
-          # render_power = 1;
-          # color = "0x3F000000";
-        };
+        shadow.enabled = false;
+        rounding = 6;
       };
       general = {
+        "col.inactive_border" = "0xff67837e";
+        "col.active_border" = "0xffffffff";
         border_size = 2;
-        gaps_in = 8;
-        gaps_out = 24;
+        gaps_in = 4;
+        gaps_out = 8;
       };
       input = {
         kb_layout = "eu";
@@ -473,5 +523,24 @@
     };
   };
 
-  xdg.desktopEntries = { };
+  xdg = {
+    enable = true;
+    desktopEntries = {
+      nvim = {
+        name = "Neovim";
+        exec = "";
+        noDisplay = true;
+      };
+      nixos-manual = {
+        name = "NixOS Manual";
+        exec = "";
+        noDisplay = true;
+      };
+      yazi = {
+        name = "Yazi";
+        exec = "";
+        noDisplay = true;
+      };
+    };
+  };
 }
