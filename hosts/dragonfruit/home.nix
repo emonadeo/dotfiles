@@ -116,13 +116,7 @@
 
     ".config/nvim" = {
       recursive = true;
-      # TODO: Use submodule instead of `fetchFromGitHub` for better convenience
-      source = pkgs.fetchFromGitHub {
-        owner = "emonadeo";
-        repo = "nvim";
-        rev = "main";
-        hash = "sha256-xsk67mCWIr/ZYtyfpnzvwxxY5TvaZqQM3LL8MHJYVwY=";
-      };
+      source = inputs.nvim;
     };
 
     # ".config/openvpn/tud.ovpn" = {

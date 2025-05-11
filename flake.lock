@@ -506,6 +506,21 @@
         "type": "github"
       }
     },
+    "nvim": {
+      "flake": false,
+      "locked": {
+        "dirtyRev": "5010073584070c23131e214ced80d6cfe84a2c77-dirty",
+        "dirtyShortRev": "5010073-dirty",
+        "lastModified": 1745794826,
+        "narHash": "sha256-/O4bLOn++ez7EJy2oWWGqmeotaBPLEVccSId6I1wRI0=",
+        "type": "git",
+        "url": "file:nvim"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:nvim"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -536,6 +551,7 @@
         "hyprland": "hyprland",
         "lix": "lix",
         "nixpkgs": "nixpkgs_3",
+        "nvim": "nvim",
         "zen-browser": "zen-browser"
       }
     },

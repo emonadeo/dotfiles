@@ -96,6 +96,9 @@
     pkgs.unzip
     pkgs.zip
   ];
+  environment.loginShellInit = ''
+    [[ "$(tty)" = "/dev/tty1" ]] && hyprland
+  '';
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -113,7 +116,12 @@
   };
 
   programs.gamemode.enable = true;
-  programs.gamescope.enable = true;
+
+  programs.gamescope = {
+    enable = true;
+    capSysNice = true;
+  };
+
   programs.steam = {
     enable = true;
     gamescopeSession.enable = true;

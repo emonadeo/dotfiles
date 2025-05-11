@@ -1,6 +1,4 @@
 {
-  description = "NixOS Configuration";
-
   inputs = {
     apple-emoji = {
       url = "github:samuelngs/apple-emoji-linux";
@@ -18,6 +16,10 @@
     };
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-unstable";
+    };
+    nvim = {
+      url = "git+file:nvim";
+      flake = false;
     };
     # TODO: Migrate to official flake once available
     zen-browser = {
