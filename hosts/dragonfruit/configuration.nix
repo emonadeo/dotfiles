@@ -96,9 +96,6 @@
     pkgs.unzip
     pkgs.zip
   ];
-  environment.loginShellInit = ''
-    [[ "$(tty)" = "/dev/tty1" ]] && hyprland
-  '';
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

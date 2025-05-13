@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   inputs,
   lib,
@@ -54,6 +55,7 @@
     pkgs.telegram-desktop
     pkgs.spotify
     pkgs.wl-clipboard
+    pkgs.xdg-utils
     pkgs.yazi
 
     # Screenshot
@@ -176,14 +178,29 @@
     ];
   };
 
+  programs.feh = {
+    enable = true;
+    buttons = {
+      prev_img = "";
+      next_img = "";
+      zoom_in = 4;
+      zoom_out = 5;
+    };
+  };
+
   programs.nushell = {
     enable = true;
-    extraEnv = ''
-      $env.EDITOR = "nvim";
-      $env.STEAM_EXTRA_COMPAT_TOOLS_PATHS = $env.HOME | path join ".steam/root/compatibilitytools.d";
-      $env.HYPRCURSOR_THEME = "macos";
-      $env.HYPRCURSOR_SIZE = 24;
-    '';
+    environmentVariables = {
+      EDITOR = "nvim";
+      STEAM_EXTRA_COMPAT_TOOLS_PATHS = "$env.HOME | path join \".steam/root/compatibilitytools.d\"";
+      HYPRCURSOR_THEME = "macos";
+      HYPRCURSOR_SIZE = 24;
+    };
+    configFile = {
+      text = ''
+        if (tty) == "/dev/tty1" { exec hyprland }
+      '';
+    };
   };
 
   programs.ghostty = {
@@ -499,13 +516,14 @@
         background_color = "0x000000";
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
+        focus_on_activate = true;
       };
     };
   };
 
   xresources = {
     # HACK: `.XResources` is not loaded properly in xwayland
-    path = "$HOME/.Xdefaults";
+    path = "${config.home.homeDirectory}/.Xdefaults";
     properties = {
       "Xft.dpi" = 168;
       "Xft.autohint" = 0;
@@ -534,6 +552,23 @@
         name = "Yazi";
         exec = "";
         noDisplay = true;
+      };
+    };
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "image/bmp" = "feh.desktop";
+        "image/jpeg" = "feh.desktop";
+        "image/png" = "feh.desktop";
+        "image/pnm" = "feh.desktop";
+        "image/tiff" = "feh.desktop";
+        "image/webp" = "feh.desktop";
+        "application/pdf" = "zen-beta.desktop";
+        "application/xhtml+xml" = "zen-beta.desktop";
+        "text/html" = "zen-beta.desktop";
+        "text/xml" = "zen-beta.desktop";
+        "x-scheme-handler/http" = "zen-beta.desktop";
+        "x-scheme-handler/https" = "zen-beta.desktop";
       };
     };
   };
