@@ -45,6 +45,7 @@
 
     inputs.zen-browser.packages.x86_64-linux.default
     pkgs.bat
+    pkgs.bottles
     pkgs.deno
     pkgs.delta
     pkgs.discord
@@ -56,7 +57,6 @@
     pkgs.spotify
     pkgs.wl-clipboard
     pkgs.xdg-utils
-    pkgs.yazi
 
     # Screenshot
     pkgs.slurp
@@ -421,6 +421,31 @@
     };
   };
 
+  programs.yazi = {
+    enable = true;
+    enableNushellIntegration = true;
+    initLua = ''
+      require("full-border"):setup({ type = ui.Border.ROUNDED })
+      require("git"):setup()
+      require("starship"):setup()
+    '';
+    plugins = {
+      full-border = pkgs.yaziPlugins.full-border;
+      git = pkgs.yaziPlugins.git;
+      starship = pkgs.yaziPlugins.starship;
+    };
+    flavors = {
+      catppuccin-latte = inputs.yazi-flavors + /catppuccin-latte.yazi;
+      catppuccin-mocha = inputs.yazi-flavors + /catppuccin-mocha.yazi;
+    };
+    theme = {
+      flavor = {
+        dark = "catppuccin-mocha";
+        light = "catppuccin-latte";
+      };
+    };
+  };
+
   services.hyprpaper = {
     enable = true;
     settings = {
@@ -522,8 +547,6 @@
   };
 
   xresources = {
-    # HACK: `.XResources` is not loaded properly in xwayland
-    path = "${config.home.homeDirectory}/.Xdefaults";
     properties = {
       "Xft.dpi" = 168;
       "Xft.autohint" = 0;
@@ -545,11 +568,6 @@
       };
       nixos-manual = {
         name = "NixOS Manual";
-        exec = "";
-        noDisplay = true;
-      };
-      yazi = {
-        name = "Yazi";
         exec = "";
         noDisplay = true;
       };

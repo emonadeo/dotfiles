@@ -21,6 +21,10 @@
       url = "git+file:nvim";
       flake = false;
     };
+    yazi-flavors = {
+      url = "github:yazi-rs/flavors";
+      flake = false;
+    };
     # TODO: Migrate to official flake once available
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
