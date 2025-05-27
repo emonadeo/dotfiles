@@ -21,6 +21,10 @@
       url = "git+file:nvim";
       flake = false;
     };
+    spotx = {
+      url = "github:SpotX-Official/SpotX-Bash";
+      flake = false;
+    };
     yazi-flavors = {
       url = "github:yazi-rs/flavors";
       flake = false;

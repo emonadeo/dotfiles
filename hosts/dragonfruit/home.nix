@@ -21,7 +21,14 @@
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
+    overlays = [
+      (import ./overlays/spotify.nix { inherit inputs; })
+    ];
+  };
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -68,17 +75,22 @@
     # Languages & Language Servers
     pkgs.astro-language-server
     pkgs.biome
+    pkgs.cargo
     pkgs.emmet-language-server
     pkgs.gleam
     pkgs.go
     pkgs.just
+    pkgs.lua-language-server
     pkgs.nil
     pkgs.nixfmt-rfc-style
     pkgs.nodejs
     pkgs.nufmt
     pkgs.python312
     pkgs.ruff
-    pkgs.rustup
+    pkgs.rust-analyzer
+    pkgs.rustc
+    pkgs.rustfmt
+    pkgs.stylua
     pkgs.taplo
     pkgs.vscode-langservers-extracted
     pkgs.vtsls
@@ -192,6 +204,7 @@
     enable = true;
     environmentVariables = {
       EDITOR = "nvim";
+      GDK_SCALE = 1.667;
       STEAM_EXTRA_COMPAT_TOOLS_PATHS = "$env.HOME | path join \".steam/root/compatibilitytools.d\"";
       HYPRCURSOR_THEME = "macos";
       HYPRCURSOR_SIZE = 24;
@@ -450,8 +463,8 @@
     enable = true;
     settings = {
       splash = false;
-      preload = [ "~/.local/share/wallpaper/thebelsnickle1991_lofoten.png" ];
-      wallpaper = [ ",~/.local/share/wallpaper/thebelsnickle1991_lofoten.png" ];
+      preload = [ "~/.local/share/wallpaper/felizuko_faroe.jpg" ];
+      wallpaper = [ ",~/.local/share/wallpaper/felizuko_faroe.jpg" ];
     };
   };
 
@@ -543,10 +556,14 @@
         disable_splash_rendering = true;
         focus_on_activate = true;
       };
+      debug = {
+        full_cm_proto = true;
+      };
     };
   };
 
   xresources = {
+    path = "${config.home.homeDirectory}/.Xdefaults";
     properties = {
       "Xft.dpi" = 168;
       "Xft.autohint" = 0;
