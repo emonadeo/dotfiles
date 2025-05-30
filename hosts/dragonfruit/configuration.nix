@@ -140,21 +140,18 @@
     pulse.enable = true;
   };
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.11"; # Did you read the comment?
-
   fonts = {
     packages = [
       inputs.apple-emoji.packages.x86_64-linux.default
+      pkgs.commit-mono # neutral
+      pkgs.departure-mono # bitmap
+      pkgs.fragment-mono # helvetica
       pkgs.geist-font
       pkgs.inter
       pkgs.ipaexfont
       pkgs.jetbrains-mono
+      pkgs.lora
+      pkgs.nerd-fonts.symbols-only
       pkgs.noto-fonts
       pkgs.noto-fonts-cjk-sans
       pkgs.noto-fonts-cjk-serif
@@ -166,24 +163,31 @@
       localConf = ''
         <match target="pattern">
           <test qual="any" name="family"><string>Segoe UI</string></test>
-          <edit name="family" mode="assign" binding="same"><string>Inter</string></edit>
+          <edit name="family" mode="assign" binding="same"><string>Departure Mono</string></edit>
         </match>
       '';
       defaultFonts = {
         emoji = [ "Apple Color Emoji" ];
         serif = [
+          "Departure Mono"
+          # "Lora"
           "Source Serif"
           "IPAexMincho"
           "Noto Serif"
           "Noto Serif CJK"
         ];
         sansSerif = [
-          "Inter"
+          "Departure Mono"
+          # "Inter"
           "IPAexGothic"
           "Noto Sans"
           "Noto Sans CJK"
         ];
-        monospace = [ "Geist Mono" ];
+        monospace = [
+          "Departure Mono"
+          # "Commit Mono"
+          "Symbols Nerd Fonts"
+        ];
       };
       hinting = {
         enable = true;
@@ -193,4 +197,12 @@
       };
     };
   };
+
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "24.11"; # Did you read the comment?
 }

@@ -1,5 +1,10 @@
 {
   inputs = {
+    # TODO: Setup in steam post install or similarly
+    # adwaita-for-steam = {
+    #   url = "github:tkashkin/Adwaita-for-Steam";
+    #   flake = false;
+    # };
     apple-emoji = {
       url = "github:samuelngs/apple-emoji-linux";
     };
