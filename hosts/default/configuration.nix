@@ -10,9 +10,7 @@
 
 {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    inputs.home-manager.nixosModules.default
   ];
 
   nix.settings = {
@@ -72,14 +70,6 @@
       "wheel"
     ];
     packages = [ ];
-  };
-
-  home-manager = {
-    backupFileExtension = "backup";
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      "emonadeo" = import ./home.nix;
-    };
   };
 
   # Open ports in the firewall.

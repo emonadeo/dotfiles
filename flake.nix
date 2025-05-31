@@ -41,26 +41,29 @@
     };
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      lix,
-      ...
-    }@inputs:
-    {
-      nixosConfigurations = {
-        dragonfruit = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs;
-            lib = nixpkgs.lib;
-          };
-          modules = [
-            lix.nixosModules.default
-            ./hosts/dragonfruit/configuration.nix
-          ];
+  outputs = inputs: {
+    nixosConfigurations = {
+      default = inputs.nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+          lib = inputs.nixpkgs.lib; # TODO: Consider removing this
         };
+        modules = [
+          inputs.lix.nixosModules.default
+          inputs.home-manager.nixosModules.default
+          ./hosts/default/configuration.nix
+          {
+            home-manager = {
+              backupFileExtension = "backup";
+              extraSpecialArgs = { inherit inputs; };
+              users = {
+                "emonadeo" = import ./home;
+              };
+            };
+          }
+        ];
       };
     };
+  };
 }

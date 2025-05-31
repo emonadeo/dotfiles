@@ -2,7 +2,6 @@
   config,
   pkgs,
   inputs,
-  lib,
   ...
 }:
 
@@ -12,7 +11,7 @@
       allowUnfree = true;
     };
     overlays = [
-      (import ./overlays/spotify.nix { inherit inputs; })
+      (import ../overlays/spotify.nix { inherit inputs; })
     ];
   };
 
@@ -77,16 +76,6 @@
       pkgs.vtsls
     ];
     file = {
-      # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-      # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-      # # symlink to the Nix store copy.
-      # ".screenrc".source = dotfiles/screenrc;
-
-      # # You can also set the file content immediately.
-      # ".gradle/gradle.properties".text = ''
-      #   org.gradle.console=verbose
-      #   org.gradle.daemon.idletimeout=3600000
-      # '';
       ".local/share/icons/macos" = {
         recursive = true;
         source = pkgs.fetchzip {
@@ -96,9 +85,9 @@
         };
       };
 
-      ".local/share/wallpaper" = {
+      ".local/share/wallpapers" = {
         recursive = true;
-        source = ./wallpaper;
+        source = ../wallpapers;
       };
 
       ".config/neovide/config.toml" = {
@@ -218,13 +207,13 @@
     starship = {
       enable = true;
       settings = {
-        format = lib.concatStrings [
+        format = inputs.nixpkgs.lib.concatStrings [
           "$directory"
           "$git_branch"
           "[](fg:crust)"
           "[ ]()"
         ];
-        right_format = lib.concatStrings [
+        right_format = inputs.nixpkgs.lib.concatStrings [
           "$git_status"
           "$c"
           "$dart"
@@ -434,8 +423,8 @@
     enable = true;
     settings = {
       splash = false;
-      preload = [ "~/.local/share/wallpaper/felizuko_faroe.jpg" ];
-      wallpaper = [ ",~/.local/share/wallpaper/felizuko_faroe.jpg" ];
+      preload = [ "~/.local/share/wallpapers/felizuko_faroe.jpg" ];
+      wallpaper = [ ",~/.local/share/wallpapers/felizuko_faroe.jpg" ];
     };
   };
 
