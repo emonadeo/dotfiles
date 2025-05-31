@@ -161,6 +161,8 @@
     enableDefaultPackages = false;
     fontconfig = {
       enable = true;
+      # TODO: Clean up and move to single source of truth that is
+      # shared between fontconfig, ghostty and neovide
       localConf = ''
         <?xml version="1.0"?>
         <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">

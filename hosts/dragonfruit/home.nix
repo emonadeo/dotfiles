@@ -66,7 +66,6 @@
       pkgs.nil
       pkgs.nixfmt-rfc-style
       pkgs.nodejs
-      pkgs.nufmt
       pkgs.python312
       pkgs.ruff
       pkgs.rust-analyzer
@@ -127,6 +126,7 @@
     home-manager.enable = true;
     chromium = {
       enable = true;
+      commandLineArgs = [ "--ozone-platform=wayland" ];
       extensions = [
         # DeArrow
         { id = "enamippconapkdmgfgjchkhakpfinmaj"; }
