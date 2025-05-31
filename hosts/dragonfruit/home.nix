@@ -42,8 +42,6 @@
       pkgs.proton-pass
       pkgs.rofi-wayland
       pkgs.spotify
-      pkgs.steam-tui
-      pkgs.steamcmd
       pkgs.telegram-desktop
       pkgs.vesktop
       pkgs.wl-clipboard
@@ -167,12 +165,36 @@
     ghostty = {
       enable = true;
       settings = {
-        font-family = "Departure Mono";
+        font-family = "Maple Mono";
         font-feature = [
+          # basic ligatures
           "-calt"
-          "-clig"
-          "-dlig"
-          "-liga"
+          # character variants
+          "+cv01" # remove gaps
+          "+cv02" # alternative a
+          "-cv03" # alternative i
+          "-cv04" # alternative l1
+          "+cv05" # alternative g
+          "-cv06" # alternative i
+          "-cv07" # alternative J
+          "+cv08" # alternative r
+          "+cv61" # alternative ,;
+          "-cv62" # alternative ?
+          "-cv63" # alternative left arrow (<=)
+          "-cv64" # alternative left and right arrow (<= and >=)
+          "-cv65" # alternative &
+          # italic only
+          "+cv31" # alternative a
+          "-cv32" # alternative f
+          "+cv33" # alternative i and j
+          "+cv34" # alternative k
+          "+cv35" # alternative l
+          "+cv36" # alternative x
+          "-cv37" # alternative y
+          "+cv38" # alternative g
+          "-cv39" # alternative i
+          "-cv40" # alternative J
+          "+cv41" # alternative r
         ];
         font-size = 13.5;
         # Use official `catppuccin-mocha.conf` instead of ported textmate theme
@@ -188,6 +210,10 @@
       lfs.enable = true;
       userName = "Emanuel Pilz";
       userEmail = "emonadeo@gmail.com";
+    };
+    qutebrowser = {
+      enable = true;
+      keyBindings = { };
     };
     starship = {
       enable = true;

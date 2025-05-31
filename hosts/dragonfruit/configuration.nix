@@ -151,6 +151,7 @@
       pkgs.ipaexfont
       pkgs.jetbrains-mono
       pkgs.lora
+      pkgs.maple-mono.variable # rounded
       pkgs.nerd-fonts.symbols-only
       pkgs.noto-fonts
       pkgs.noto-fonts-cjk-sans
@@ -161,15 +162,51 @@
     fontconfig = {
       enable = true;
       localConf = ''
-        <match target="pattern">
-          <test qual="any" name="family"><string>Segoe UI</string></test>
-          <edit name="family" mode="assign" binding="same"><string>Departure Mono</string></edit>
-        </match>
+        <?xml version="1.0"?>
+        <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
+        <fontconfig>
+          <match target="pattern">
+            <test qual="any" name="family"><string>Segoe UI</string></test>
+            <edit name="family" mode="assign" binding="same"><string>Maple Mono</string></edit>
+          </match>
+          <match target="font">
+            <test name="family" compare="eq" ignore-blanks="true">
+              <string>Maple Mono</string>
+            </test>
+            <edit name="fontfeatures" mode="append">
+              <string>calt off</string>
+              <string>cv01 on</string>
+              <string>cv02 on</string>
+              <string>cv03 off</string>
+              <string>cv04 off</string>
+              <string>cv05 on</string>
+              <string>cv06 off</string>
+              <string>cv07 off</string>
+              <string>cv08 on</string>
+              <string>cv61 on</string>
+              <string>cv62 off</string>
+              <string>cv63 off</string>
+              <string>cv64 off</string>
+              <string>cv65 off</string>
+              <string>cv31 on</string>
+              <string>cv32 off</string>
+              <string>cv33 on</string>
+              <string>cv34 on</string>
+              <string>cv35 on</string>
+              <string>cv36 on</string>
+              <string>cv37 off</string>
+              <string>cv38 on</string>
+              <string>cv39 off</string>
+              <string>cv40 off</string>
+              <string>cv41 on</string>
+            </edit>
+          </match>
+        </fontconfig>
       '';
       defaultFonts = {
         emoji = [ "Apple Color Emoji" ];
         serif = [
-          "Departure Mono"
+          "Maple Mono"
           # "Lora"
           "Source Serif"
           "IPAexMincho"
@@ -177,14 +214,14 @@
           "Noto Serif CJK"
         ];
         sansSerif = [
-          "Departure Mono"
+          "Maple Mono"
           # "Inter"
           "IPAexGothic"
           "Noto Sans"
           "Noto Sans CJK"
         ];
         monospace = [
-          "Departure Mono"
+          "Maple Mono"
           # "Commit Mono"
           "Symbols Nerd Fonts"
         ];
