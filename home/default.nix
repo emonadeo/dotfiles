@@ -85,11 +85,6 @@
         };
       };
 
-      ".local/share/wallpapers" = {
-        recursive = true;
-        source = ../wallpapers;
-      };
-
       ".config/neovide/config.toml" = {
         source = ./neovide.toml;
       };
@@ -154,6 +149,10 @@
     ghostty = {
       enable = true;
       settings = {
+        adjust-underline-thickness = 1;
+        adjust-overline-thickness = 1;
+        adjust-strikethrough-thickness = 1;
+        background-opacity = 0.75;
         font-family = "Maple Mono";
         font-feature = [
           # basic ligatures
@@ -423,8 +422,8 @@
     enable = true;
     settings = {
       splash = false;
-      preload = [ "~/.local/share/wallpapers/felizuko_faroe.jpg" ];
-      wallpaper = [ ",~/.local/share/wallpapers/felizuko_faroe.jpg" ];
+      preload = [ "${../wallpapers/camille-unknown_the-cave_2x.png}" ];
+      wallpaper = [ ", ${../wallpapers/camille-unknown_the-cave_2x.png}" ];
     };
   };
 
@@ -491,10 +490,18 @@
       decoration = {
         shadow.enabled = false;
         rounding = 6;
+        blur = {
+          enabled = true;
+          # single pass looks poop
+          # total size = passes * size
+          # 8 = 1 * 8 = 2 * 4
+          passes = 2;
+          size = 4;
+        };
       };
       general = {
-        "col.inactive_border" = "0xff67837e";
-        "col.active_border" = "0xffffffff";
+        "col.inactive_border" = "0xff313244";
+        "col.active_border" = "0xffcdd6f4";
         border_size = 2;
         gaps_in = 8;
         gaps_out = 16;
@@ -504,6 +511,11 @@
         accel_profile = "flat";
         force_no_accel = true;
       };
+      # Prevent color picker and screenshot tools to capture selection borders
+      layerrule = [
+        "noanim, hyprpicker"
+        "noanim, selection"
+      ];
       monitor = [
         "HDMI-A-1, preferred, 0x0, 1.667"
         "DP-2, preferred, auto-right, 1.667"
