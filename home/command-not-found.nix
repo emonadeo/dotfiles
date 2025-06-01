@@ -13,3 +13,4 @@ pkgs.runCommand "command-not-found-nix-index-database" { src = nix-index; } ''
   substitute $src/command-not-found.nu $out/command-not-found.nu \
     --replace-fail "@out@" "${nix-index-database.packages.${pkgs.system}.default}"
 ''
++ /command-not-found.nu
