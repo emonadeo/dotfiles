@@ -6,6 +6,10 @@
 }:
 
 {
+  imports = [
+    inputs.nix-index-database.hmModules.nix-index
+  ];
+
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -142,6 +146,12 @@
       };
       configFile = {
         text = ''
+          $env.config.hooks.command_not_found = source ${
+            pkgs.callPackage ./command-not-found.nix {
+              nix-index = inputs.nix-index;
+              nix-index-database = inputs.nix-index-database;
+            }
+          }
           if (tty) == "/dev/tty1" { exec hyprland }
         '';
       };

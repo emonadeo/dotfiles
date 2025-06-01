@@ -6,7 +6,10 @@
     #   flake = false;
     # };
     apple-emoji = {
-      url = "github:samuelngs/apple-emoji-linux";
+      # FIXME: Move back to "github:samuelngs/apple-emoji-linux"
+      # once https://github.com/samuelngs/apple-emoji-linux/pull/69 is resolved.
+      url = "github:typedrat/apple-emoji-linux/fix-flake-on-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -14,9 +17,20 @@
     };
     hyprland = {
       url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     lix = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # TODO: Remove once v0.1.9 is released.
+    # This is only used for obtaining `command-not-found.nu`, which isn't in v0.1.8.
+    nix-index = {
+      url = "github:nix-community/nix-index";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs = {
