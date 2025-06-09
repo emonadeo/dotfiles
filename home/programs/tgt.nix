@@ -3,11 +3,11 @@
 {
   home = {
     file = {
-      ".tgt/config/app.toml".source = inputs.tgt + /config/app.toml;
+      ".tgt/config/app.toml".source = ./tgt_app.toml;
       ".tgt/config/keymap.toml".source = ./tgt_keymap.toml;
       ".tgt/config/logger.toml".source = inputs.tgt + /config/logger.toml;
       ".tgt/config/telegram.toml".source = inputs.tgt + /config/telegram.toml;
-      ".tgt/config/theme.toml".source = inputs.tgt + /config/theme.toml;
+      ".tgt/config/theme.toml".source = ./tgt_theme.toml;
     };
     packages = [
       (inputs.tgt.packages.${pkgs.system}.default.overrideAttrs (prev: rec {
