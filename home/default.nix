@@ -18,6 +18,7 @@
     ./programs/qutebrowser.nix
     ./programs/spotify.nix
     ./programs/starship.nix
+    ./programs/tgt.nix
     ./programs/tofi.nix
     ./programs/yazi.nix
     ./programs/zen_browser.nix
@@ -42,6 +43,8 @@
       pkgs.lutris
       pkgs.proton-pass
       pkgs.rofi-wayland
+      pkgs.signal-desktop
+      pkgs.teamspeak6-client
       pkgs.telegram-desktop
       pkgs.vesktop
       pkgs.wl-clipboard
@@ -58,6 +61,7 @@
       pkgs.astro-language-server
       pkgs.biome
       pkgs.cargo
+      pkgs.dprint
       pkgs.emmet-language-server
       pkgs.gleam
       pkgs.go

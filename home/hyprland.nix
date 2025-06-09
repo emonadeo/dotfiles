@@ -10,8 +10,8 @@
     enable = true;
     settings = {
       splash = false;
-      preload = [ "${../wallpapers/camille-unknown_the-cave_2x.png}" ];
-      wallpaper = [ ", ${../wallpapers/camille-unknown_the-cave_2x.png}" ];
+      preload = [ "${../wallpapers/daryl-mandryk_mech_16-9.jpg}" ];
+      wallpaper = [ ", ${../wallpapers/daryl-mandryk_mech_16-9.jpg}" ];
     };
   };
 
@@ -30,6 +30,9 @@
         "$mod SHIFT, P, exec, nu -c \"grim -o (hyprctl -j activeworkspace | from json | get monitor) - | wl-copy\""
         "$mod, F, fullscreen"
         "$mod SHIFT, F, togglefloating"
+        "$mod SHIFT, F, resizeactive, exact 960 540"
+        "$mod, mouse_up, resizeactive, 16 9"
+        "$mod, mouse_down, resizeactive, -16 -9"
         "$mod, H, movefocus, l"
         "$mod, J, movefocus, d"
         "$mod, K, movefocus, u"

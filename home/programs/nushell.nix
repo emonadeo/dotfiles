@@ -15,6 +15,7 @@
       HYPRCURSOR_THEME = "macos";
       HYPRCURSOR_SIZE = 24;
       QT_QPA_PLATFORM = "wayland";
+      NIXOS_OZONE_WL = 1;
     };
     configFile = {
       text = ''

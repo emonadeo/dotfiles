@@ -44,6 +44,10 @@
       url = "github:SpotX-Official/SpotX-Bash";
       flake = false;
     };
+    tgt = {
+      url = "github:FedericoBruzzone/tgt";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     yazi-flavors = {
       url = "github:yazi-rs/flavors";
       flake = false;

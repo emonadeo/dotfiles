@@ -7,7 +7,7 @@
       adjust-underline-thickness = 1;
       adjust-overline-thickness = 1;
       adjust-strikethrough-thickness = 1;
-      background-opacity = 0.75;
+      background-opacity = 0.875;
       font-family = "Maple Mono";
       font-feature = [
         # basic ligatures
