@@ -26,6 +26,10 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  nixpkgs.overlays = [
+    (import ../overlays/hotfixes.nix)
+  ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home = {
@@ -40,6 +44,7 @@
       pkgs.delta
       pkgs.deno
       pkgs.element-desktop
+      pkgs.jq
       pkgs.lutris
       pkgs.proton-pass
       pkgs.rofi-wayland
@@ -55,6 +60,12 @@
       pkgs.grim
 
       # Gaming
+      (pkgs.prismlauncher.override {
+        jdks = [
+          pkgs.jdk24
+          pkgs.graalvm-ce
+        ];
+      })
       pkgs.protonup
 
       # Languages & Language Servers
@@ -65,11 +76,13 @@
       pkgs.emmet-language-server
       pkgs.gleam
       pkgs.go
+      pkgs.gopls
       pkgs.just
       pkgs.lua-language-server
       pkgs.nil
       pkgs.nixfmt-rfc-style
       pkgs.nodejs
+      pkgs.openssl
       pkgs.python312
       pkgs.ruff
       pkgs.rust-analyzer

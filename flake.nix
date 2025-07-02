@@ -6,9 +6,7 @@
     #   flake = false;
     # };
     apple-emoji = {
-      # FIXME: Move back to "github:samuelngs/apple-emoji-linux"
-      # once https://github.com/samuelngs/apple-emoji-linux/pull/69 is resolved.
-      url = "github:typedrat/apple-emoji-linux/fix-flake-on-unstable";
+      url = "github:samuelngs/apple-emoji-linux";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
@@ -20,7 +18,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lix = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # TODO: Remove once v0.1.9 is released.

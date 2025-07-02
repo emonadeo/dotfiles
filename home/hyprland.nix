@@ -80,7 +80,7 @@
         shadow.enabled = false;
         rounding = 6;
         blur = {
-          enabled = true;
+          enabled = false;
           # single pass looks poop
           # total size = passes * size
           # 8 = 1 * 8 = 2 * 4
