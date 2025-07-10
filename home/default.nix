@@ -26,10 +26,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  nixpkgs.overlays = [
-    (import ../overlays/hotfixes.nix)
-  ];
-
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home = {
@@ -62,7 +58,7 @@
       # Gaming
       (pkgs.prismlauncher.override {
         jdks = [
-          pkgs.jdk24
+          pkgs.jdk21
           pkgs.graalvm-ce
         ];
       })

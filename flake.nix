@@ -17,10 +17,6 @@
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    lix = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.1.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     # TODO: Remove once v0.1.9 is released.
     # This is only used for obtaining `command-not-found.nu`, which isn't in v0.1.8.
     nix-index = {
@@ -66,7 +62,6 @@
           lib = inputs.nixpkgs.lib; # TODO: Consider removing this
         };
         modules = [
-          inputs.lix.nixosModules.default
           inputs.home-manager.nixosModules.default
           ./hosts/default/configuration.nix
           {
