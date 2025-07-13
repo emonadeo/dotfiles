@@ -6,7 +6,7 @@
 
 {
   imports = [
-    inputs.nix-index-database.hmModules.nix-index
+    inputs.nix-index-database.homeModules.nix-index
     ./cursor.nix
     ./hyprland.nix
     ./programs/chromium.nix
@@ -62,7 +62,6 @@
           pkgs.graalvm-ce
         ];
       })
-      pkgs.protonup
 
       # Languages & Language Servers
       pkgs.astro-language-server
