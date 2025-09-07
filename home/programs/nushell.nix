@@ -8,15 +8,10 @@
 {
   programs.nushell = {
     enable = true;
-    environmentVariables = {
-      TERMINAL = "ghostty";
-      EDITOR = "nvim";
-      GDK_SCALE = 1.667;
-      HYPRCURSOR_THEME = "macos";
-      HYPRCURSOR_SIZE = 24;
-      QT_QPA_PLATFORM = "wayland";
-      NIXOS_OZONE_WL = 1;
-    };
+    # HACK: Make `config.home.sessionVariables` work with nushell
+    # See <https://github.com/nix-community/home-manager/issues/4313>
+    environmentVariables = config.home.sessionVariables;
+    shellAliases = config.home.shellAliases;
     configFile = {
       text = ''
         $env.config.render_right_prompt_on_last_line = true
@@ -28,10 +23,12 @@
           ''
           + /command-not-found.nu
         }
+
         if (tty) == "/dev/tty1" { exec ${config.programs.niri.package + /bin/niri-session} }
+
         # BUG: Black screen
-        # https://github.com/ValveSoftware/gamescope/issues/1593
-        # https://github.com/ValveSoftware/gamescope/issues/1925
+        # See <https://github.com/ValveSoftware/gamescope/issues/1593>
+        # and <https://github.com/ValveSoftware/gamescope/issues/1925>
         # if (tty) == "/dev/tty2" { exec steam-gamescope }
       '';
     };

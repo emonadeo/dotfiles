@@ -162,8 +162,8 @@
   programs.gamescope = {
     enable = true;
     # BUG:
-    # https://discourse.nixos.org/t/unable-to-activate-gamescope-capsysnice-option/37843/10
-    # https://github.com/NixOS/nixpkgs/issues/351516
+    # <https://discourse.nixos.org/t/unable-to-activate-gamescope-capsysnice-option/37843/10>
+    # <https://github.com/NixOS/nixpkgs/issues/351516>
     capSysNice = true;
   };
 

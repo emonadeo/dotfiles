@@ -25,6 +25,8 @@
 
   programs.niri = {
     settings = {
+      # Make niri ask applications to omit their client-side decorations.
+      prefer-no-csd = true;
       input = {
         keyboard = {
           xkb = {
@@ -46,11 +48,17 @@
       };
       layout = {
         background-color = "transparent";
+        focus-ring = {
+          enable = false;
+        };
         border = {
           enable = true;
-          width = 2;
-          inactive.color = "#ff313244";
-          active.color = "#ffcdd6f4";
+          width = 4;
+          inactive.color = "#ffffff44";
+          active.color = "#ffffff";
+        };
+        default-column-width = {
+          proportion = 0.66667;
         };
       };
       cursor = {
@@ -95,6 +103,8 @@
         "Mod+Shift+F".action = fullscreen-window;
         "Mod+Comma".action = consume-window-into-column;
         "Mod+Period".action = expel-window-from-column;
+        "Mod+BracketLeft".action = consume-or-expel-window-left;
+        "Mod+BracketRight".action = consume-or-expel-window-right;
 
         "Mod+V".action = switch-focus-between-floating-and-tiling;
         "Mod+Shift+V".action = toggle-window-floating;
@@ -115,7 +125,7 @@
         "Mod+6".action = focus-workspace "music";
 
         # BUG: `move-column-to-workspace` not available as a function
-        # See https://github.com/sodiboo/niri-flake/issues/1018
+        # See <https://github.com/sodiboo/niri-flake/issues/1018>
         "Mod+Shift+1".action.move-column-to-workspace = "main";
         "Mod+Shift+2".action.move-column-to-workspace = "terminal";
         "Mod+Shift+3".action.move-column-to-workspace = "browser";
@@ -189,6 +199,17 @@
         {
           matches = [ { namespace = "^wallpaper$"; } ];
           place-within-backdrop = true;
+        }
+      ];
+      window-rules = [
+        {
+          clip-to-geometry = true;
+          geometry-corner-radius = {
+            bottom-left = 8.0;
+            bottom-right = 8.0;
+            top-left = 8.0;
+            top-right = 8.0;
+          };
         }
       ];
       gestures.hot-corners.enable = false;

@@ -28,14 +28,19 @@
     ./waybar.nix
   ];
 
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
+  # Home Manager needs a bit of information about you and the paths it should manage.
   home = {
     username = "emonadeo";
     homeDirectory = "/home/emonadeo";
-    # BUG: This does not work with nushell
-    # (https://github.com/nix-community/home-manager/issues/4313)
-    sessionVariables = { };
+    sessionVariables = {
+      TERMINAL = "ghostty";
+      EDITOR = "nvim";
+      GDK_SCALE = 1.667;
+      HYPRCURSOR_THEME = "macos";
+      HYPRCURSOR_SIZE = 24;
+      QT_QPA_PLATFORM = "wayland";
+      NIXOS_OZONE_WL = 1;
+    };
     packages = [
       pkgs.bat
       pkgs.bottles

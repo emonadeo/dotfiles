@@ -15,7 +15,7 @@ size = 13.5
 "JetBrains Mono Nerd Font Mono" = ["-liga", "-calt", "-clig"]
 "JetBrains Mono Nerd Font Propo" = ["-liga", "-calt", "-clig", "-dlig"]
 
-# https://font.subf.dev/en/playground
+# See <https://font.subf.dev/en/playground>
 "Maple Mono" = [
 	# basic ligatures
 	"-calt",
