@@ -10,9 +10,6 @@
 
 {
   imports = [
-    inputs.home-manager.nixosModules.default
-    inputs.niri.nixosModules.niri
-    ./hardware-configuration.nix
   ];
 
   nix = {

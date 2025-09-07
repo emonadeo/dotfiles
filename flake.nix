@@ -35,8 +35,8 @@
     };
     # TODO: Use Stylix
     # stylix = {
-    #   url = "github:nix-community/stylix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
+    #  url = "github:nix-community/stylix";
+    #  inputs.nixpkgs.follows = "nixpkgs";
     # };
     tgt = {
       url = "github:FedericoBruzzone/tgt";
@@ -64,7 +64,17 @@
       ursa = inputs.nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
-        modules = [ ./devices/ursa/configuration.nix ];
+        modules = [
+          ./devices/ursa/configuration.nix
+          ./devices/ursa/hardware-configuration.nix
+          inputs.home-manager.nixosModules.default
+          inputs.niri.nixosModules.niri
+          # BUG: Stylix is incompatible with `lazy.nvim`
+          # Uncomment once Neovim 0.12 is released
+          # See https://github.com/nix-community/stylix/issues/505
+          # inputs.stylix.nixosModules.stylix
+          # ./nixos/stylix.nix
+        ];
       };
     };
   };

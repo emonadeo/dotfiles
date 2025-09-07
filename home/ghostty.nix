@@ -40,8 +40,6 @@
         "+cv41" # alternative r
       ];
       font-size = 13.5;
-      # Use official `catppuccin-mocha.conf` instead of ported textmate theme
-      theme = "catppuccin-mocha";
       window-padding-balance = true;
       window-padding-x = 16;
       window-padding-y = 16;

@@ -7,7 +7,6 @@
 {
   imports = [
     inputs.nix-index-database.homeModules.nix-index
-    ./cursor.nix
     ./niri.nix
     ./bitwarden.nix
     ./chromium.nix
@@ -22,7 +21,6 @@
     ./qutebrowser.nix
     ./spotify.nix
     ./starship.nix
-    ./tofi.nix
     ./yazi.nix
     ./zen_browser.nix
     ./waybar.nix
@@ -97,14 +95,7 @@
     ];
   };
 
-  gtk = {
-    enable = true;
-    theme = {
-      name = "catppuccin";
-      # TODO: Remove. `catppuccin-gtk` is discontinued.
-      package = pkgs.catppuccin-gtk;
-    };
-  };
+  gtk.enable = true;
 
   programs = {
     # Let Home Manager install and manage itself.

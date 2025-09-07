@@ -9,7 +9,7 @@
         "$nix_shell"
         "$directory"
         "$git_branch"
-        "[](fg:crust)"
+        "[](fg:#101817)"
         "[ ]()"
       ];
       right_format = inputs.nixpkgs.lib.concatStrings [
@@ -31,37 +31,23 @@
         "$rust"
         "$zig"
       ];
-      palette = "catppuccin";
-      palettes.catppuccin = {
-        mauve = "#cba6f7";
-        red = "#f38ba8";
-        maroon = "#eba0ac";
-        peach = "#fab387";
-        yellow = "#f9e2af";
-        green = "#a6e3a1";
-        blue = "#89b4fa";
-        lavender = "#b4befe";
-        text = "#cdd6f4";
-        surface_1 = "#45475a";
-        crust = "#11111b";
-      };
 
       # Left
 
       nix_shell = {
-        format = "[ $symbol $name ]($style)[](fg:blue bg:crust)";
-        style = "fg:crust bg:blue";
+        format = "[ $symbol $name ]($style)[](fg:blue bg:#101817)";
+        style = "fg:#101817 bg:blue";
         symbol = "";
       };
       directory = {
         format = "[ $path]($style)[$read_only]($read_only_style)[ ]($style)";
-        style = "bold fg:blue bg:crust";
+        style = "bold fg:blue bg:#101817";
         read_only = " ";
-        read_only_style = "bold fg:red bg:crust";
+        read_only_style = "bold fg:red bg:#101817";
       };
       git_branch = {
-        format = "[]($style fg:surface_1)[ $symbol $branch(:$remote_branch) ]($style)";
-        style = "fg:green bg:crust";
+        format = "[]($style fg:bright-black)[ $symbol $branch(:$remote_branch) ]($style)";
+        style = "fg:green bg:#101817";
         symbol = "";
       };
 
@@ -75,7 +61,7 @@
         behind = "↓$count";
         diverged = "↑$ahead_count↓$behind_count";
         untracked = "[?$count](fg:red)";
-        stashed = "[\\$$count](fg:peach)";
+        stashed = "[\\$$count](fg:orange)";
         modified = "[±$count](fg:yellow)";
         staged = "[+$count](fg:green)";
         renamed = "[~$count](fg:yellow)";
@@ -98,12 +84,12 @@
       };
       elixir = {
         format = " [$symbol $version]($style)";
-        style = "fg:mauve";
+        style = "fg:purple";
         symbol = "";
       };
       gleam = {
         format = " [$symbol $version]($style)";
-        style = "fg:mauve";
+        style = "fg:purple";
         symbol = "󰦥";
       };
       golang = {
@@ -113,7 +99,7 @@
       };
       haskell = {
         format = " [$symbol $version]($style)";
-        style = "fg:lavender";
+        style = "fg:purple";
         symbol = "";
       };
       java = {
@@ -123,7 +109,7 @@
       };
       kotlin = {
         format = " [$symbol $version]($style)";
-        style = "fg:mauve";
+        style = "fg:purple";
         symbol = "";
       };
       lua = {
@@ -138,7 +124,7 @@
       };
       ocaml = {
         format = " [$symbol $version]($style)";
-        style = "fg:peach";
+        style = "fg:orange";
         symbol = "";
       };
       python = {
@@ -148,12 +134,12 @@
       };
       rust = {
         format = " [$symbol $version]($style)";
-        style = "fg:maroon";
+        style = "fg:red";
         symbol = "";
       };
       zig = {
         format = " [$symbol $version]($style)";
-        style = "fg:peach";
+        style = "fg:orange";
         symbol = "";
       };
     };
