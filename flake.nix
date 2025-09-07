@@ -64,11 +64,7 @@
       ursa = inputs.nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
-        modules = [
-          ./devices/ursa/configuration.nix
-          {
-          }
-        ];
+        modules = [ ./devices/ursa/configuration.nix ];
       };
     };
   };

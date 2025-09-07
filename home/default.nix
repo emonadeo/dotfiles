@@ -9,22 +9,22 @@
     inputs.nix-index-database.homeModules.nix-index
     ./cursor.nix
     ./niri.nix
-    ./programs/bitwarden.nix
-    ./programs/chromium.nix
-    ./programs/feh.nix
-    ./programs/fuzzel.nix
-    ./programs/ghostty.nix
-    ./programs/jujutsu.nix
-    ./programs/mako.nix
-    ./programs/neovide.nix
-    ./programs/neovim.nix
-    ./programs/nushell.nix
-    ./programs/qutebrowser.nix
-    ./programs/spotify.nix
-    ./programs/starship.nix
-    ./programs/tofi.nix
-    ./programs/yazi.nix
-    ./programs/zen_browser.nix
+    ./bitwarden.nix
+    ./chromium.nix
+    ./feh.nix
+    ./fuzzel.nix
+    ./ghostty.nix
+    ./jujutsu.nix
+    ./mako.nix
+    ./neovide/default.nix
+    ./neovim.nix
+    ./nushell.nix
+    ./qutebrowser.nix
+    ./spotify.nix
+    ./starship.nix
+    ./tofi.nix
+    ./yazi.nix
+    ./zen_browser.nix
     ./waybar.nix
   ];
 

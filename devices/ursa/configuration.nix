@@ -66,7 +66,7 @@
     backupFileExtension = "backup";
     extraSpecialArgs = { inherit inputs; };
     users = {
-      "emonadeo" = import ../../home;
+      "emonadeo" = import ../../home/default.nix;
     };
   };
 
