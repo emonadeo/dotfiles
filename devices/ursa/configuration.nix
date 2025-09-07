@@ -10,6 +10,8 @@
 
 {
   imports = [
+    inputs.home-manager.nixosModules.default
+    inputs.niri.nixosModules.niri
     ./hardware-configuration.nix
   ];
 
@@ -20,9 +22,6 @@
         "nix-command"
         "flakes"
       ];
-      substituters = [ "https://hyprland.cachix.org" ];
-      trusted-substituters = [ "https://hyprland.cachix.org" ];
-      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
   };
 
@@ -30,7 +29,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "dragonfruit";
+  networking.hostName = "ursa";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -38,7 +37,10 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    plugins = [ pkgs.networkmanager-openvpn ];
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -58,7 +60,23 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    backupFileExtension = "backup";
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      "emonadeo" = import ../../home;
+    };
+  };
+
   nixpkgs = {
+    overlays = [
+      inputs.niri.overlays.niri
+      # Patch Spotify with SpotX-Bash
+      (import ../../overlays/spotify.nix { inherit inputs; })
+    ];
+
     config = {
       allowUnfree = true;
     };
@@ -79,6 +97,7 @@
   # Open ports in the firewall.
   networking.firewall = {
     enable = true;
+    checkReversePath = false;
     allowedTCPPorts = [
       47984
       47989
@@ -102,14 +121,21 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = [
-    pkgs.fd
-    pkgs.gcc
-    pkgs.nushell
-    pkgs.ripgrep
-    pkgs.unzip
-    pkgs.zip
-  ];
+
+  environment = {
+    pathsToLink = [
+      "/share/xdg-desktop-portal"
+      "/share/applications"
+    ];
+    systemPackages = [
+      pkgs.fd
+      pkgs.gcc
+      pkgs.nushell
+      pkgs.ripgrep
+      pkgs.unzip
+      pkgs.zip
+    ];
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -121,6 +147,11 @@
 
   programs.dconf.enable = true;
 
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri-unstable;
+  };
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -130,13 +161,30 @@
 
   programs.gamescope = {
     enable = true;
+    # BUG:
+    # https://discourse.nixos.org/t/unable-to-activate-gamescope-capsysnice-option/37843/10
+    # https://github.com/NixOS/nixpkgs/issues/351516
     capSysNice = true;
   };
 
   programs.steam = {
     enable = true;
-    gamescopeSession.enable = true;
     extraCompatPackages = [ pkgs.proton-ge-bin ];
+    gamescopeSession = {
+      enable = true;
+      args = [
+        # "--adaptive-sync" # VRR support
+        # "--hdr-enabled"
+        "-W 3840"
+        "-H 2160"
+        "-r 60"
+        "--steam"
+      ];
+      steamArgs = [
+        "-pipewire-dmabuf"
+        "-gamepadui"
+      ];
+    };
   };
 
   # Enable automatic login for the user.
@@ -154,7 +202,8 @@
   };
 
   services.sunshine = {
-    enable = true;
+    # TODO: Enable
+    enable = false;
     autoStart = true;
     capSysAdmin = true;
     openFirewall = true;
@@ -258,9 +307,20 @@
   };
 
   hardware = {
+    amdgpu = {
+      amdvlk = {
+        enable = true;
+        support32Bit.enable = true;
+      };
+    };
     bluetooth = {
       enable = true;
       powerOnBoot = true;
+    };
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+      extraPackages = [ pkgs.amdvlk ];
     };
     keyboard.qmk.enable = true;
     steam-hardware.enable = true;

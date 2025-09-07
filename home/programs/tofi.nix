@@ -1,4 +1,4 @@
-{ config, ... }:
+{ ... }:
 
 {
   programs.tofi = {
@@ -27,10 +27,8 @@
       width = 1280;
       height = 720;
       background-color = "#1e1e2e";
-      outline-width = 1;
-      outline-color = "#ffffff";
       border-width = 1;
-      border-color = "#ff00ff";
+      border-color = "#ffffff";
       corner-radius = 8;
       padding-top = 16;
       padding-right = 16;

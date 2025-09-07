@@ -7,7 +7,7 @@
       adjust-underline-thickness = 1;
       adjust-overline-thickness = 1;
       adjust-strikethrough-thickness = 1;
-      background-opacity = 0.875;
+      # background-opacity = 0.875;
       font-family = "Maple Mono";
       font-feature = [
         # basic ligatures
@@ -46,6 +46,7 @@
       window-padding-x = 16;
       window-padding-y = 16;
       window-inherit-working-directory = true;
+      window-decoration = false;
     };
   };
 }

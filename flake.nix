@@ -1,10 +1,5 @@
 {
   inputs = {
-    # TODO: Setup in steam post install or similarly
-    # adwaita-for-steam = {
-    #   url = "github:tkashkin/Adwaita-for-Steam";
-    #   flake = false;
-    # };
     apple-emoji = {
       url = "github:samuelngs/apple-emoji-linux";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,8 +8,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
+    niri = {
+      url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # TODO: Remove once v0.1.9 is released.
@@ -31,13 +26,18 @@
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
     nvim = {
-      url = "git+file:nvim";
+      url = "git+file:home/nvim";
       flake = false;
     };
     spotx = {
       url = "github:SpotX-Official/SpotX-Bash";
       flake = false;
     };
+    # TODO: Use Stylix
+    # stylix = {
+    #   url = "github:nix-community/stylix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     tgt = {
       url = "github:FedericoBruzzone/tgt";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -54,24 +54,19 @@
   };
 
   outputs = inputs: {
+    darwinConfigurations = {
+      plex = inputs.nix-darwin.lib.darwinSystem {
+        modules = [ ./devices/plex/configuration.nix ];
+        specialArgs = { inherit inputs; };
+      };
+    };
     nixosConfigurations = {
-      default = inputs.nixpkgs.lib.nixosSystem {
+      ursa = inputs.nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          lib = inputs.nixpkgs.lib; # TODO: Consider removing this
-        };
+        specialArgs = { inherit inputs; };
         modules = [
-          inputs.home-manager.nixosModules.default
-          ./hosts/default/configuration.nix
+          ./devices/ursa/configuration.nix
           {
-            home-manager = {
-              backupFileExtension = "backup";
-              extraSpecialArgs = { inherit inputs; };
-              users = {
-                "emonadeo" = import ./home;
-              };
-            };
           }
         ];
       };

@@ -8,23 +8,25 @@
   imports = [
     inputs.nix-index-database.homeModules.nix-index
     ./cursor.nix
-    ./hyprland.nix
+    ./niri.nix
+    ./programs/bitwarden.nix
     ./programs/chromium.nix
     ./programs/feh.nix
+    ./programs/fuzzel.nix
     ./programs/ghostty.nix
+    ./programs/jujutsu.nix
+    ./programs/mako.nix
     ./programs/neovide.nix
     ./programs/neovim.nix
     ./programs/nushell.nix
     ./programs/qutebrowser.nix
     ./programs/spotify.nix
     ./programs/starship.nix
-    ./programs/tgt.nix
     ./programs/tofi.nix
     ./programs/yazi.nix
     ./programs/zen_browser.nix
+    ./waybar.nix
   ];
-
-  nixpkgs.config.allowUnfree = true;
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.

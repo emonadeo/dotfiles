@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  config,
   ...
 }:
 
@@ -11,7 +12,6 @@
       TERMINAL = "ghostty";
       EDITOR = "nvim";
       GDK_SCALE = 1.667;
-      STEAM_EXTRA_COMPAT_TOOLS_PATHS = "$env.HOME | path join \".steam/root/compatibilitytools.d\"";
       HYPRCURSOR_THEME = "macos";
       HYPRCURSOR_SIZE = 24;
       QT_QPA_PLATFORM = "wayland";
@@ -19,13 +19,20 @@
     };
     configFile = {
       text = ''
+        $env.config.render_right_prompt_on_last_line = true
         $env.config.hooks.command_not_found = source ${
-          pkgs.callPackage ../command_not_found.nix {
-            nix-index = inputs.nix-index;
-            nix-index-database = inputs.nix-index-database;
-          }
+          pkgs.runCommand "command-not-found-nix-index-database" { src = inputs.nix-index; } ''
+            mkdir -p $out
+            substitute $src/command-not-found.nu $out/command-not-found.nu \
+              --replace-fail "@out@" "${inputs.nix-index-database.packages.${pkgs.system}.default}"
+          ''
+          + /command-not-found.nu
         }
-        if (tty) == "/dev/tty1" { exec hyprland }
+        if (tty) == "/dev/tty1" { exec ${config.programs.niri.package + /bin/niri-session} }
+        # BUG: Black screen
+        # https://github.com/ValveSoftware/gamescope/issues/1593
+        # https://github.com/ValveSoftware/gamescope/issues/1925
+        # if (tty) == "/dev/tty2" { exec steam-gamescope }
       '';
     };
   };

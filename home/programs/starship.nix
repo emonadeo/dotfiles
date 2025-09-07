@@ -4,7 +4,9 @@
   programs.starship = {
     enable = true;
     settings = {
+      line_break.disabled = true;
       format = inputs.nixpkgs.lib.concatStrings [
+        "$nix_shell"
         "$directory"
         "$git_branch"
         "[](fg:crust)"
@@ -42,7 +44,14 @@
         text = "#cdd6f4";
         surface_1 = "#45475a";
         crust = "#11111b";
-        base = "#1e1e2e";
+      };
+
+      # Left
+
+      nix_shell = {
+        format = "[ $symbol $name ]($style)[](fg:blue bg:crust)";
+        style = "fg:crust bg:blue";
+        symbol = "";
       };
       directory = {
         format = "[ $path]($style)[$read_only]($read_only_style)[ ]($style)";
@@ -55,6 +64,9 @@
         style = "fg:green bg:crust";
         symbol = "";
       };
+
+      # Right
+
       git_status = {
         style = "";
         format = "[$all_status$ahead_behind]($style)";
