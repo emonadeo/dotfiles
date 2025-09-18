@@ -1,5 +1,6 @@
 {
   inputs = {
+    self.submodules = true;
     apple-emoji = {
       url = "github:samuelngs/apple-emoji-linux";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,7 +27,7 @@
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
     nvim = {
-      url = "git+file:home/nvim";
+      url = ./home/nvim;
       flake = false;
     };
     spotx = {
@@ -66,7 +67,6 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./devices/ursa/configuration.nix
-          ./devices/ursa/hardware-configuration.nix
           inputs.home-manager.nixosModules.default
           inputs.niri.nixosModules.niri
           # BUG: Stylix is incompatible with `lazy.nvim`

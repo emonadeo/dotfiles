@@ -6,22 +6,22 @@
 }:
 
 {
-  systemd.user.services = {
-    swaybg = {
-      Install = {
-        WantedBy = [ "niri.service" ];
-      };
-      Unit = {
-        PartOf = "graphical-session.target";
-        After = "graphical-session.target";
-        Requisite = "graphical-session.target";
-      };
-      Service = {
-        ExecStart = "${pkgs.swaybg + /bin/swaybg} -m fill -i \"${../images/daryl-mandryk_mech_16-9.jpg}\"";
-        Restart = "on-failure";
-      };
-    };
-  };
+  # systemd.user.services = {
+  #   swaybg = {
+  #     Install = {
+  #       WantedBy = [ "niri.service" ];
+  #     };
+  #     Unit = {
+  #       PartOf = "graphical-session.target";
+  #       After = "graphical-session.target";
+  #       Requisite = "graphical-session.target";
+  #     };
+  #     Service = {
+  #       ExecStart = "${pkgs.swaybg + /bin/swaybg} -m fill -i \"${../images/daryl-mandryk_mech_16-9.jpg}\"";
+  #       Restart = "on-failure";
+  #     };
+  #   };
+  # };
 
   programs.niri = {
     settings = {

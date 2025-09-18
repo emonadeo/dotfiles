@@ -40,15 +40,10 @@
       NIXOS_OZONE_WL = 1;
     };
     packages = [
-      pkgs.bat
       pkgs.bottles
-      pkgs.delta
-      pkgs.deno
       pkgs.element-desktop
-      pkgs.jq
       pkgs.lutris
       pkgs.proton-pass
-      pkgs.rofi-wayland
       pkgs.signal-desktop
       pkgs.teamspeak6-client
       pkgs.telegram-desktop
@@ -92,6 +87,7 @@
       pkgs.taplo
       pkgs.vscode-langservers-extracted
       pkgs.vtsls
+      pkgs.zig
     ];
   };
 
