@@ -8,14 +8,15 @@
   imports = [ ./hardware-configuration.nix ];
 
   nix = {
-    # BUG: Doesn't build
-    # package = pkgs.lix;
+    package = pkgs.lix;
     settings = {
       experimental-features = [
         "nix-command"
         "flakes"
       ];
     };
+    gc.automatic = true;
+    optimise.automatic = true;
   };
 
   # Use the systemd-boot EFI boot loader.
@@ -133,6 +134,7 @@
       "/share/applications"
     ];
     systemPackages = [
+      pkgs.rg
       pkgs.unzip
       pkgs.vim
       pkgs.zip
