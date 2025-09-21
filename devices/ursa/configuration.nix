@@ -8,7 +8,7 @@
   imports = [ ./hardware-configuration.nix ];
 
   nix = {
-    package = pkgs.lix;
+    # package = pkgs.lix;
     settings = {
       experimental-features = [
         "nix-command"
@@ -63,6 +63,8 @@
     ];
 
     config = {
+      cudaSupport = false;
+      rocmSupport = true;
       allowUnfree = true;
     };
   };
@@ -105,12 +107,29 @@
 
   programs.gamescope = {
     enable = true;
+    # BUG:
+    # <https://discourse.nixos.org/t/unable-to-activate-gamescope-capsysnice-option/37843/10>
+    # <https://github.com/NixOS/nixpkgs/issues/351516>
     capSysNice = true;
   };
 
   programs.steam = {
     enable = true;
     extraCompatPackages = [ pkgs.proton-ge-bin ];
+    gamescopeSession = {
+      enable = true;
+      args = [
+        "--adaptive-sync" # VRR support
+        "-W 3840"
+        "-H 2160"
+        "-r 60"
+        "--steam"
+      ];
+      steamArgs = [
+        "-pipewire-dmabuf"
+        "-gamepadui"
+      ];
+    };
   };
 
   services.getty.autologinUser = "emonadeo";
@@ -134,7 +153,7 @@
       "/share/applications"
     ];
     systemPackages = [
-      pkgs.rg
+      pkgs.ripgrep
       pkgs.unzip
       pkgs.vim
       pkgs.zip
@@ -153,7 +172,12 @@
     enableDefaultPackages = false;
     packages = [
       inputs.apple-emoji.packages.x86_64-linux.default
+      pkgs.commit-mono # neutral
+      pkgs.departure-mono # bitmap
+      pkgs.fragment-mono # helvetica
+      pkgs.inter
       pkgs.ipaexfont
+      pkgs.lora
       pkgs.maple-mono.variable
       pkgs.nerd-fonts.symbols-only
       pkgs.noto-fonts

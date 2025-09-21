@@ -5,23 +5,29 @@
   ...
 }:
 
+let
+  wallpaper = pkgs.fetchurl {
+    url = "https://cdnb.artstation.com/p/assets/images/images/079/201/991/4k/darek-zabrocki-r2-006b-darekzabrocki.jpg";
+    hash = "sha256-FEWLOc1k/jFtneG5BtkMAwmJXVdIgqit47ZjIo6qzDA=";
+  };
+in
 {
-  # systemd.user.services = {
-  #   swaybg = {
-  #     Install = {
-  #       WantedBy = [ "niri.service" ];
-  #     };
-  #     Unit = {
-  #       PartOf = "graphical-session.target";
-  #       After = "graphical-session.target";
-  #       Requisite = "graphical-session.target";
-  #     };
-  #     Service = {
-  #       ExecStart = "${pkgs.swaybg + /bin/swaybg} -m fill -i \"${../images/daryl-mandryk_mech_16-9.jpg}\"";
-  #       Restart = "on-failure";
-  #     };
-  #   };
-  # };
+  systemd.user.services = {
+    swaybg = {
+      Install = {
+        WantedBy = [ "niri.service" ];
+      };
+      Unit = {
+        PartOf = "graphical-session.target";
+        After = "graphical-session.target";
+        Requisite = "graphical-session.target";
+      };
+      Service = {
+        ExecStart = "${pkgs.swaybg + /bin/swaybg} -m fill -i \"${wallpaper}\"";
+        Restart = "on-failure";
+      };
+    };
+  };
 
   programs.niri = {
     settings = {
