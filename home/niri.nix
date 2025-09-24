@@ -233,7 +233,7 @@ in
       config = {
         common = {
           default = [
-            "gtk"
+            "gnome"
           ];
         };
       };
