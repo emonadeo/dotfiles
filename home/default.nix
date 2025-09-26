@@ -24,6 +24,7 @@
     ./yazi.nix
     ./zen_browser.nix
     ./waybar.nix
+    ./cursor/default.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should manage.

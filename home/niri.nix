@@ -68,7 +68,8 @@ in
         };
       };
       cursor = {
-        theme = "macOS";
+        theme = "tahoe";
+        size = 36;
       };
       overview = {
         workspace-shadow.enable = false;
