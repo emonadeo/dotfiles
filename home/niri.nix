@@ -59,7 +59,7 @@ in
         };
         border = {
           enable = true;
-          width = 4;
+          width = 3;
           inactive.color = "#ffffff44";
           active.color = "#ffffff";
         };

@@ -94,6 +94,7 @@
           "sponsorBlocker@ajay.app" = mkExtensionSetting "sponsorblock";
           "deArrow@ajay.app" = mkExtensionSetting "dearrow";
           "{a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad}" = mkExtensionSetting "refined-github-";
+          "addon@darkreader.org" = mkExtensionSetting "darkreader";
         };
     };
   };
