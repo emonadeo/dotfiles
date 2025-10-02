@@ -5,6 +5,10 @@
       url = "github:samuelngs/apple-emoji-linux";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    catppuccin-ghostty = {
+      url = "github:catppuccin/ghostty";
+      flake = false;
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -43,6 +47,11 @@
       url = "github:FedericoBruzzone/tgt";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # FIXME: Not working with ghostty
+    # xdg-desktop-portal-termfilepickers = {
+    #   url = "github:Guekka/xdg-desktop-portal-termfilepickers";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     yazi-flavors = {
       url = "github:yazi-rs/flavors";
       flake = false;

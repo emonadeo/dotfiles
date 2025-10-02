@@ -82,19 +82,20 @@
           );
         in
         {
-          "{85860b32-02a8-431a-b2b1-40fbd64c9c69}" = mkExtensionSetting "github-file-icons";
-          "{762f9885-5a13-4abd-9c77-433dcd38b8fd}" = mkExtensionSetting "return-youtube-dislikes";
-          "{74145f27-f039-47ce-a470-a662b129930a}" = mkExtensionSetting "clearurls";
-          "github-repository-size@pranavmangal" = mkExtensionSetting "gh-repo-size";
-          "firefox-extension@steamdb.info" = mkExtensionSetting "steam-database";
-          "@searchengineadremover" = mkExtensionSetting "searchengineadremover";
-          "jid1-BoFifL9Vbdl2zQ@jetpack" = mkExtensionSetting "decentraleyes";
-          "uBlock0@raymondhill.net" = mkExtensionSetting "ublock-origin";
           "78272b6fa58f4a1abaac99321d503a20@proton.me" = mkExtensionSetting "proton-pass";
-          "sponsorBlocker@ajay.app" = mkExtensionSetting "sponsorblock";
-          "deArrow@ajay.app" = mkExtensionSetting "dearrow";
-          "{a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad}" = mkExtensionSetting "refined-github-";
+          "@searchengineadremover" = mkExtensionSetting "searchengineadremover";
           "addon@darkreader.org" = mkExtensionSetting "darkreader";
+          "deArrow@ajay.app" = mkExtensionSetting "dearrow";
+          "firefox-extension@steamdb.info" = mkExtensionSetting "steam-database";
+          "github-repository-size@pranavmangal" = mkExtensionSetting "gh-repo-size";
+          "jid1-BoFifL9Vbdl2zQ@jetpack" = mkExtensionSetting "decentraleyes";
+          "jid1-j1RdUbjJ4pH8Yw@jetpack" = mkExtensionSetting "pinunpin-tab";
+          "sponsorBlocker@ajay.app" = mkExtensionSetting "sponsorblock";
+          "uBlock0@raymondhill.net" = mkExtensionSetting "ublock-origin";
+          "{74145f27-f039-47ce-a470-a662b129930a}" = mkExtensionSetting "clearurls";
+          "{762f9885-5a13-4abd-9c77-433dcd38b8fd}" = mkExtensionSetting "return-youtube-dislikes";
+          "{85860b32-02a8-431a-b2b1-40fbd64c9c69}" = mkExtensionSetting "github-file-icons";
+          "{a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad}" = mkExtensionSetting "refined-github-";
         };
     };
   };

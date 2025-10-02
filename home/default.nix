@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  lib,
   ...
 }:
 
@@ -10,6 +11,8 @@
     ./niri.nix
     ./bitwarden.nix
     ./chromium.nix
+    ./cursor/default.nix
+    ./darkman.nix
     ./feh.nix
     ./fuzzel.nix
     ./ghostty.nix
@@ -21,10 +24,9 @@
     ./qutebrowser.nix
     ./spotify.nix
     ./starship.nix
+    ./waybar.nix
     ./yazi.nix
     ./zen_browser.nix
-    ./waybar.nix
-    ./cursor/default.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should manage.
@@ -119,6 +121,19 @@
     };
     mimeApps = {
       enable = true;
+    };
+    portal = {
+      enable = true;
+      extraPortals = [
+        pkgs.xdg-desktop-portal-gnome
+        pkgs.xdg-desktop-portal-gtk
+      ];
+      config = {
+        common = {
+          default = [ "gtk" ];
+          "org.freedesktop.impl.portal.FileChooser" = "gtk";
+        };
+      };
     };
   };
 

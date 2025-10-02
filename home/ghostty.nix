@@ -1,5 +1,8 @@
-{ ... }:
+{ inputs, ... }:
 
+let
+  mkTheme = themes: "light:${themes.light},dark:${themes.dark}";
+in
 {
   programs.ghostty = {
     enable = true;
@@ -7,8 +10,11 @@
       adjust-underline-thickness = 1;
       adjust-overline-thickness = 1;
       adjust-strikethrough-thickness = 1;
-      # background-opacity = 0.875;
       font-family = "Maple Mono";
+      theme = mkTheme {
+        dark = inputs.catppuccin-ghostty + /themes/catppuccin-mocha.conf;
+        light = inputs.catppuccin-ghostty + /themes/catppuccin-latte.conf;
+      };
       font-feature = [
         # basic ligatures
         "-calt"
