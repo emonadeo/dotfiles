@@ -23,6 +23,9 @@ outer.right =      16
 
 [mode.main.binding]
 
+ctrl-alt-backslash = 'layout h_tiles'
+ctrl-alt-semicolon = 'layout v_tiles'
+
 ctrl-alt-h = 'focus left'
 ctrl-alt-j = 'focus down'
 ctrl-alt-k = 'focus up'

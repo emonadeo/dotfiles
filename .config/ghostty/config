@@ -1,8 +1,10 @@
-font-family = "Geist Mono Medium"
+auto-update = "off"
+
+font-family = "Maple Mono"
+# basic ligatures
 font-feature = "-calt"
-font-feature = "-clig"
-font-feature = "-dlig"
-font-feature = "-liga"
+# character variants
+font-feature = "+cv01, +cv02, -cv03, -cv04, +cv05, -cv06, -cv07, +cv08, +cv61, -cv62, -cv63, -cv64, -cv65, +cv31, -cv32, +cv33, +cv34, +cv35, +cv36, -cv37, +cv38, -cv39, -cv40, +cv41"
 font-size = 16
 
 macos-titlebar-style = "hidden"
@@ -14,3 +16,7 @@ window-padding-x = 24
 window-padding-y = 24
 
 window-inherit-working-directory = true
+
+adjust-underline-thickness = 1
+adjust-overline-thickness = 1
+adjust-strikethrough-thickness = 1

@@ -1,5 +1,13 @@
 bindkey -v
 
+# deno {
+export PATH="/Users/emonadeo/.deno/bin:$PATH"
+# }
+
+# gpg {
+export GPG_TTY=$(tty)
+# }
+
 # homebrew {
 if [ "$(arch)" = "arm64" ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -9,22 +17,10 @@ else
 fi
 # }
 
-# gpg {
-export GPG_TTY=$(tty)
-# }
-
 # jenv {
 eval "$(jenv init -)"
 # }
 
 # starship {
 eval "$(starship init zsh)"
-# }
-
-# fnm {
-eval "$(fnm env --use-on-cd --shell zsh)"
-# }
-
-# zoxide {
-eval "$(zoxide init zsh)"
 # }

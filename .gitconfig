@@ -1,6 +1,7 @@
 [user]
 	email = emonadeo@gmail.com
 	name = Emanuel Pilz
+	signingkey = /Users/emonadeo/.ssh/id_rsa.pub
 [branch]
 	sort = -committerdate
 [commit]
@@ -24,3 +25,5 @@
 	diffFilter = delta --color-only
 [merge]
 	conflictstyle = zdiff3
+[gpg]
+	format = ssh
