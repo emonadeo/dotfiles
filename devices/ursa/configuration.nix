@@ -14,12 +14,21 @@
         "nix-command"
         "flakes"
       ];
+      substituters = [
+        "https://devenv.cachix.org"
+        "https://cache.garnix.io"
+      ];
+      trusted-public-keys = [
+        "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+        "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+      ];
     };
     gc.automatic = true;
     optimise.automatic = true;
   };
 
   # Use the systemd-boot EFI boot loader.
+  boot.supportedFilesystems = [ "ntfs" ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -260,12 +269,6 @@
   };
 
   hardware = {
-    amdgpu = {
-      amdvlk = {
-        enable = true;
-        support32Bit.enable = true;
-      };
-    };
     bluetooth = {
       enable = true;
       powerOnBoot = true;
@@ -273,7 +276,6 @@
     graphics = {
       enable = true;
       enable32Bit = true;
-      extraPackages = [ pkgs.amdvlk ];
     };
     keyboard.qmk.enable = true;
     steam-hardware.enable = true;

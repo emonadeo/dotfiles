@@ -116,8 +116,14 @@ in
         "Mod+V".action = switch-focus-between-floating-and-tiling;
         "Mod+Shift+V".action = toggle-window-floating;
 
-        "Mod+P".action = screenshot { show-pointer = true; };
-        "Mod+Shift+P".action = screenshot-window { write-to-disk = false; };
+        # FIXME: Syntactic sugar using `config.lib.niri.actions` is currently broken.
+        # See <https://github.com/sodiboo/niri-flake/issues/1380>
+        "Mod+P".action.screenshot = {
+          show-pointer = true;
+        };
+        "Mod+Shift+P".action.screenshot-window = {
+          write-to-disk = false;
+        };
 
         # Application Launcher
         "Mod+Space".action = spawn "fuzzel";
@@ -220,6 +226,8 @@ in
         }
       ];
       gestures.hot-corners.enable = false;
+      # Do not save screenshots
+      screenshot-path = null;
       xwayland-satellite = {
         enable = true;
         path = lib.getExe pkgs.xwayland-satellite-unstable;

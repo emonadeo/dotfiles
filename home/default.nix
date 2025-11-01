@@ -43,6 +43,7 @@
       NIXOS_OZONE_WL = 1;
     };
     packages = [
+      pkgs.blender
       pkgs.bottles
       pkgs.element-desktop
       pkgs.lutris
@@ -54,17 +55,15 @@
       pkgs.wl-clipboard
       pkgs.xdg-utils
 
-      # Screenshot
-      pkgs.slurp
-      pkgs.grim
-
       # Gaming
       (pkgs.prismlauncher.override {
         jdks = [
           pkgs.jdk21
-          pkgs.graalvm-ce
+          pkgs.graalvmPackages.graalvm-ce
         ];
       })
+
+      pkgs.devenv
 
       # Languages & Language Servers
       pkgs.astro-language-server
@@ -91,6 +90,8 @@
       pkgs.vscode-langservers-extracted
       pkgs.vtsls
       pkgs.zig
+
+      inputs.affinity.packages.${pkgs.system}.default
     ];
   };
 
@@ -102,8 +103,12 @@
     git = {
       enable = true;
       lfs.enable = true;
-      userName = "Emanuel Pilz";
-      userEmail = "emonadeo@gmail.com";
+      settings = {
+        user = {
+          name = "Emanuel Pilz";
+          email = "emonadeo@gmail.com";
+        };
+      };
     };
   };
 
