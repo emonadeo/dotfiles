@@ -10,6 +10,7 @@ in
       adjust-underline-thickness = 1;
       adjust-overline-thickness = 1;
       adjust-strikethrough-thickness = 1;
+      custom-shader = [ "${./cursor_warp.glsl}" ];
       font-family = "Maple Mono";
       theme = mkTheme {
         dark = inputs.catppuccin-ghostty + /themes/catppuccin-mocha.conf;

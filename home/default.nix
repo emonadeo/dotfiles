@@ -15,7 +15,7 @@
     ./darkman.nix
     ./feh.nix
     ./fuzzel.nix
-    ./ghostty.nix
+    ./ghostty/default.nix
     ./jujutsu.nix
     ./mako.nix
     ./neovide/default.nix
@@ -54,6 +54,7 @@
       pkgs.vesktop
       pkgs.wl-clipboard
       pkgs.xdg-utils
+      pkgs.zathura
 
       # Gaming
       (pkgs.prismlauncher.override {
