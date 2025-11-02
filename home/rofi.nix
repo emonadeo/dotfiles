@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  programs.fuzzel = {
+  programs.rofi = {
     enable = true;
   };
 }

@@ -126,7 +126,11 @@ in
         };
 
         # Application Launcher
-        "Mod+Space".action = spawn "fuzzel";
+        "Mod+Space".action = spawn [
+          "rofi"
+          "-show"
+          "drun"
+        ];
         # Terminal
         "Mod+T".action = spawn "ghostty";
 

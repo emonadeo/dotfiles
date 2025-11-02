@@ -14,7 +14,7 @@
     ./cursor/default.nix
     ./darkman.nix
     ./feh.nix
-    ./fuzzel.nix
+    ./rofi.nix
     ./ghostty/default.nix
     ./jujutsu.nix
     ./mako.nix
