@@ -24,3 +24,5 @@ eval "$(jenv init -)"
 # starship {
 eval "$(starship init zsh)"
 # }
+
+export PKG_CONFIG_PATH="$(brew --prefix icu4c)/lib/pkgconfig"
