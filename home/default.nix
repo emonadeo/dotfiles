@@ -8,22 +8,23 @@
 {
   imports = [
     inputs.nix-index-database.homeModules.nix-index
-    ./niri.nix
     ./bitwarden.nix
     ./chromium.nix
     ./cursor/default.nix
     ./darkman.nix
     ./feh.nix
-    ./rofi.nix
     ./ghostty/default.nix
     ./jujutsu.nix
     ./mako.nix
     ./neovide/default.nix
     ./neovim.nix
+    ./niri.nix
     ./nushell.nix
     ./qutebrowser.nix
+    ./rofi.nix
     ./spotify.nix
     ./starship.nix
+    ./vesktop.nix
     ./waybar.nix
     ./yazi.nix
     ./zen_browser.nix
@@ -51,7 +52,6 @@
       pkgs.signal-desktop
       pkgs.teamspeak6-client
       pkgs.telegram-desktop
-      pkgs.vesktop
       pkgs.wl-clipboard
       pkgs.xdg-utils
       pkgs.zathura

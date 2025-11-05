@@ -21,12 +21,6 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # TODO: Remove once v0.1.9 is released.
-    # This is only used for obtaining `command-not-found.nu`, which isn't in v0.1.8.
-    nix-index = {
-      url = "github:nix-community/nix-index";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -76,7 +70,6 @@
     };
     nixosConfigurations = {
       ursa = inputs.nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
           ./devices/ursa/configuration.nix

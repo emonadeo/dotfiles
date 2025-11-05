@@ -84,7 +84,6 @@
         {
           "78272b6fa58f4a1abaac99321d503a20@proton.me" = mkExtensionSetting "proton-pass";
           "@searchengineadremover" = mkExtensionSetting "searchengineadremover";
-          "addon@darkreader.org" = mkExtensionSetting "darkreader";
           "deArrow@ajay.app" = mkExtensionSetting "dearrow";
           "firefox-extension@steamdb.info" = mkExtensionSetting "steam-database";
           "github-repository-size@pranavmangal" = mkExtensionSetting "gh-repo-size";
