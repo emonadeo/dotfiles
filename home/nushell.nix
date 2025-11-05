@@ -15,7 +15,7 @@
     configFile = {
       text = ''
         $env.config.render_right_prompt_on_last_line = true
-        $env.config.hooks.command_not_found = source ${pkgs.nix-index + /command-not-found.nu}
+        $env.config.hooks.command_not_found = source ${pkgs.nix-index + /etc/profile.d/command-not-found.nu}
         if (tty) == "/dev/tty1" { exec ${config.programs.niri.package + /bin/niri-session} }
       '';
     };
