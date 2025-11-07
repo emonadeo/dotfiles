@@ -73,6 +73,7 @@
       pkgs.lua-language-server
       pkgs.nil # Nix Language Server
       pkgs.nixfmt-rfc-style
+      pkgs.nodejs-slim_24 # TODO: Remove, but `zbirenbaum/copilot.lua` depends on this
       pkgs.openssl
       pkgs.rust-analyzer
       pkgs.rustc
