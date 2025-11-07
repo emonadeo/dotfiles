@@ -1,7 +1,6 @@
 {
   inputs,
   pkgs,
-  lib,
   ...
 }:
 
@@ -68,21 +67,13 @@
 
       # Languages & Language Servers
       pkgs.astro-language-server
-      pkgs.biome
       pkgs.cargo
       pkgs.dprint
       pkgs.emmet-language-server
-      pkgs.gleam
-      pkgs.go
-      pkgs.gopls
-      pkgs.just
       pkgs.lua-language-server
-      pkgs.nil
+      pkgs.nil # Nix Language Server
       pkgs.nixfmt-rfc-style
-      pkgs.nodejs
       pkgs.openssl
-      pkgs.python312
-      pkgs.ruff
       pkgs.rust-analyzer
       pkgs.rustc
       pkgs.rustfmt
@@ -90,7 +81,6 @@
       pkgs.taplo
       pkgs.vscode-langservers-extracted
       pkgs.vtsls
-      pkgs.zig
 
       inputs.affinity.packages.${pkgs.system}.default
     ];
@@ -117,14 +107,6 @@
 
   xdg = {
     enable = true;
-    desktopEntries = {
-      # Remove NixOS manual
-      nixos-manual = {
-        name = "NixOS Manual";
-        exec = "";
-        noDisplay = true;
-      };
-    };
     mimeApps = {
       enable = true;
     };
