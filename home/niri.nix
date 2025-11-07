@@ -217,6 +217,23 @@ in
           matches = [ { namespace = "^wallpaper$"; } ];
           place-within-backdrop = true;
         }
+        {
+          matches = [ { namespace = "^rofi$"; } ];
+          shadow = {
+            enable = true;
+            spread = 1024;
+            offset = {
+              x = 0;
+              y = 0;
+            };
+          };
+          geometry-corner-radius = {
+            bottom-left = 13.0;
+            bottom-right = 13.0;
+            top-left = 13.0;
+            top-right = 13.0;
+          };
+        }
       ];
       window-rules = [
         {
