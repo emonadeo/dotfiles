@@ -1,10 +1,10 @@
-# TODO: Replace with another image viewer (See `docs/image_viewers.md`)
+# TODO: Replace with another image viewer
 
-{ ... }:
+{ lib, pkgs, ... }:
 
 {
   programs.feh = {
-    enable = true;
+    enable = pkgs.stdenv.hostPlatform.isLinux;
     buttons = {
       prev_img = "";
       next_img = "";
@@ -12,7 +12,7 @@
       zoom_out = 5;
     };
   };
-  xdg.mimeApps.defaultApplications = {
+  xdg.mimeApps.defaultApplications = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
     "image/bmp" = "feh.desktop";
     "image/jpeg" = "feh.desktop";
     "image/png" = "feh.desktop";

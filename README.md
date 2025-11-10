@@ -1,3 +1,12 @@
+## Structure
+| Column1 | Column2 |
+| -------------- | --------------- |
+| [`devices`](/devices) | Per-device `configuration.nix` |
+| [`nixos`](/nixos) | [NixOS modules](https://wiki.nixos.org/wiki/NixOS_modules) |
+| [`home`](/home) | [home-manager](https://github.com/nix-community/home-manager) modules |
+| [`overlays`](/overlays) | [Nixpkgs overlays](https://wiki.nixos.org/wiki/Overlays) |
+| [`scripts`](/scripts) | (Nu)shell scripts for everyday tasks |
+
 ## Devices
 
 | Name | Date | Model |

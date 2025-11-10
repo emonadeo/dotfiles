@@ -1,13 +1,11 @@
 {
-  config,
   pkgs,
-  lib,
   ...
 }:
 
 {
   programs.waybar = {
-    enable = true;
+    enable = pkgs.stdenv.hostPlatform.isLinux;
     systemd = {
       target = "niri.service";
     };

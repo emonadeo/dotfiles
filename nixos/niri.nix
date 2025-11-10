@@ -1,7 +1,7 @@
 {
   config,
-  pkgs,
   lib,
+  pkgs,
   ...
 }:
 
@@ -12,24 +12,10 @@ let
   };
 in
 {
-  systemd.user.services = {
-    swaybg = {
-      Install = {
-        WantedBy = [ "niri.service" ];
-      };
-      Unit = {
-        PartOf = "graphical-session.target";
-        After = "graphical-session.target";
-        Requisite = "graphical-session.target";
-      };
-      Service = {
-        ExecStart = "${pkgs.swaybg + /bin/swaybg} -m fill -i \"${wallpaper}\"";
-        Restart = "on-failure";
-      };
-    };
-  };
 
   programs.niri = {
+    enable = pkgs.stdenv.hostPlatform.isLinux;
+    package = pkgs.niri-unstable;
     settings = {
       # Make niri ask applications to omit their client-side decorations.
       prefer-no-csd = true;
@@ -255,4 +241,25 @@ in
       };
     };
   };
+
+  systemd.user.services = lib.mkIf config.programs.niri.enable {
+    swaybg = {
+      Install = {
+        WantedBy = [ "niri.service" ];
+      };
+      Unit = {
+        PartOf = "graphical-session.target";
+        After = "graphical-session.target";
+        Requisite = "graphical-session.target";
+      };
+      Service = {
+        ExecStart = "${pkgs.swaybg + /bin/swaybg} -m fill -i \"${wallpaper}\"";
+        Restart = "on-failure";
+      };
+    };
+  };
+
+  programs.zsh.loginShellInit = ''
+    [[ "$(tty)" == "/dev/tty1" ]] && ${config.programs.niri.package + /bin/niri-session}
+  '';
 }

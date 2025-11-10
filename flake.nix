@@ -21,6 +21,10 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -73,8 +77,6 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./devices/ursa/configuration.nix
-          inputs.home-manager.nixosModules.default
-          inputs.niri.nixosModules.niri
           # BUG: Stylix is incompatible with `lazy.nvim`
           # Uncomment once Neovim 0.12 is released
           # See https://github.com/nix-community/stylix/issues/505

@@ -1,6 +1,17 @@
-{ inputs, ... }:
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    withNodeJs = true;
+  };
+
   home = {
     file = {
       ".config/nvim" = {
@@ -11,7 +22,7 @@
   };
 
   # Remove Neovim from desktop entries
-  xdg.desktopEntries.nvim = {
+  xdg.desktopEntries.nvim = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
     name = "Neovim";
     exec = "";
     noDisplay = true;

@@ -5,7 +5,13 @@
 { pkgs, inputs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [
+    inputs.home-manager.nixosModules.default
+    inputs.niri.nixosModules.niri
+    ./hardware-configuration.nix
+    ../../nixos/niri.nix
+    ../../nixos/zsh.nix
+  ];
 
   nix = {
     # package = pkgs.lix;
@@ -75,12 +81,13 @@
       cudaSupport = false;
       rocmSupport = true;
       allowUnfree = true;
+      # TODO: Remove
+      permittedInsecurePackages = [ "jitsi-meet-1.0.8792" ];
     };
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
-    defaultUserShell = pkgs.nushell;
     users.emonadeo = {
       isNormalUser = true;
       description = "Emanuel Pilz";
@@ -101,11 +108,6 @@
   # };
 
   programs.dconf.enable = true;
-
-  programs.niri = {
-    enable = true;
-    package = pkgs.niri-unstable;
-  };
 
   programs.neovim = {
     enable = true;

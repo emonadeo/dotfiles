@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 
 let
   mkTheme = themes: "light:${themes.light},dark:${themes.dark}";
@@ -6,6 +6,7 @@ in
 {
   programs.ghostty = {
     enable = true;
+    package = pkgs.ghostty-bin;
     settings = {
       adjust-underline-thickness = 1;
       adjust-overline-thickness = 1;

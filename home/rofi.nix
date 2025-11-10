@@ -1,8 +1,12 @@
-{ pkgs, config, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 
 {
   programs.rofi = {
-    enable = true;
+    enable = pkgs.stdenv.hostPlatform.isLinux;
     terminal = "${pkgs.ghostty}/bin/ghostty";
     location = "center";
     extraConfig = {

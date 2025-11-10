@@ -1,8 +1,8 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   services.mako = {
-    enable = true;
+    enable = pkgs.stdenv.hostPlatform.isLinux;
     settings = {
       actions = true;
       anchor = "top-right";

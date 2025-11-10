@@ -7,6 +7,8 @@
 {
   imports = [
     inputs.nix-index-database.homeModules.nix-index
+    ./affinity.nix
+    ./blender.nix
     ./bitwarden.nix
     ./chromium.nix
     ./cursor/default.nix
@@ -14,15 +16,18 @@
     ./feh.nix
     ./ghostty/default.nix
     ./jujutsu.nix
+    ./linux.nix
+    ./lutris.nix
     ./mako.nix
-    ./neovide/default.nix
     ./neovim.nix
-    ./niri.nix
     ./nushell.nix
     ./qutebrowser.nix
     ./rofi.nix
+    ./signal.nix
     ./spotify.nix
     ./starship.nix
+    ./teamspeak.nix
+    ./telegram.nix
     ./vesktop.nix
     ./waybar.nix
     ./yazi.nix
@@ -32,7 +37,6 @@
   # Home Manager needs a bit of information about you and the paths it should manage.
   home = {
     username = "emonadeo";
-    homeDirectory = "/home/emonadeo";
     sessionVariables = {
       TERMINAL = "ghostty";
       EDITOR = "nvim";
@@ -43,16 +47,7 @@
       NIXOS_OZONE_WL = 1;
     };
     packages = [
-      pkgs.blender
-      pkgs.bottles
       pkgs.element-desktop
-      pkgs.lutris
-      pkgs.proton-pass
-      pkgs.signal-desktop
-      pkgs.teamspeak6-client
-      pkgs.telegram-desktop
-      pkgs.wl-clipboard
-      pkgs.xdg-utils
       pkgs.zathura
 
       # Gaming
@@ -73,7 +68,6 @@
       pkgs.lua-language-server
       pkgs.nil # Nix Language Server
       pkgs.nixfmt-rfc-style
-      pkgs.nodejs-slim_24 # TODO: Remove, but `zbirenbaum/copilot.lua` depends on this
       pkgs.openssl
       pkgs.rust-analyzer
       pkgs.rustc
@@ -82,8 +76,6 @@
       pkgs.taplo
       pkgs.vscode-langservers-extracted
       pkgs.vtsls
-
-      inputs.affinity.packages.${pkgs.system}.default
     ];
   };
 
@@ -104,15 +96,15 @@
     };
   };
 
-  services.playerctld.enable = true;
+  services.playerctld.enable = pkgs.stdenv.hostPlatform.isLinux;
 
   xdg = {
-    enable = true;
+    enable = pkgs.stdenv.hostPlatform.isLinux;
     mimeApps = {
-      enable = true;
+      enable = pkgs.stdenv.hostPlatform.isLinux;
     };
     portal = {
-      enable = true;
+      enable = pkgs.stdenv.hostPlatform.isLinux;
       extraPortals = [
         pkgs.xdg-desktop-portal-gnome
         pkgs.xdg-desktop-portal-gtk

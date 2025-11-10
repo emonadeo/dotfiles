@@ -1,8 +1,8 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.chromium = {
-    enable = true;
+    enable = pkgs.stdenv.hostPlatform.isLinux;
     commandLineArgs = [ "--ozone-platform=wayland" ];
     extensions = [
       # DeArrow

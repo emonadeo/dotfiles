@@ -2,6 +2,7 @@
 
 {
   home.pointerCursor = {
+    enable = pkgs.stdenv.hostPlatform.isLinux;
     x11.enable = true;
     gtk.enable = true;
     name = "tahoe";
