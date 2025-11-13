@@ -25,8 +25,8 @@
   programs.nushell = {
     enable = true;
     environmentVariables = {
-      PROMPT_INDICATOR_VI_INSERT = lib.hm.nushell.mkNushellInline "null";
-      PROMPT_INDICATOR_VI_NORMAL = lib.hm.nushell.mkNushellInline "null";
+      PROMPT_INDICATOR_VI_INSERT = lib.hm.nushell.mkNushellInline "{||}";
+      PROMPT_INDICATOR_VI_NORMAL = lib.hm.nushell.mkNushellInline "{||}";
     };
     extraConfig = ''
       $env.config.render_right_prompt_on_last_line = true

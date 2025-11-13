@@ -1,10 +1,5 @@
-{
-  inputs,
-}:
+{ inputs, ... }:
 
-let
-  spotx = inputs.spotx + /spotx.sh;
-in
 final: prev: {
   spotify = prev.spotify.overrideAttrs (old: {
     nativeBuildInputs =
@@ -22,7 +17,7 @@ final: prev: {
         [ "runHook postUnpack" ]
         [
           ''
-            patchShebangs --build ${spotx}
+            patchShebangs --build ${./spotx.sh}
             runHook postUnpack
           ''
         ]
@@ -33,7 +28,7 @@ final: prev: {
         [ "runHook postInstall" ]
         [
           ''
-            bash ${spotx} -f -P "$out/share/spotify"
+            bash ${./spotx.sh} -f -P "$out/share/spotify"
             runHook postInstall
           ''
         ]
