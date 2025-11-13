@@ -12,7 +12,6 @@ let
   };
 in
 {
-
   programs.niri = {
     enable = pkgs.stdenv.hostPlatform.isLinux;
     package = pkgs.niri-unstable;
@@ -242,6 +241,14 @@ in
     };
   };
 
+  # Undocumented flag `-l`.
+  # See <https://github.com/YaLTeR/niri/issues/1914>
+  programs.zsh.profileExtra = ''
+    if [ "$(tty)" = "/dev/tty1" ]; then
+      exec niri-session -l
+    fi
+  '';
+
   systemd.user.services = lib.mkIf config.programs.niri.enable {
     swaybg = {
       Install = {
@@ -258,8 +265,4 @@ in
       };
     };
   };
-
-  programs.zsh.loginShellInit = ''
-    [[ "$(tty)" == "/dev/tty1" ]] && ${config.programs.niri.package + /bin/niri-session}
-  '';
 }

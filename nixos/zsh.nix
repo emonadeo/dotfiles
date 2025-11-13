@@ -1,6 +1,4 @@
 {
-  config,
-  inputs,
   pkgs,
   ...
 }:
@@ -22,5 +20,5 @@
   # See <https://github.com/NixOS/nixpkgs/issues/193880#issuecomment-2639344679>.
   # and <https://wiki.nixos.org/wiki/Fish#Setting_fish_as_default_shell>.
   # This also works around <https://github.com/nix-community/home-manager/issues/4313>.
-  users.defaultUserShell = config.programs.zsh.package;
+  users.defaultUserShell = pkgs.zsh;
 }

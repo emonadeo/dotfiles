@@ -1,4 +1,6 @@
 {
+  config,
+  lib,
   pkgs,
   ...
 }:
@@ -15,13 +17,17 @@
         else
             LOGIN_OPTION='''
         fi
-        exec nu "$LOGIN_OPTION"
+        exec "${config.programs.nushell.package + /bin/nu}" "$LOGIN_OPTION"
       fi
     '';
   };
 
   programs.nushell = {
     enable = true;
+    environmentVariables = {
+      PROMPT_INDICATOR_VI_INSERT = lib.hm.nushell.mkNushellInline "null";
+      PROMPT_INDICATOR_VI_NORMAL = lib.hm.nushell.mkNushellInline "null";
+    };
     extraConfig = ''
       $env.config.render_right_prompt_on_last_line = true
       $env.config.hooks.command_not_found = source ${pkgs.nix-index + /etc/profile.d/command-not-found.nu}

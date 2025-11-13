@@ -29,6 +29,9 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware";
+    };
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
@@ -66,13 +69,20 @@
   };
 
   outputs = inputs: {
+    darwinModules = { };
+    homeModules = { };
+    nixosModules = { };
     darwinConfigurations = {
+      # Apple MacBook Pro 14" (M1 Pro)
       plex = inputs.nix-darwin.lib.darwinSystem {
         modules = [ ./devices/plex/configuration.nix ];
         specialArgs = { inherit inputs; };
       };
     };
     nixosConfigurations = {
+      # <https://de.pcpartpicker.com/user/Emonadeo/saved/QJBCrH>
+      # CPU: AMD Ryzen 7 9800X3D
+      # GPU: AMD Radeon RX7900 GRE
       ursa = inputs.nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [

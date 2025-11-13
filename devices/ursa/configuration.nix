@@ -7,26 +7,25 @@
 {
   imports = [
     inputs.home-manager.nixosModules.default
-    inputs.niri.nixosModules.niri
     ./hardware-configuration.nix
-    ../../nixos/niri.nix
     ../../nixos/zsh.nix
   ];
 
   nix = {
-    # package = pkgs.lix;
     settings = {
       experimental-features = [
         "nix-command"
         "flakes"
       ];
       substituters = [
-        "https://devenv.cachix.org"
         "https://cache.garnix.io"
+        "https://devenv.cachix.org"
+        "https://niri.cachix.org"
       ];
       trusted-public-keys = [
-        "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
         "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+        "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+        "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
       ];
     };
     gc.automatic = true;
@@ -158,11 +157,10 @@
   };
 
   environment = {
-    # TODO: Is this still needed?
-    # pathsToLink = [
-    #   "/share/xdg-desktop-portal"
-    #   "/share/applications"
-    # ];
+    pathsToLink = [
+      "/share/xdg-desktop-portal"
+      "/share/applications"
+    ];
     systemPackages = [
       pkgs.ripgrep
       pkgs.unzip

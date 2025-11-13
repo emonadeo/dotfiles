@@ -19,6 +19,14 @@
           position = 1000;
           theme = {
             opacity = 1.0;
+            colors = [
+              # `oklch(0.3, 0.05, 15)`
+              {
+                red = 67;
+                green = 35;
+                blue = 38;
+              }
+            ];
           };
         };
         "Development" = {
@@ -27,6 +35,15 @@
           position = 2000;
           theme = {
             opacity = 1.0;
+            colors = [
+              # Old: `oklch(0.3, 0.05, 270)`
+              # New: `oklch(0.4, 0.08, 275)`
+              {
+                red = 59;
+                green = 67;
+                blue = 114;
+              }
+            ];
           };
         };
         "Education" = {
@@ -35,14 +52,30 @@
           position = 3000;
           theme = {
             opacity = 1.0;
+            colors = [
+              # `oklch(0.4, 0.08, 90)`
+              {
+                red = 88;
+                green = 69;
+                blue = 3;
+              }
+            ];
           };
         };
         "Profession" = {
-          id = "pa1b2bc0-4c0a-4142-86ea-72bf598d14c9";
+          id = "ba1b2bc0-4c0a-4142-86ea-72bf598d14c9";
           icon = "chrome://browser/skin/zen-icons/selectable/circle.svg";
           position = 4000;
           theme = {
             opacity = 1.0;
+            colors = [
+              # `oklch(0.3, 0, 0)`
+              {
+                red = 46;
+                green = 46;
+                blue = 46;
+              }
+            ];
           };
         };
         "Design" = {
@@ -51,6 +84,14 @@
           position = 5000;
           theme = {
             opacity = 1.0;
+            colors = [
+              # `oklch(0.4, 0.08, 140)`
+              {
+                red = 47;
+                green = 82;
+                blue = 39;
+              }
+            ];
           };
         };
       };

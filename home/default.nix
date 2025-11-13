@@ -6,6 +6,7 @@
 
 {
   imports = [
+    inputs.niri.homeModules.niri
     inputs.nix-index-database.homeModules.nix-index
     ./affinity.nix
     ./blender.nix
@@ -20,6 +21,7 @@
     ./lutris.nix
     ./mako.nix
     ./neovim.nix
+    ./niri.nix
     ./nushell.nix
     ./qutebrowser.nix
     ./rofi.nix
@@ -112,6 +114,7 @@
       config = {
         common = {
           default = [ "gtk" ];
+          "org.freedesktop.impl.portal.ScreenCast" = "gnome";
           "org.freedesktop.impl.portal.FileChooser" = "gtk";
         };
       };
@@ -126,4 +129,5 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
+
 }

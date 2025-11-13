@@ -6,7 +6,7 @@ in
 {
   programs.ghostty = {
     enable = true;
-    package = pkgs.ghostty-bin;
+    package = if pkgs.stdenv.hostPlatform.isLinux then pkgs.ghostty else pkgs.ghostty-bin;
     settings = {
       adjust-underline-thickness = 1;
       adjust-overline-thickness = 1;
