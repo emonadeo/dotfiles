@@ -7,6 +7,10 @@
 {
   imports = [
     inputs.home-manager.nixosModules.default
+    inputs.nixos-hardware.nixosModules.common-pc-ssd
+    inputs.nixos-hardware.nixosModules.common-hidpi
+    inputs.nixos-hardware.nixosModules.common-cpu-amd
+    inputs.nixos-hardware.nixosModules.common-gpu-amd
     ./hardware-configuration.nix
     ../../nixos/zsh.nix
   ];

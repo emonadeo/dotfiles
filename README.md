@@ -1,5 +1,5 @@
 ## Structure
-| Column1 | Column2 |
+| Directory | Description |
 | -------------- | --------------- |
 | [`devices`](/devices) | Per-device `configuration.nix` |
 | [`nixos`](/nixos) | [NixOS modules](https://wiki.nixos.org/wiki/NixOS_modules) |
