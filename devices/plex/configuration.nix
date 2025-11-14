@@ -1,6 +1,7 @@
 {
-  pkgs,
   inputs,
+  lib,
+  pkgs,
   ...
 }:
 
@@ -10,10 +11,13 @@
   ];
   nixpkgs = {
     hostPlatform = "aarch64-darwin";
+    overlays = [
+      inputs.niri.overlays.niri
+      # Patch Spotify with SpotX-Bash
+      (import ../../overlays/spotify.nix { inherit inputs lib pkgs; })
+    ];
     config = {
       allowUnfree = true;
-      # TODO: Remove
-      permittedInsecurePackages = [ "jitsi-meet-1.0.8792" ];
     };
   };
 

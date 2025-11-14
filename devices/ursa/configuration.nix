@@ -2,7 +2,12 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ pkgs, inputs, ... }:
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -77,15 +82,13 @@
     overlays = [
       inputs.niri.overlays.niri
       # Patch Spotify with SpotX-Bash
-      (import ../../overlays/spotify.nix { inherit inputs; })
+      (import ../../overlays/spotify.nix { inherit inputs lib pkgs; })
     ];
 
     config = {
       cudaSupport = false;
       rocmSupport = true;
       allowUnfree = true;
-      # TODO: Remove
-      permittedInsecurePackages = [ "jitsi-meet-1.0.8792" ];
     };
   };
 

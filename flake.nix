@@ -44,10 +44,6 @@
     #  url = "github:nix-community/stylix";
     #  inputs.nixpkgs.follows = "nixpkgs";
     # };
-    tgt = {
-      url = "github:FedericoBruzzone/tgt";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     # FIXME: Not working with ghostty
     # xdg-desktop-portal-termfilepickers = {
     #   url = "github:Guekka/xdg-desktop-portal-termfilepickers";

@@ -54,11 +54,12 @@ in
         "+cv41" # alternative r
       ];
       font-size = 13.5;
+      macos-titlebar-style = "hidden";
       window-padding-balance = true;
       window-padding-x = 16;
       window-padding-y = 16;
       window-inherit-working-directory = true;
-      window-decoration = false;
+      window-decoration = pkgs.stdenv.hostPlatform.isDarwin;
     };
   };
 }

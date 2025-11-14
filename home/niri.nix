@@ -12,7 +12,7 @@ let
   };
 in
 {
-  programs.niri = {
+  programs.niri = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
     enable = pkgs.stdenv.hostPlatform.isLinux;
     package = pkgs.niri-unstable;
     settings = {
@@ -243,7 +243,7 @@ in
 
   # Undocumented flag `-l`.
   # See <https://github.com/YaLTeR/niri/issues/1914>
-  programs.zsh.profileExtra = ''
+  programs.zsh.profileExtra = lib.mkIf config.programs.niri.enable ''
     if [ "$(tty)" = "/dev/tty1" ]; then
       exec niri-session -l
     fi

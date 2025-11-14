@@ -11,14 +11,15 @@
         ],
         "nixpkgs-wine": "nixpkgs-wine",
         "on-linux": "on-linux",
+        "plugin-loader": "plugin-loader",
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1762990708,
-        "narHash": "sha256-zK+Ptkdb6tdfmtMEi4tt1IFZCcWDWpDmSlsngAh9UMM=",
+        "lastModified": 1763079145,
+        "narHash": "sha256-5FVzCpznxnWEhnlmGjdawhjapIAUzCsKSVI7V6p6xPo=",
         "owner": "mrshmllow",
         "repo": "affinity-nix",
-        "rev": "56c9eb3fe18858e7cfc1b3c088fffef54dd8027c",
+        "rev": "f07c94d5771a07cb63b7010870ae49a5956b4b01",
         "type": "github"
       },
       "original": {
@@ -408,11 +409,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1762844143,
-        "narHash": "sha256-SlybxLZ1/e4T2lb1czEtWVzDCVSTvk9WLwGhmxFmBxI=",
+        "lastModified": 1762977756,
+        "narHash": "sha256-4PqRErxfe+2toFJFgcRKZ0UI9NSIOJa+7RXVtBhy4KE=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "9da7f1cf7f8a6e2a7cb3001b048546c92a8258b4",
+        "rev": "c5ae371f1a6a7fd27823bc500d9390b38c05fa55",
         "type": "github"
       },
       "original": {
@@ -450,6 +451,18 @@
         "type": "github"
       }
     },
+    "plugin-loader": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-CCqT6TQHG7HqvxsnP/EC9Mg6A3KfNg5i/vGXW0exTxU=",
+        "type": "file",
+        "url": "https://github.com/noahc3/AffinityPluginLoader/releases/latest/download/affinitypluginloader-plus-winefix.tar.xz"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/noahc3/AffinityPluginLoader/releases/latest/download/affinitypluginloader-plus-winefix.tar.xz"
+      }
+    },
     "root": {
       "inputs": {
         "affinity": "affinity",
@@ -462,29 +475,8 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
         "nvim": "nvim",
-        "tgt": "tgt",
         "yazi-flavors": "yazi-flavors",
         "zen-browser": "zen-browser"
-      }
-    },
-    "tgt": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1762159280,
-        "narHash": "sha256-g4tKTKadnQJl//6aWRCi3c+fkiaBi/OuGwxtc055C7k=",
-        "owner": "FedericoBruzzone",
-        "repo": "tgt",
-        "rev": "c67034837690a7f624db3a237a2871ac5d6d6b5c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "FedericoBruzzone",
-        "repo": "tgt",
-        "type": "github"
       }
     },
     "treefmt-nix": {

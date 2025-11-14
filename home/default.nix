@@ -24,6 +24,7 @@
     ./neovim.nix
     ./niri.nix
     ./nushell.nix
+    ./paneru.nix
     ./qutebrowser.nix
     ./rofi.nix
     ./signal.nix
