@@ -146,6 +146,10 @@
     };
   };
 
+  # SSD maintenance
+  services.fstrim.enable = true;
+  services.fwupd.enable = true;
+
   services.getty.autologinUser = "emonadeo";
 
   services.openssh.enable = true;
