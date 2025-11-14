@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   pkgs,
   ...
@@ -40,11 +41,8 @@
   home = {
     username = "emonadeo";
     sessionVariables = {
-      TERMINAL = "ghostty";
-      EDITOR = "nvim";
+      TERMINAL = config.programs.ghostty.package + /bin/ghostty;
       GDK_SCALE = 1.667;
-      HYPRCURSOR_THEME = "macos";
-      HYPRCURSOR_SIZE = 24;
       QT_QPA_PLATFORM = "wayland";
       NIXOS_OZONE_WL = 1;
     };

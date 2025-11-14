@@ -1,4 +1,9 @@
-{ inputs, pkgs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 
 let
   mkTheme = themes: "light:${themes.light},dark:${themes.dark}";
@@ -6,6 +11,7 @@ in
 {
   programs.ghostty = {
     enable = true;
+    enableZshIntegration = config.programs.zsh.enable;
     package = if pkgs.stdenv.hostPlatform.isLinux then pkgs.ghostty else pkgs.ghostty-bin;
     settings = {
       adjust-underline-thickness = 1;

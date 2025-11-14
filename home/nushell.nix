@@ -29,9 +29,12 @@
       PROMPT_INDICATOR_VI_NORMAL = lib.hm.nushell.mkNushellInline "{||}";
     };
     extraConfig = ''
-      $env.config.render_right_prompt_on_last_line = true
-      $env.config.hooks.command_not_found = source ${pkgs.nix-index + /etc/profile.d/command-not-found.nu}
+      $env.config.cursor_shape.emacs = "line"
+      $env.config.cursor_shape.vi_insert = "line"
+      $env.config.cursor_shape.vi_normal = "block"
       $env.config.edit_mode = 'vi'
+      $env.config.hooks.command_not_found = source ${pkgs.nix-index + /etc/profile.d/command-not-found.nu}
+      $env.config.render_right_prompt_on_last_line = true
     '';
   };
 }
