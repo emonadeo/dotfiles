@@ -63,7 +63,8 @@
       home = /Users/emonadeo;
       description = "Emanuel Pilz";
       packages = [
-        pkgs.mise
+        # BUG: <https://github.com/NixOS/nixpkgs/issues/461406>
+        # pkgs.mise
       ];
     };
   };

@@ -15,7 +15,20 @@ final: prev: {
         unzip
         zip
         curl
-      ]);
+      ])
+      ++ (
+        if prev.stdenv.hostPlatform.isDarwin then
+          with prev;
+          [
+            # macOS
+            darwin.DarwinTools
+            darwin.sigtool
+            sysctl
+          ]
+        else
+          [ ]
+
+      );
 
     unpackPhase =
       if pkgs.stdenv.hostPlatform.isLinux then

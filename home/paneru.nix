@@ -1,9 +1,42 @@
-{ lib, pkgs, ... }:
-
 {
-  # TODO: Install paneru (This module currently only supplies configuration)
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 
-  home = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
+let
+  package = (
+    pkgs.rustPlatform.buildRustPackage {
+      name = "paneru";
+      src = inputs.paneru;
+      cargoHash = "sha256-xtD9CUt+WxSkVwu/NNQkmtFt2k1erC8Zd1ifDWlG4bo=";
+    }
+  );
+
+in
+lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
+  launchd.agents.paneru = {
+    enable = true;
+    config = {
+      KeepAlive = {
+        Crashed = true;
+        SuccessfulExit = false;
+      };
+      Label = "Paneru";
+      Nice = -20;
+      ProcessType = "Interactive";
+      EnvironmentVariables = {
+        NO_COLOR = "1";
+      };
+      RunAtLoad = true;
+      StandardOutPath = "/tmp/paneru.log";
+      StandardErrorPath = "/tmp/paneru.err.log";
+      Program = package + /bin/paneru;
+    };
+  };
+
+  home = {
     file = {
       ".paneru.toml".source = (pkgs.formats.toml { }).generate ".paneru.toml" {
         options = {

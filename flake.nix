@@ -49,6 +49,10 @@
     #   url = "github:Guekka/xdg-desktop-portal-termfilepickers";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+    paneru = {
+      url = "github:karinushka/paneru";
+      flake = false;
+    };
     yazi-flavors = {
       url = "github:yazi-rs/flavors";
       flake = false;

@@ -59,7 +59,8 @@
         ];
       })
 
-      pkgs.devenv
+      # BUG: <https://github.com/NixOS/nixpkgs/issues/461651>
+      # pkgs.devenv
 
       # Languages & Language Servers
       pkgs.astro-language-server
