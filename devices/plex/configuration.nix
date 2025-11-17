@@ -8,6 +8,7 @@
 {
   imports = [
     inputs.home-manager.darwinModules.default
+    inputs.nix-homebrew.darwinModules.nix-homebrew
   ];
   nixpkgs = {
     hostPlatform = "aarch64-darwin";
@@ -42,6 +43,11 @@
     optimise.automatic = true;
   };
 
+  nix-homebrew = {
+    enable = true;
+    user = "emonadeo";
+  };
+
   environment = {
     systemPackages = [
       pkgs.ripgrep
@@ -68,6 +74,18 @@
       ];
     };
   };
+
+  homebrew = {
+    enable = true;
+    brews = [ ];
+    casks = [
+      "helium-browser"
+      "telegram"
+    ];
+  };
+
+  # TODO: Remove once obsolete
+  system.primaryUser = "emonadeo";
 
   system.stateVersion = 6;
 }

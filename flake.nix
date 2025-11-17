@@ -32,6 +32,9 @@
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware";
     };
+    nix-homebrew = {
+      url = "github:zhaofengli/nix-homebrew";
+    };
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
