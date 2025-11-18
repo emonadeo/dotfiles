@@ -9,6 +9,7 @@
   imports = [
     inputs.niri.homeModules.niri
     inputs.nix-index-database.homeModules.nix-index
+    inputs.paneru.homeModules.paneru
     ./affinity.nix
     ./blender.nix
     ./bitwarden.nix

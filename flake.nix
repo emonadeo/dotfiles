@@ -52,8 +52,8 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
     paneru = {
-      url = "github:karinushka/paneru";
-      flake = false;
+      url = "github:emonadeo/paneru";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     yazi-flavors = {
       url = "github:yazi-rs/flavors";
