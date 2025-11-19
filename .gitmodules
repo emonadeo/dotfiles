@@ -1,3 +1,0 @@
-[submodule "home/nvim"]
-	path = home/nvim
-	url = git@github.com:emonadeo/nvim.git

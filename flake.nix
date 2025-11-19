@@ -1,6 +1,5 @@
 {
   inputs = {
-    self.submodules = true;
     affinity = {
       url = "github:mrshmllow/affinity-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,7 +38,7 @@
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
     nvim = {
-      url = ./home/nvim;
+      url = "github:emonadeo/nvim";
       flake = false;
     };
     # TODO: Use Stylix

@@ -20,11 +20,11 @@
           theme = {
             opacity = 1.0;
             colors = [
-              # `oklch(0.3, 0.05, 15)`
+              # `oklch(0.3 0.04 340)`
               {
-                red = 67;
-                green = 35;
-                blue = 38;
+                red = 59;
+                green = 38;
+                blue = 52;
               }
             ];
           };
@@ -36,12 +36,11 @@
           theme = {
             opacity = 1.0;
             colors = [
-              # Old: `oklch(0.3, 0.05, 270)`
-              # New: `oklch(0.4, 0.08, 275)`
+              # `oklch(0.3 0.04 270)`
               {
-                red = 59;
-                green = 67;
-                blue = 114;
+                red = 38;
+                green = 45;
+                blue = 66;
               }
             ];
           };
@@ -53,11 +52,11 @@
           theme = {
             opacity = 1.0;
             colors = [
-              # `oklch(0.4, 0.08, 90)`
+              # `oklch(0.3 0.04 60)`
               {
-                red = 88;
-                green = 69;
-                blue = 3;
+                red = 61;
+                green = 41;
+                blue = 25;
               }
             ];
           };
@@ -85,11 +84,11 @@
           theme = {
             opacity = 1.0;
             colors = [
-              # `oklch(0.4, 0.08, 140)`
+              # `oklch(0.3 0.04 130)`
               {
-                red = 47;
-                green = 82;
-                blue = 39;
+                red = 39;
+                green = 50;
+                blue = 28;
               }
             ];
           };
