@@ -35,6 +35,7 @@
     ./teamspeak.nix
     ./telegram.nix
     ./vesktop.nix
+    ./waybar.nix
     ./yazi.nix
     ./zen_browser.nix
   ];
