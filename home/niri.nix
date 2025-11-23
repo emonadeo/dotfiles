@@ -38,6 +38,7 @@ in
         };
       };
       layout = {
+        gaps = 13.0;
         background-color = "transparent";
         focus-ring = {
           enable = false;
@@ -60,22 +61,13 @@ in
         workspace-shadow.enable = false;
       };
       workspaces = {
-        "main" = {
+        "primary" = {
           open-on-output = "HDMI-A-1";
         };
-        "terminal" = {
+        "secondary" = {
           open-on-output = "HDMI-A-2";
         };
-        "browser" = {
-          open-on-output = "HDMI-A-2";
-        };
-        "wildcard" = {
-          open-on-output = "HDMI-A-1";
-        };
-        "chat" = {
-          open-on-output = "HDMI-A-2";
-        };
-        "music" = {
+        "tertiary" = {
           open-on-output = "HDMI-A-2";
         };
       };
@@ -119,21 +111,15 @@ in
         # Terminal
         "Mod+T".action = spawn "ghostty";
 
-        "Mod+1".action = focus-workspace "main";
-        "Mod+2".action = focus-workspace "terminal";
-        "Mod+3".action = focus-workspace "browser";
-        "Mod+4".action = focus-workspace "wildcard";
-        "Mod+5".action = focus-workspace "chat";
-        "Mod+6".action = focus-workspace "music";
+        "Mod+1".action = focus-workspace "primary";
+        "Mod+2".action = focus-workspace "secondary";
+        "Mod+3".action = focus-workspace "tertiary";
 
         # BUG: `move-column-to-workspace` not available as a function
         # See <https://github.com/sodiboo/niri-flake/issues/1018>
-        "Mod+Shift+1".action.move-column-to-workspace = "main";
-        "Mod+Shift+2".action.move-column-to-workspace = "terminal";
-        "Mod+Shift+3".action.move-column-to-workspace = "browser";
-        "Mod+Shift+4".action.move-column-to-workspace = "wildcard";
-        "Mod+Shift+5".action.move-column-to-workspace = "chat";
-        "Mod+Shift+6".action.move-column-to-workspace = "music";
+        "Mod+Shift+1".action.move-column-to-workspace = "primary";
+        "Mod+Shift+2".action.move-column-to-workspace = "secondary";
+        "Mod+Shift+3".action.move-column-to-workspace = "tertiary";
 
         "Mod+H".action = focus-column-or-monitor-left;
         "Mod+Shift+H".action = move-column-left-or-to-monitor-left;

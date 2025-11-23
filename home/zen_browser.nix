@@ -126,6 +126,7 @@
           "@searchengineadremover" = mkExtensionSetting "searchengineadremover";
           "deArrow@ajay.app" = mkExtensionSetting "dearrow";
           "firefox-extension@steamdb.info" = mkExtensionSetting "steam-database";
+          "firefox@betterttv.net" = mkExtensionSetting "betterttv";
           "github-repository-size@pranavmangal" = mkExtensionSetting "gh-repo-size";
           "jid1-BoFifL9Vbdl2zQ@jetpack" = mkExtensionSetting "decentraleyes";
           "sponsorBlocker@ajay.app" = mkExtensionSetting "sponsorblock";

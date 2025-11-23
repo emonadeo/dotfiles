@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  lib,
   pkgs,
   ...
 }:
@@ -34,7 +35,6 @@
     ./teamspeak.nix
     ./telegram.nix
     ./vesktop.nix
-    ./waybar.nix
     ./yazi.nix
     ./zen_browser.nix
   ];
@@ -78,6 +78,10 @@
       pkgs.taplo
       pkgs.vscode-langservers-extracted
       pkgs.vtsls
+    ]
+    # Linux specific
+    ++ lib.lists.optionals pkgs.hostPlatform.isLinux [
+      pkgs.eduvpn-client
     ];
   };
 
