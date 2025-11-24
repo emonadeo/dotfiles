@@ -41,6 +41,10 @@
       url = "github:emonadeo/nvim";
       flake = false;
     };
+    spotx = {
+      url = "github:SpotX-Official/SpotX-Bash";
+      flake = false;
+    };
     # TODO: Use Stylix
     # stylix = {
     #  url = "github:nix-community/stylix";

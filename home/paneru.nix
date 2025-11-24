@@ -13,7 +13,6 @@
           1
         ];
         swipe_gesture_fingers = 4;
-        animation_speed = 4000;
       };
       bindings = {
         # Moves the focus between windows.

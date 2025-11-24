@@ -80,7 +80,7 @@
       pkgs.vtsls
     ]
     # Linux specific
-    ++ lib.lists.optionals pkgs.hostPlatform.isLinux [
+    ++ lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
       pkgs.eduvpn-client
     ];
   };
@@ -125,6 +125,13 @@
     };
   };
 
+  targets.darwin = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
+    # TODO: Revert from `copyApps` to `linkApps` once macOS' Spotlight supports symlinks
+    # See: <https://github.com/nix-community/home-manager/issues/1341>
+    linkApps.enable = false;
+    copyApps.enable = true;
+  };
+
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -133,5 +140,4 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
-
 }

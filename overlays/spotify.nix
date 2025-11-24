@@ -5,6 +5,9 @@
   ...
 }:
 
+let
+  spotx = inputs.spotx + /spotx.sh;
+in
 final: prev: {
   spotify = prev.spotify.overrideAttrs (old: {
     nativeBuildInputs =
@@ -36,7 +39,7 @@ final: prev: {
           [ "runHook postUnpack" ]
           [
             ''
-              patchShebangs --build ${./spotx.sh}
+              patchShebangs --build ${spotx}
               runHook postUnpack
             ''
           ]
