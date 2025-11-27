@@ -82,6 +82,7 @@
     # Linux specific
     ++ lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
       pkgs.eduvpn-client
+      pkgs.ryubing
     ];
   };
 

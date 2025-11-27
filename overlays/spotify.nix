@@ -55,12 +55,12 @@ final: prev: {
           (
             if pkgs.stdenv.hostPlatform.isLinux then
               ''
-                bash ${./spotx.sh} -f -P "$out/share/spotify"
+                bash ${spotx} -f -P "$out/share/spotify"
                 runHook postInstall
               ''
             else
               ''
-                bash ${./spotx.sh} -f -P "$out/Applications"
+                bash ${spotx} -f -P "$out/Applications"
                 runHook postInstall
               ''
           )

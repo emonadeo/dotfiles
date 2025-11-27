@@ -45,6 +45,10 @@
       url = "github:SpotX-Official/SpotX-Bash";
       flake = false;
     };
+    starship-jj = {
+      url = "gitlab:lanastara_foss/starship-jj";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # TODO: Use Stylix
     # stylix = {
     #  url = "github:nix-community/stylix";
