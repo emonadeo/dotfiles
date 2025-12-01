@@ -79,6 +79,7 @@
     enable = true;
     brews = [ ];
     casks = [
+      "affinity"
       "helium-browser"
       "telegram"
     ];
