@@ -18,13 +18,11 @@ in
       format = inputs.nixpkgs.lib.concatStrings [
         "$nix_shell"
         "$directory"
-        "$git_branch"
         "$\{custom.jj\}"
         "[](fg:#101817)"
         "[ ]()"
       ];
       right_format = inputs.nixpkgs.lib.concatStrings [
-        "$git_status"
         "$\{custom.jj_status\}"
         "$c"
         "$dart"
@@ -57,6 +55,7 @@ in
         read_only = " ";
         read_only_style = "bold fg:red bg:#101817";
       };
+      # `git_branch` is currently unused (btw I use jujutsu)
       git_branch = {
         format = "[]($style fg:bright-black)[ $symbol $branch(:$remote_branch) ]($style)";
         style = "fg:green bg:#101817";
@@ -117,6 +116,7 @@ in
 
       # Right
 
+      # `git_status` is currently unused (btw I use jujutsu)
       git_status = {
         style = "";
         format = "[$all_status$ahead_behind]($style)";
