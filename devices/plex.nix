@@ -6,7 +6,7 @@
 }:
 
 let
-  fonts = import ../fonts.nix { inherit pkgs; };
+  fonts = import ../fonts.nix { inherit lib pkgs; };
 in
 {
   imports = [

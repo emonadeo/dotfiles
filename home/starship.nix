@@ -48,7 +48,7 @@ in
         format = "[ $symbol $name ]($style)[](fg:blue bg:#101817)";
         style = "fg:#101817 bg:blue";
         symbol = "";
-        heuristic = true;
+        heuristic = pkgs.stdenv.hostPlatform.isDarwin;
       };
       directory = {
         format = "[ $path]($style)[$read_only]($read_only_style)[ ]($style)";

@@ -10,7 +10,7 @@
 }:
 
 let
-  fonts = import ../../fonts.nix { inherit pkgs; };
+  fonts = import ../../fonts.nix { inherit lib pkgs; };
 in
 {
   imports = [
@@ -193,6 +193,7 @@ in
   fonts = {
     enableDefaultPackages = false;
     packages = [
+      fonts.maple-mono.package
       inputs.apple-emoji.packages.x86_64-linux.default
       pkgs.commit-mono # neutral
       pkgs.departure-mono # bitmap
@@ -200,7 +201,6 @@ in
       pkgs.inter
       pkgs.ipaexfont
       pkgs.lora
-      pkgs.maple-mono.variable
       pkgs.nerd-fonts.symbols-only
       pkgs.noto-fonts
       pkgs.noto-fonts-cjk-sans
@@ -214,7 +214,7 @@ in
         <fontconfig>
           <match target="pattern">
             <test qual="any" name="family"><string>Segoe UI</string></test>
-            <edit name="family" mode="assign" binding="same"><string>Maple Mono</string></edit>
+            <edit name="family" mode="assign" binding="same"><string>${fonts.maple-mono.name}</string></edit>
           </match>
           <match target="font">
             <test name="family" compare="eq" ignore-blanks="true">
