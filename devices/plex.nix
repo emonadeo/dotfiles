@@ -5,6 +5,9 @@
   ...
 }:
 
+let
+  fonts = import ../fonts.nix { inherit pkgs; };
+in
 {
   imports = [
     inputs.home-manager.darwinModules.default
@@ -15,7 +18,7 @@
     overlays = [
       inputs.niri.overlays.niri
       # Patch Spotify with SpotX-Bash
-      (import ../../overlays/spotify.nix { inherit inputs lib pkgs; })
+      (import ../overlays/spotify.nix { inherit inputs lib pkgs; })
     ];
     config = {
       allowUnfree = true;
@@ -58,9 +61,9 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "backup";
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit inputs fonts; };
     users = {
-      "emonadeo" = import ../../home/default.nix;
+      "emonadeo" = import ../home/default.nix;
     };
   };
 
@@ -74,6 +77,10 @@
       ];
     };
   };
+
+  fonts.packages = [
+    fonts.maple-mono.package
+  ];
 
   homebrew = {
     enable = true;

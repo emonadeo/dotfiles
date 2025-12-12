@@ -5,6 +5,9 @@
   ...
 }:
 
+let
+  fonts = import ../fonts.nix { inherit pkgs; };
+in
 {
   stylix = {
     enable = true;
@@ -34,10 +37,7 @@
     fonts = {
       serif = config.stylix.fonts.monospace;
       sansSerif = config.stylix.fonts.monospace;
-      monospace = {
-        package = pkgs.maple-mono.variable;
-        name = "Maple Mono";
-      };
+      monospace = { inherit (fonts.maple-mono) package name; };
       emoji = {
         package = inputs.apple-emoji.packages.x86_64-linux.default;
         name = "Apple Color Emoji";

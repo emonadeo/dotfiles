@@ -9,6 +9,9 @@
   ...
 }:
 
+let
+  fonts = import ../../fonts.nix { inherit pkgs; };
+in
 {
   imports = [
     inputs.home-manager.nixosModules.default
@@ -72,7 +75,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "backup";
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit inputs fonts; };
     users = {
       "emonadeo" = import ../../home/default.nix;
     };
@@ -215,34 +218,10 @@
           </match>
           <match target="font">
             <test name="family" compare="eq" ignore-blanks="true">
-              <string>Maple Mono</string>
+              <string>${fonts.maple-mono.name}</string>
             </test>
             <edit name="fontfeatures" mode="append">
-              <string>calt off</string>
-              <string>cv01 on</string>
-              <string>cv02 on</string>
-              <string>cv03 off</string>
-              <string>cv04 off</string>
-              <string>cv05 on</string>
-              <string>cv06 off</string>
-              <string>cv07 off</string>
-              <string>cv08 on</string>
-              <string>cv61 on</string>
-              <string>cv62 off</string>
-              <string>cv63 off</string>
-              <string>cv64 off</string>
-              <string>cv65 off</string>
-              <string>cv31 on</string>
-              <string>cv32 off</string>
-              <string>cv33 on</string>
-              <string>cv34 on</string>
-              <string>cv35 on</string>
-              <string>cv36 on</string>
-              <string>cv37 off</string>
-              <string>cv38 on</string>
-              <string>cv39 off</string>
-              <string>cv40 off</string>
-              <string>cv41 on</string>
+              ${fonts.maple-mono.features.xml}
             </edit>
           </match>
         </fontconfig>
@@ -250,21 +229,21 @@
       defaultFonts = {
         emoji = [ "Apple Color Emoji" ];
         serif = [
-          "Maple Mono"
+          fonts.maple-mono.name
           # "Lora"
           "IPAexMincho"
           "Noto Serif"
           "Noto Serif CJK"
         ];
         sansSerif = [
-          "Maple Mono"
+          fonts.maple-mono.name
           # "Inter"
           "IPAexGothic"
           "Noto Sans"
           "Noto Sans CJK"
         ];
         monospace = [
-          "Maple Mono"
+          fonts.maple-mono.name
           # "Commit Mono"
           "Symbols Nerd Font"
         ];

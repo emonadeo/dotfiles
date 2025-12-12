@@ -6,6 +6,7 @@
 }:
 
 let
+  fonts = import ../../fonts.nix { inherit pkgs; };
   mkTheme = themes: "light:${themes.light},dark:${themes.dark}";
 in
 {
@@ -18,41 +19,12 @@ in
       adjust-overline-thickness = 1;
       adjust-strikethrough-thickness = 1;
       custom-shader = [ "${./cursor_warp.glsl}" ];
-      font-family = "Maple Mono";
       theme = mkTheme {
         dark = inputs.catppuccin-ghostty + /themes/catppuccin-mocha.conf;
         light = inputs.catppuccin-ghostty + /themes/catppuccin-latte.conf;
       };
-      font-feature = [
-        # basic ligatures
-        "-calt"
-        # character variants
-        "+cv01" # remove gaps
-        "+cv02" # alternative a
-        "-cv03" # alternative i
-        "-cv04" # alternative l1
-        "+cv05" # alternative g
-        "-cv06" # alternative i
-        "-cv07" # alternative J
-        "+cv08" # alternative r
-        "+cv61" # alternative ,;
-        "-cv62" # alternative ?
-        "-cv63" # alternative left arrow (<=)
-        "-cv64" # alternative left and right arrow (<= and >=)
-        "-cv65" # alternative &
-        # italic only
-        "+cv31" # alternative a
-        "-cv32" # alternative f
-        "+cv33" # alternative i and j
-        "+cv34" # alternative k
-        "+cv35" # alternative l
-        "+cv36" # alternative x
-        "-cv37" # alternative y
-        "+cv38" # alternative g
-        "-cv39" # alternative i
-        "-cv40" # alternative J
-        "+cv41" # alternative r
-      ];
+      font-family = fonts.maple-mono.name;
+      font-feature = fonts.maple-mono.features.ghostty;
       font-size = 13.5;
       macos-titlebar-style = "hidden";
       window-padding-balance = true;

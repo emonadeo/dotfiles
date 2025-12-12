@@ -81,7 +81,7 @@
     darwinConfigurations = {
       # Apple MacBook Pro 14" (M1 Pro)
       plex = inputs.nix-darwin.lib.darwinSystem {
-        modules = [ ./devices/plex/configuration.nix ];
+        modules = [ ./devices/plex.nix ];
         specialArgs = { inherit inputs; };
       };
     };
