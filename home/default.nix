@@ -69,7 +69,7 @@
       pkgs.emmet-language-server
       pkgs.lua-language-server
       pkgs.nil # Nix
-      pkgs.nixfmt-rfc-style
+      pkgs.nixfmt
       pkgs.rust-analyzer
       pkgs.rustc
       pkgs.rustfmt
@@ -83,6 +83,7 @@
       pkgs.eduvpn-client
       pkgs.heroic
       pkgs.ryubing
+      pkgs.shipwright
     ];
   };
 
@@ -140,5 +141,5 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "24.11"; # Please read the comment before changing.
+  home.stateVersion = "26.05"; # Please read the comment before changing.
 }
