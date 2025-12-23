@@ -1,7 +1,7 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  home.packages = lib.mkIf pkgs.stdenv.hostPlatform.isLinux [
+  home.packages = [
     pkgs.spotify
   ];
 }

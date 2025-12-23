@@ -88,6 +88,7 @@ in
     casks = [
       "affinity"
       "helium-browser"
+      "steam"
       "telegram"
     ];
   };

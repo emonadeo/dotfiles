@@ -10,6 +10,7 @@ let
 in
 final: prev: {
   spotify = prev.spotify.overrideAttrs (old: {
+    SSL_CERT_FILE = "${prev.cacert}/etc/ssl/certs/ca-bundle.crt";
     nativeBuildInputs =
       old.nativeBuildInputs
       ++ (with prev; [
@@ -60,7 +61,7 @@ final: prev: {
               ''
             else
               ''
-                bash ${spotx} -f -P "$out/Applications"
+                bash ${spotx} -f -B -P "$out/Applications"
                 runHook postInstall
               ''
           )
