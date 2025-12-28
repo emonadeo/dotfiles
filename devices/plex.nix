@@ -49,6 +49,11 @@ in
   nix-homebrew = {
     enable = true;
     user = "emonadeo";
+    autoMigrate = true;
+    taps = {
+      "homebrew/homebrew-core" = inputs.homebrew-core;
+      "homebrew/homebrew-cask" = inputs.homebrew-cask;
+    };
   };
 
   environment = {
