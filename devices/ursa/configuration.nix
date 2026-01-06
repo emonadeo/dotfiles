@@ -176,6 +176,7 @@ in
       "/share/applications"
     ];
     systemPackages = [
+      pkgs.openssl
       pkgs.ripgrep
       pkgs.unzip
       pkgs.zip

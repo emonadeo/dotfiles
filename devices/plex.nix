@@ -58,6 +58,7 @@ in
 
   environment = {
     systemPackages = [
+      pkgs.openssl
       pkgs.ripgrep
     ];
   };

@@ -68,16 +68,15 @@
       pkgs.dprint
       pkgs.emmet-language-server
       pkgs.lua-language-server
-      pkgs.nil # Nix Language Server
+      pkgs.nil # Nix
       pkgs.nixfmt-rfc-style
-      pkgs.openssl
       pkgs.rust-analyzer
       pkgs.rustc
       pkgs.rustfmt
-      pkgs.stylua
-      pkgs.taplo
+      pkgs.stylua # Lua
+      pkgs.tombi # TOML
       pkgs.vscode-langservers-extracted
-      pkgs.vtsls
+      pkgs.vtsls # TypeScript
     ]
     # Linux specific
     ++ lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
