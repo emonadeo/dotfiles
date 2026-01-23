@@ -80,6 +80,7 @@
     ]
     # Linux specific
     ++ lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
+      pkgs.dolphin-emu
       pkgs.eduvpn-client
       pkgs.heroic
       pkgs.ryubing
@@ -121,7 +122,6 @@
         common = {
           default = [ "gtk" ];
           "org.freedesktop.impl.portal.ScreenCast" = "gnome";
-          "org.freedesktop.impl.portal.FileChooser" = "gtk";
         };
       };
     };
@@ -129,7 +129,7 @@
 
   targets.darwin = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
     # TODO: Revert from `copyApps` to `linkApps` once macOS' Spotlight supports symlinks
-    # See: <https://github.com/nix-community/home-manager/issues/1341>
+    # See <https://github.com/nix-community/home-manager/issues/1341>
     linkApps.enable = false;
     copyApps.enable = true;
   };

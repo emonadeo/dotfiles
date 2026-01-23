@@ -1,4 +1,9 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   programs.yazi = {
@@ -26,7 +31,28 @@
     };
   };
 
-  xdg.mimeApps.defaultApplications = {
-    "inode/directory" = "yazi.desktop";
+  xdg = {
+    mimeApps.defaultApplications = {
+      "inode/directory" = "yazi.desktop";
+    };
+    portal = {
+      extraPortals = [ pkgs.xdg-desktop-portal-termfilechooser ];
+    };
+    configFile = {
+      "xdg-desktop-portal-termfilechooser/config" = {
+        enable = true;
+        # This is not TOML despite looking like it!
+        # See <https://github.com/hunkyburrito/xdg-desktop-portal-termfilechooser#configuration>
+        text = ''
+          [filechooser]
+          cmd = TERMCMD='${lib.getExe pkgs.ghostty} --title="terminal-filechooser" -e' ${
+            pkgs.xdg-desktop-portal-termfilechooser + /share/xdg-desktop-portal-termfilechooser/yazi-wrapper.sh
+          }
+          default_dir = $HOME
+          open_mode = suggested
+          save_mode = last
+        '';
+      };
+    };
   };
 }

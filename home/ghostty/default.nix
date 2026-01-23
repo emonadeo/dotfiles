@@ -35,4 +35,10 @@ in
       window-decoration = pkgs.stdenv.hostPlatform.isDarwin;
     };
   };
+
+  xdg.terminal-exec = {
+    enable = true;
+    settings.default = [ "ghostty.desktop" ];
+
+  };
 }
