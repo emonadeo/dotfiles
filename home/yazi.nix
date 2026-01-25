@@ -31,7 +31,7 @@
     };
   };
 
-  xdg = {
+  xdg = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
     mimeApps.defaultApplications = {
       "inode/directory" = "yazi.desktop";
     };
