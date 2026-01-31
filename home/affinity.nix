@@ -7,6 +7,6 @@
 
 {
   home.packages = lib.mkIf pkgs.stdenv.hostPlatform.isLinux [
-    inputs.affinity.packages.${pkgs.system}.default
+    inputs.affinity.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

@@ -94,6 +94,20 @@
           };
         };
       };
+      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+        betterttv
+        bitwarden
+        clearurls
+        dearrow
+        decentraleyes
+        github-file-icons
+        karakeep
+        proton-pass
+        refined-github
+        sponsorblock
+        steam-database
+        ublock-origin
+      ];
     };
     policies = {
       AutofillAddressEnabled = false;
@@ -112,41 +126,17 @@
       };
       NoDefaultBookmarks = true;
       OfferToSaveLogins = false;
-      ExtensionSettings =
-        let
-          mkExtensionSetting = (
-            pluginId: {
-              install_url = "https://addons.mozilla.org/firefox/downloads/latest/${pluginId}/latest.xpi";
-              installation_mode = "force_installed";
-            }
-          );
-        in
-        {
-          "78272b6fa58f4a1abaac99321d503a20@proton.me" = mkExtensionSetting "proton-pass";
-          "@searchengineadremover" = mkExtensionSetting "searchengineadremover";
-          "deArrow@ajay.app" = mkExtensionSetting "dearrow";
-          "firefox-extension@steamdb.info" = mkExtensionSetting "steam-database";
-          "firefox@betterttv.net" = mkExtensionSetting "betterttv";
-          "github-repository-size@pranavmangal" = mkExtensionSetting "gh-repo-size";
-          "jid1-BoFifL9Vbdl2zQ@jetpack" = mkExtensionSetting "decentraleyes";
-          "sponsorBlocker@ajay.app" = mkExtensionSetting "sponsorblock";
-          "uBlock0@raymondhill.net" = mkExtensionSetting "ublock-origin";
-          "{74145f27-f039-47ce-a470-a662b129930a}" = mkExtensionSetting "clearurls";
-          "{85860b32-02a8-431a-b2b1-40fbd64c9c69}" = mkExtensionSetting "github-file-icons";
-          "{a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad}" = mkExtensionSetting "refined-github-";
-        };
     };
   };
 
   xdg.mimeApps =
     let
-      # Map array elements `e` into an attribute set `e = inputs.zen-browser.packages.${pkgs.system}.beta;`
       # TODO: Move this function to a shared lib
       associations = builtins.listToAttrs (
         map
           (name: {
             inherit name;
-            value = inputs.zen-browser.packages.${pkgs.system}.beta.meta.desktopFileName;
+            value = inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.beta.meta.desktopFileName;
           })
           [
             "application/json"
@@ -173,9 +163,4 @@
       associations.added = associations;
       defaultApplications = associations;
     };
-
-  # stylix.targets.zen-browser = {
-  #   enable = true;
-  #   profileNames = [ "default" ];
-  # };
 }

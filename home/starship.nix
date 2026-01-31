@@ -71,7 +71,7 @@ in
           "-c"
         ];
         command = "${
-          inputs.starship-jj.packages.${pkgs.system}.default
+          inputs.starship-jj.packages.${pkgs.stdenv.hostPlatform.system}.default
         }/bin/starship-jj --ignore-working-copy starship prompt --starship-config ${
           tomlFormat.generate "starship-jj.toml" {
             module_separator = " ";
@@ -140,7 +140,7 @@ in
           "-c"
         ];
         command = "${
-          inputs.starship-jj.packages.${pkgs.system}.default
+          inputs.starship-jj.packages.${pkgs.stdenv.hostPlatform.system}.default
         }/bin/starship-jj --ignore-working-copy starship prompt --starship-config ${
           tomlFormat.generate "starship-jj.toml" {
             module_separator = " ";

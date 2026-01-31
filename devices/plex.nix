@@ -17,6 +17,7 @@ in
     hostPlatform = "aarch64-darwin";
     overlays = [
       inputs.niri.overlays.niri
+      inputs.nur.overlays.default
       # Patch Spotify with SpotX-Bash
       (import ../overlays/spotify.nix { inherit inputs lib pkgs; })
     ];
