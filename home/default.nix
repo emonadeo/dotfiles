@@ -49,7 +49,8 @@
       NIXOS_OZONE_WL = 1;
     };
     packages = [
-      pkgs.element-desktop
+      # FIXME: <https://github.com/NixOS/nixpkgs/issues/485589>
+      # pkgs.element-desktop
       pkgs.zathura
 
       # Gaming
