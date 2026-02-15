@@ -23,6 +23,7 @@
     ./linux.nix
     ./lutris.nix
     ./mako.nix
+    ./mpv.nix
     ./neovim.nix
     ./niri.nix
     ./nushell.nix
