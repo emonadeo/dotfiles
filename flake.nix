@@ -5,7 +5,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     apple-emoji = {
-      url = "github:samuelngs/apple-emoji-linux";
+      # TODO: v2 is broken
+      url = "github:samuelngs/apple-emoji-linux/v1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin-ghostty = {
