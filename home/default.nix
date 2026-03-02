@@ -90,6 +90,19 @@
     ];
   };
 
+  accounts.email.accounts = {
+    gmail = {
+      primary = true;
+      enable = true;
+      realName = "Emanuel Pilz";
+      address = "emonadeo@gmail.com";
+      # aliases = [ "emo.nadeo@gmail.com" ];
+      flavor = "gmail.com";
+      lieer.enable = true;
+      meli.enable = true;
+    };
+  };
+
   gtk.enable = true;
 
   programs = {

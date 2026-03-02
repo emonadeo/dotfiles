@@ -20,7 +20,6 @@ in
       inputs.nur.overlays.default
       # Patch Spotify with SpotX-Bash
       (import ../overlays/spotify.nix { inherit inputs lib pkgs; })
-      (import ../overlays/vesktop_hotfix.nix)
     ];
     config = {
       allowUnfree = true;

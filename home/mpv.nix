@@ -1,10 +1,13 @@
 {
+  lib,
   pkgs,
   ...
 }:
 
 {
-  programs.mpv = {
+  # BUG: Build failure on macOS
+  # See <https://github.com/NixOS/nixpkgs/issues/493775>
+  programs.mpv = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
     enable = true;
     config = {
       # Builtin profiles:
@@ -15,8 +18,15 @@
       ytdl-format = "bestvideo+bestaudio";
     };
     scripts = [
-      pkgs.mpvScripts.mpris
       pkgs.mpvScripts.uosc
-    ];
+    ]
+    ++ (
+      if pkgs.stdenv.hostPlatform.isLinux then
+        [
+          pkgs.mpvScripts.mpris
+        ]
+      else
+        [ ]
+    );
   };
 }
