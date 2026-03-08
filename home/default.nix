@@ -17,10 +17,10 @@
     ./chromium.nix
     ./cursor/default.nix
     ./darkman.nix
+    ./element.nix
     ./feh.nix
     ./ghostty/default.nix
     ./jujutsu.nix
-    ./linux.nix
     ./lutris.nix
     ./mako.nix
     ./mpv.nix
@@ -50,8 +50,6 @@
       NIXOS_OZONE_WL = 1;
     };
     packages = [
-      # FIXME: <https://github.com/NixOS/nixpkgs/issues/485589>
-      # pkgs.element-desktop
       pkgs.zathura
 
       # Gaming
@@ -87,6 +85,8 @@
       pkgs.heroic
       pkgs.ryubing
       pkgs.shipwright
+      pkgs.wl-clipboard
+      pkgs.xdg-utils
     ];
   };
 

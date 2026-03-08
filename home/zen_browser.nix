@@ -8,6 +8,7 @@
   imports = [ inputs.zen-browser.homeModules.beta ];
   programs.zen-browser = {
     enable = true;
+    setAsDefaultBrowser = true;
     profiles."default" = {
       containersForce = true;
       containers = { };
@@ -128,39 +129,4 @@
       OfferToSaveLogins = false;
     };
   };
-
-  xdg.mimeApps =
-    let
-      # TODO: Move this function to a shared lib
-      associations = builtins.listToAttrs (
-        map
-          (name: {
-            inherit name;
-            value = inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.beta.meta.desktopFileName;
-          })
-          [
-            "application/json"
-            "application/pdf" # TODO: Get a proper PDF reader (like `Zathura`)
-            "application/x-extension-htm"
-            "application/x-extension-html"
-            "application/x-extension-shtml"
-            "application/x-extension-xht"
-            "application/x-extension-xhtml"
-            "application/xhtml+xml"
-            "text/html"
-            "text/xml"
-            "text/plain"
-            "x-scheme-handler/about"
-            "x-scheme-handler/chrome"
-            "x-scheme-handler/http"
-            "x-scheme-handler/https"
-            "x-scheme-handler/mailto"
-            "x-scheme-handler/unknown"
-          ]
-      );
-    in
-    {
-      associations.added = associations;
-      defaultApplications = associations;
-    };
 }
