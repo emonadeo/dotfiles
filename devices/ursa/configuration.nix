@@ -176,10 +176,12 @@ in
       "/share/xdg-desktop-portal"
       "/share/applications"
     ];
+    # TODO: Single source of truth for all devices
     systemPackages = [
       pkgs.openssl
       pkgs.ripgrep
       pkgs.unzip
+      pkgs.yq-go
       pkgs.zip
     ];
   };
