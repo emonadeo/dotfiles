@@ -102,7 +102,7 @@
           ./devices/ursa/configuration.nix
           # BUG: Stylix is incompatible with `lazy.nvim`
           # Uncomment once Neovim 0.12 is released
-          # See https://github.com/nix-community/stylix/issues/505
+          # See <https://github.com/nix-community/stylix/issues/505>
           # inputs.stylix.nixosModules.stylix
           # ./nixos/stylix.nix
         ];

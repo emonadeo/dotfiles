@@ -93,6 +93,7 @@ in
     brews = [ ];
     casks = [
       "affinity"
+      "element"
       "helium-browser"
       "steam"
       "telegram"
