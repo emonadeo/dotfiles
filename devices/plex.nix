@@ -60,6 +60,7 @@ in
   environment = {
     # TODO: Single source of truth for all devices
     systemPackages = [
+      pkgs.imagemagick
       pkgs.openssl
       pkgs.ripgrep
       pkgs.unzip
