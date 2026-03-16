@@ -108,6 +108,7 @@
         sponsorblock
         steam-database
         ublock-origin
+        # TODO: Add `unhook` once added to NUR
       ];
     };
     policies = {
@@ -127,6 +128,14 @@
       };
       NoDefaultBookmarks = true;
       OfferToSaveLogins = false;
+      ExtensionSettings = {
+        # Unhook
+        # TODO: Remove once added to NUR
+        "myallychou@gmail.com" = {
+          installation_mode = "force_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/youtube-recommended-videos/latest.xpi";
+        };
+      };
     };
   };
 }

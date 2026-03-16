@@ -29,6 +29,8 @@
       { id = "kdbmhfkmnlmbkgbabkdealhhbfhlmmon"; }
       # uBlock Origin
       { id = "ddkjiahejlhfcafbddmgiahcphecmpfh"; }
+      # Unhook
+      { id = "khncfooichmfjbepaaaebmommgaepoid"; }
     ];
   };
 }
