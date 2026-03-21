@@ -37,6 +37,7 @@
     ./telegram.nix
     ./vesktop.nix
     ./yazi.nix
+    ./zathura.nix
     ./zen_browser.nix
   ];
 
@@ -50,8 +51,6 @@
       NIXOS_OZONE_WL = 1;
     };
     packages = [
-      pkgs.zathura
-
       # Gaming
       (pkgs.prismlauncher.override {
         jdks = [
