@@ -1,5 +1,10 @@
 {
   inputs = {
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:vic/import-tree";
+    wrappers-b.url = "github:BirdeeHub/nix-wrapper-modules";
+    wrappers-l.url = "github:lassulus/wrappers";
+
     affinity = {
       url = "github:mrshmllow/affinity-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -61,11 +66,6 @@
       url = "gitlab:lanastara_foss/starship-jj";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # TODO: Use Stylix
-    # stylix = {
-    #  url = "github:nix-community/stylix";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    # };
     paneru = {
       url = "github:karinushka/paneru";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -81,32 +81,15 @@
     };
   };
 
-  outputs = inputs: {
-    darwinModules = { };
-    homeModules = { };
-    nixosModules = { };
-    darwinConfigurations = {
-      # Apple MacBook Pro 14" (M1 Pro)
-      plex = inputs.nix-darwin.lib.darwinSystem {
-        modules = [ ./devices/plex.nix ];
-        specialArgs = { inherit inputs; };
-      };
+  outputs =
+    inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [ (inputs.import-tree ./modules) ];
+      systems = [
+        "aarch64-darwin"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "x86_64-linux"
+      ];
     };
-    nixosConfigurations = {
-      # <https://de.pcpartpicker.com/user/Emonadeo/saved/QJBCrH>
-      # CPU: AMD Ryzen 7 9800X3D
-      # GPU: AMD Radeon RX7900 GRE
-      ursa = inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./devices/ursa/configuration.nix
-          # BUG: Stylix is incompatible with `lazy.nvim`
-          # Uncomment once Neovim 0.12 is released
-          # See <https://github.com/nix-community/stylix/issues/505>
-          # inputs.stylix.nixosModules.stylix
-          # ./nixos/stylix.nix
-        ];
-      };
-    };
-  };
 }

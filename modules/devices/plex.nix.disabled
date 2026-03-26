@@ -1,0 +1,88 @@
+{ inputs, self, ... }:
+{
+  flake.darwinConfigurations.plex = inputs.nix-darwin.lib.darwinSystem {
+    modules = [ self.darwinModules.plex ];
+  };
+
+  flake.darwinModules.plex =
+    { pkgs, ... }:
+    {
+      nixpkgs = {
+        hostPlatform = "aarch64-darwin";
+        config = {
+          allowUnfree = true;
+        };
+      };
+
+      nix = {
+        enable = true;
+        package = pkgs.nix;
+        settings = {
+          experimental-features = [
+            "nix-command"
+            "flakes"
+          ];
+          substituters = [
+            "https://devenv.cachix.org"
+            "https://cache.garnix.io"
+          ];
+          trusted-public-keys = [
+            "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+            "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+          ];
+        };
+        gc.automatic = true;
+        optimise.automatic = true;
+      };
+
+      nix-homebrew = {
+        enable = true;
+        user = "emonadeo";
+        autoMigrate = true;
+        taps = {
+          "homebrew/homebrew-core" = inputs.homebrew-core;
+          "homebrew/homebrew-cask" = inputs.homebrew-cask;
+        };
+      };
+
+      environment = {
+        shellInit = self.lib.shellInitNushell;
+        # TODO: Single source of truth for all devices
+        systemPackages = [
+          pkgs.imagemagick
+          pkgs.openssl
+          pkgs.ripgrep
+          pkgs.unzip
+          pkgs.yq-go
+          pkgs.zip
+        ];
+      };
+
+      users = {
+        users.emonadeo = {
+          home = /Users/emonadeo;
+          description = self.lib.user.name;
+          packages = [
+            pkgs.mise
+          ];
+        };
+      };
+
+      homebrew = {
+        enable = true;
+        brews = [ ];
+        casks = [
+          "affinity"
+          "element"
+          "helium-browser"
+          "steam"
+          "telegram"
+        ];
+      };
+
+      # TODO: Remove once obsolete
+      system.primaryUser = "emonadeo";
+
+      system.stateVersion = 6;
+    };
+}

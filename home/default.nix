@@ -31,7 +31,6 @@
     ./qutebrowser.nix
     ./rofi.nix
     ./signal.nix
-    ./spotify.nix
     ./starship.nix
     ./teamspeak.nix
     ./telegram.nix
@@ -44,49 +43,13 @@
   home = {
     username = "emonadeo";
     sessionVariables = {
-      TERMINAL = config.programs.ghostty.package + /bin/ghostty;
+      TERMINAL = "${config.programs.ghostty.package}/bin/ghostty";
       GDK_SCALE = 1.667;
       QT_QPA_PLATFORM = "wayland";
       NIXOS_OZONE_WL = 1;
     };
     packages = [
       pkgs.zathura
-
-      # Gaming
-      (pkgs.prismlauncher.override {
-        jdks = [
-          pkgs.jdk21
-          pkgs.graalvmPackages.graalvm-ce
-        ];
-      })
-
-      pkgs.devenv
-
-      # Languages & Language Servers
-      pkgs.astro-language-server
-      pkgs.cargo
-      pkgs.dprint
-      pkgs.emmet-language-server
-      pkgs.lua-language-server
-      pkgs.nil # Nix
-      pkgs.nixfmt
-      pkgs.rust-analyzer
-      pkgs.rustc
-      pkgs.rustfmt
-      pkgs.stylua # Lua
-      pkgs.tombi # TOML
-      pkgs.vscode-langservers-extracted
-      pkgs.vtsls # TypeScript
-    ]
-    # Linux specific
-    ++ lib.lists.optionals pkgs.stdenv.hostPlatform.isLinux [
-      pkgs.dolphin-emu
-      pkgs.eduvpn-client
-      pkgs.heroic
-      pkgs.ryubing
-      pkgs.shipwright
-      pkgs.wl-clipboard
-      pkgs.xdg-utils
     ];
   };
 
