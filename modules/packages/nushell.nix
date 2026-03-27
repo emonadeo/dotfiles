@@ -2,18 +2,22 @@
 {
   perSystem =
     {
+      inputs',
       pkgs,
       self',
       ...
     }:
     let
-      nix-index = inputs.nix-index-database.packages.${pkgs.stdenv.hostPlatform.system}.nix-index-with-db;
+      nix-index = inputs'.nix-index-database.packages.nix-index-with-db;
     in
     {
       packages.nushell = (
         inputs.wrappers-b.wrappers.nushell.wrap {
           inherit pkgs;
-          extraPackages = [ self'.packages.yazi ];
+          extraPackages = [
+            self'.packages.yazi
+            self'.packages.starship
+          ];
           "config.nu".content = # nu
             ''
               $env.config.cursor_shape.emacs = "line"
@@ -41,9 +45,10 @@
               # Starship prompt
               # Source: <https://github.com/nix-community/home-manager/blob/e2e5f512b33ed19a7a3271d0b73ed5eefcc0be5f/modules/programs/starship.nix#L168-L179>
               use ${
-                pkgs.runCommand "starship-nushell-config.nu" { } ''
-                  ${pkgs.lib.getExe self'.packages.starship} init nu >> "$out"
-                ''
+                pkgs.runCommand "starship-nushell-config.nu" { } # sh
+                  ''
+                    starship init nu >> "$out"
+                  ''
               }
             '';
         }
