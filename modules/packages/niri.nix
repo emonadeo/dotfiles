@@ -16,6 +16,8 @@
         url = "https://cdnb.artstation.com/p/assets/images/images/079/201/991/4k/darek-zabrocki-r2-006b-darekzabrocki.jpg";
         hash = "sha256-FEWLOc1k/jFtneG5BtkMAwmJXVdIgqit47ZjIo6qzDA=";
       };
+      playerctl = lib.getExe pkgs.playerctl;
+      wpctl = "${pkgs.wireplumber}/bin/wpctl";
     in
     {
       packages.niri = (
@@ -178,34 +180,34 @@
 
               # Audio
               "XF86AudioRaiseVolume".spawn = [
-                "wpctl"
+                wpctl
                 "set-volume"
                 "@DEFAULT_AUDIO_SINK@"
                 "0.05+"
               ];
               "XF86AudioLowerVolume".spawn = [
-                "wpctl"
+                wpctl
                 "set-volume"
                 "@DEFAULT_AUDIO_SINK@"
                 "0.05-"
               ];
 
               "XF86AudioMute".spawn = [
-                "wpctl"
+                wpctl
                 "set-mute"
                 "@DEFAULT_AUDIO_SINK@"
                 "toggle"
               ];
               "XF86AudioPlay".spawn = [
-                "playerctl"
+                playerctl
                 "play-pause"
               ];
               "XF86AudioPrev".spawn = [
-                "playerctl"
+                playerctl
                 "previous"
               ];
               "XF86AudioNext".spawn = [
-                "playerctl"
+                playerctl
                 "next"
               ];
             };

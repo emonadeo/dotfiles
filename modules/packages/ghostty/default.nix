@@ -16,10 +16,10 @@ let
       };
       font-family = [
         "" # Override config at `$XDG_CONFIG_DIR/ghostty/config.ghostty`.
-        config.fonts.monospace.name
+        (builtins.elemAt config.fonts.monospace 0).name
       ];
-      # FIXME: Build failure if `features` is null
-      # font-feature = config.fonts.monospace.features.ghostty or null;
+      # BUG: Build failure if `features` is null
+      font-feature = (builtins.elemAt config.fonts.monospace 0).features.ghostty;
       font-size = 13.5;
       macos-titlebar-style = "hidden";
       window-padding-balance = true;
@@ -43,7 +43,12 @@ in
       package = pkgs.ghostty;
       env.FONTCONFIG_FILE = (
         pkgs.makeFontsConf {
-          fontDirectories = [ config.fonts.monospace.package ];
+          fontDirectories = builtins.concatLists [
+            (map (font: font.package) config.fonts.emoji)
+            (map (font: font.package) config.fonts.monospace)
+            (map (font: font.package) config.fonts.sans)
+            (map (font: font.package) config.fonts.serif)
+          ];
         }
       );
       filesToPatch = [

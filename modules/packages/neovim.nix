@@ -7,6 +7,7 @@
         inputs.wrappers-b.neovim.wrap {
           inherit pkgs;
           extraPackages = [
+            pkgs.nodejs # Needed by some plugins
             pkgs.astro-language-server
             pkgs.astro-language-server
             pkgs.ccls # C/C++
