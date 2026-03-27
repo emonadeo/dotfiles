@@ -108,10 +108,14 @@
           cv62 = false;
         };
       };
+      departure-mono = {
+        name = "Departure Mono";
+        package = pkgs.departure-mono;
+      };
     in
     {
       fonts = {
-        monospace = maple-mono;
+        monospace = departure-mono;
       };
     };
 }

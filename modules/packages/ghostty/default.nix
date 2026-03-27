@@ -14,9 +14,12 @@ let
         dark = "${inputs.catppuccin-ghostty}/themes/catppuccin-mocha.conf";
         light = "${inputs.catppuccin-ghostty}/themes/catppuccin-latte.conf";
       };
-      font-family = config.fonts.monospace.name;
+      font-family = [
+        "" # Override config at `$XDG_CONFIG_DIR/ghostty/config.ghostty`.
+        config.fonts.monospace.name
+      ];
       # FIXME: Build failure if `features` is null
-      font-feature = config.fonts.monospace.features.ghostty or null;
+      # font-feature = config.fonts.monospace.features.ghostty or null;
       font-size = 13.5;
       macos-titlebar-style = "hidden";
       window-padding-balance = true;
@@ -34,27 +37,24 @@ let
 in
 {
   flake.packages."x86_64-linux".ghostty = withSystem "x86_64-linux" (
-    ctx@{ pkgs, ... }:
-    inputs.wrappers-b.lib.wrapPackage (
-      { config, ... }:
-      {
-        inherit pkgs;
-        package = pkgs.ghostty;
-        env.FONTCONFIG_FILE = (
-          pkgs.makeFontsConf {
-            fontDirectories = [ config.fonts.monospace.package ];
-          }
-        );
-        filesToPatch = [
-          "share/dbus-1/services/com.mitchellh.ghostty.service"
-          "share/systemd/user/app-com.mitchellh.ghostty.service"
-        ];
-        flagSeparator = "=";
-        flags = {
-          "--config-file" = configFile ctx;
-        };
-      }
-    )
+    ctx@{ config, pkgs, ... }:
+    inputs.wrappers-b.lib.wrapPackage ({
+      inherit pkgs;
+      package = pkgs.ghostty;
+      env.FONTCONFIG_FILE = (
+        pkgs.makeFontsConf {
+          fontDirectories = [ config.fonts.monospace.package ];
+        }
+      );
+      filesToPatch = [
+        "share/dbus-1/services/com.mitchellh.ghostty.service"
+        "share/systemd/user/app-com.mitchellh.ghostty.service"
+      ];
+      flagSeparator = "=";
+      flags = {
+        "--config-file" = configFile ctx;
+      };
+    })
   );
 
   # Limitation on macOS:
@@ -77,5 +77,4 @@ in
       }
     )
   );
-
 }
