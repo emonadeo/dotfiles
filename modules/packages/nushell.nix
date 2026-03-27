@@ -20,15 +20,17 @@
           ];
           "config.nu".content = # nu
             ''
+              $env.config.edit_mode = "vi"
+              # Remove vi mode indicator from prompt
+              $env.PROMPT_INDICATOR_VI_INSERT = {||}
+              $env.PROMPT_INDICATOR_VI_NORMAL = {||}
+              # Instead, use cursor shape to communicate current vi mode
               $env.config.cursor_shape.emacs = "line"
               $env.config.cursor_shape.vi_insert = "line"
               $env.config.cursor_shape.vi_normal = "block"
-              $env.config.edit_mode = "vi"
-              $env.config.hooks.command_not_found = source "${nix-index}/etc/profile.d/command-not-found.nu"
-              $env.config.render_right_prompt_on_last_line = true
 
-              $env.PROMPT_INDICATOR_VI_INSERT = {||}
-              $env.PROMPT_INDICATOR_VI_NORMAL = {||}
+              # Query nixpkgs for invalid commands
+              $env.config.hooks.command_not_found = source "${nix-index}/etc/profile.d/command-not-found.nu"
 
               # Integrate yazi (`y` command to change directory with yazi)
               # See <https://github.com/nix-community/home-manager/blob/86014e836ca6f4a04d59b85111d39660bdda01cd/modules/programs/yazi.nix#L254-L264>
@@ -50,6 +52,8 @@
                     starship init nu >> "$out"
                   ''
               }
+              # Correctly position right prompt of starship
+              $env.config.render_right_prompt_on_last_line = true
             '';
         }
       );
