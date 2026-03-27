@@ -25,6 +25,7 @@
             self'.packages.rofi
             self'.packages.ghostty
           ];
+          env.XCURSOR_PATH = "${self'.packages.tahoe-cursor}/share/icons";
           settings = {
             # Make niri ask applications to omit their client-side decorations.
             prefer-no-csd = true;
@@ -70,7 +71,7 @@
             };
 
             cursor = {
-              xcursor-theme = "tahoe";
+              xcursor-theme = "Tahoe";
               xcursor-size = 36;
             };
 
