@@ -1,16 +1,19 @@
-{ self, ... }:
+{ withSystem, ... }:
 {
   flake.nixosModules.gaming =
     { pkgs, ... }:
     {
-      environment.systemPackages = [
-        pkgs.dolphin-emu # Gamecube/Wii Emulator
-        pkgs.heroic # Epic Games
-        pkgs.lutris
-        pkgs.ryubing # Switch Emulator
-        pkgs.shipwright # The Legend of Zelda: Ocarina of Time
-        self.packages.${pkgs.stdenv.hostPlatform.system}.prismlauncher # Minecraft
-      ];
+      environment.systemPackages = withSystem pkgs.stdenv.hostPlatform.system (
+        { self', ... }:
+        [
+          pkgs.dolphin-emu # Gamecube/Wii Emulator
+          pkgs.heroic # Epic Games
+          pkgs.lutris
+          pkgs.ryubing # Switch Emulator
+          pkgs.shipwright # The Legend of Zelda: Ocarina of Time
+          self'.packages.prismlauncher # Minecraft
+        ]
+      );
 
       hardware = {
         graphics = {

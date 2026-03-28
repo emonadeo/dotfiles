@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.nix = {
+  flake.sharedModules.nix = {
     nix = {
       settings = {
         experimental-features = [
@@ -14,10 +14,7 @@
     };
 
     nixpkgs.config = {
-      cudaSupport = false;
-      rocmSupport = true;
       allowUnfree = true;
     };
-
   };
 }

@@ -45,6 +45,7 @@
     sessionVariables = {
       TERMINAL = "${config.programs.ghostty.package}/bin/ghostty";
       GDK_SCALE = 1.667;
+      # BUG: Obviously incorrect on darwin
       QT_QPA_PLATFORM = "wayland";
       NIXOS_OZONE_WL = 1;
     };

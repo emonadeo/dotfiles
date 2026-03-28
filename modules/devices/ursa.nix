@@ -17,11 +17,19 @@
         self.nixosModules.fonts
         self.nixosModules.gaming
         self.nixosModules.networking
-        self.nixosModules.nix
+        self.sharedModules.nix
       ];
 
-      nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-      hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+      nixpkgs = {
+        hostPlatform = "x86_64-linux";
+        config = {
+          cudaSupport = false;
+          rocmSupport = true;
+          allowUnfree = true;
+        };
+      };
+
+      hardware.cpu.amd.updateMicrocode = config.hardware.enableRedistributableFirmware;
 
       boot = {
         initrd = {

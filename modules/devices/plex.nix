@@ -7,33 +7,12 @@
   flake.darwinModules.plex =
     { pkgs, ... }:
     {
-      nixpkgs = {
-        hostPlatform = "aarch64-darwin";
-        config = {
-          allowUnfree = true;
-        };
-      };
+      imports = [
+        self.darwinModules.paneru
+        self.sharedModules.nix
+      ];
 
-      nix = {
-        enable = true;
-        package = pkgs.nix;
-        settings = {
-          experimental-features = [
-            "nix-command"
-            "flakes"
-          ];
-          substituters = [
-            "https://devenv.cachix.org"
-            "https://cache.garnix.io"
-          ];
-          trusted-public-keys = [
-            "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
-            "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
-          ];
-        };
-        gc.automatic = true;
-        optimise.automatic = true;
-      };
+      nixpkgs.hostPlatform = "aarch64-darwin";
 
       nix-homebrew = {
         enable = true;
