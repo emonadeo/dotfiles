@@ -1,6 +1,5 @@
 { self, ... }:
 {
-
   # Sh/Bash/Zsh script that spawns Nushell if current shell has no other Nushell ancestors.
   #
   # Source: <https://github.com/nix-darwin/nix-darwin/issues/1028#issuecomment-2720875486>

@@ -83,13 +83,22 @@
 
   outputs =
     inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [ (inputs.import-tree ./modules) ];
-      systems = [
-        "aarch64-darwin"
-        "aarch64-linux"
-        "x86_64-darwin"
-        "x86_64-linux"
-      ];
-    };
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } (
+      { lib, ... }:
+      {
+        imports = [ (inputs.import-tree ./modules) ];
+        # TODO: Should this be defined elsewhere?
+        options.flake.lib = lib.mkOption {
+          type = lib.types.attrsOf lib.types.anything;
+        };
+        config = {
+          systems = [
+            "aarch64-darwin"
+            "aarch64-linux"
+            "x86_64-darwin"
+            "x86_64-linux"
+          ];
+        };
+      }
+    );
 }

@@ -4,7 +4,7 @@
     { pkgs, ... }:
     {
       packages.git = (
-        inputs.wrappers-b.git.wrap {
+        inputs.wrappers-b.wrappers.git.wrap {
           inherit pkgs;
           settings = {
             user = self.lib.user;

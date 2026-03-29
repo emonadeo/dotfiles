@@ -15,8 +15,12 @@
         inputs.wrappers-b.wrappers.nushell.wrap {
           inherit pkgs;
           extraPackages = [
-            self'.packages.yazi
+            self'.packages.git
+            self'.packages.jujutsu
+            self'.packages.neovim
+            self'.packages.neovim-test
             self'.packages.starship
+            self'.packages.yazi
           ];
           "config.nu".content = # nu
             ''
@@ -49,7 +53,7 @@
               use ${
                 pkgs.runCommand "starship-nushell-config.nu" { } # sh
                   ''
-                    starship init nu >> "$out"
+                    ${self'.packages.starship}/bin/starship init nu >> "$out"
                   ''
               }
               # Correctly position right prompt of starship

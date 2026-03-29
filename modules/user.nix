@@ -1,3 +1,4 @@
+{ ... }:
 {
   flake.lib.user = {
     name = "Emanuel Pilz";

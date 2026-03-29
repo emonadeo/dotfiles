@@ -10,7 +10,7 @@
         lib.types.submodule {
           options = {
             name = lib.mkOption {
-              description = "Name of the font";
+              description = "Font name";
               type = lib.types.str;
             };
             package = lib.mkOption {

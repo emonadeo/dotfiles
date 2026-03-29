@@ -3,8 +3,9 @@
   perSystem =
     { pkgs, ... }:
     {
+      # TODO: Neovim with wrapped config
       packages.neovim = (
-        inputs.wrappers-b.neovim.wrap {
+        inputs.wrappers-b.wrappers.neovim.wrap {
           inherit pkgs;
           extraPackages = [
             pkgs.nodejs # Needed by some plugins
@@ -28,7 +29,7 @@
         }
       );
 
-      # TODO:
+      # TODO: Neovim with dynamic config
       packages.neovim-test = { };
     };
 }
