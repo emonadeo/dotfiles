@@ -231,6 +231,22 @@
         "type": "github"
       }
     },
+    "ghostty-cursor-shaders": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1761796431,
+        "narHash": "sha256-ruhEqXnWRCYdX5mRczpY3rj1DTdxyY3BoN9pdlDOKrE=",
+        "owner": "sahaj-b",
+        "repo": "ghostty-cursor-shaders",
+        "rev": "4faa83e4b9306750fc8de64b38c6f53c57862db8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sahaj-b",
+        "repo": "ghostty-cursor-shaders",
+        "type": "github"
+      }
+    },
     "git-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -726,6 +742,7 @@
         "apple-emoji": "apple-emoji",
         "catppuccin-ghostty": "catppuccin-ghostty",
         "flake-parts": "flake-parts_2",
+        "ghostty-cursor-shaders": "ghostty-cursor-shaders",
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",

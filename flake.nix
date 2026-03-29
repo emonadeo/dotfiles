@@ -17,9 +17,9 @@
       url = "github:catppuccin/ghostty";
       flake = false;
     };
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
+    ghostty-cursor-shaders = {
+      url = "github:sahaj-b/ghostty-cursor-shaders";
+      flake = false;
     };
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -53,6 +53,10 @@
     };
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-unstable";
+    };
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nvim = {
       url = "github:emonadeo/nvim";

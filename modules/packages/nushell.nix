@@ -18,7 +18,6 @@
             self'.packages.git
             self'.packages.jujutsu
             self'.packages.neovim
-            self'.packages.neovim-test
             self'.packages.starship
             self'.packages.yazi
           ];

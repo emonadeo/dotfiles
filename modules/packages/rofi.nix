@@ -1,6 +1,6 @@
-{ inputs, self, ... }:
+{ inputs, withSystem, ... }:
 {
-  perSystem =
+  flake.packages."x86_64-linux".rofi = withSystem "x86_64-linux" (
     {
       config,
       pkgs,
@@ -105,5 +105,6 @@
             };
         }
       );
-    };
+    }
+  );
 }

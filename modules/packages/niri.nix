@@ -7,9 +7,14 @@
 #     fi
 #   '';
 
-{ inputs, lib, ... }:
 {
-  perSystem =
+  inputs,
+  lib,
+  withSystem,
+  ...
+}:
+{
+  flake.packages."x86_64-linux".niri = withSystem "x86_64-linux" (
     { pkgs, self', ... }:
     let
       wallpaper = pkgs.fetchurl {
@@ -261,5 +266,6 @@
           };
         }
       );
-    };
+    }
+  );
 }
