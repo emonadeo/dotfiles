@@ -17,7 +17,9 @@
         self.nixosModules.fonts
         self.nixosModules.gaming
         self.nixosModules.networking
+        self.nixosModules.shell
         self.sharedModules.nix
+        self.sharedModules.time
       ];
 
       nixpkgs = {
@@ -70,9 +72,6 @@
       swapDevices = [
         { device = "/dev/disk/by-uuid/5f2dd594-5fd5-432a-bdc0-bea2ea38d926"; }
       ];
-
-      # Set your time zone.
-      time.timeZone = "Europe/Berlin";
 
       # Select internationalisation properties.
       i18n.defaultLocale = "en_US.UTF-8";

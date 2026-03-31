@@ -9,7 +9,9 @@
     {
       imports = [
         self.darwinModules.paneru
+        self.darwinModules.shell
         self.sharedModules.nix
+        self.sharedModules.time
       ];
 
       nixpkgs.hostPlatform = "aarch64-darwin";
@@ -24,26 +26,10 @@
         };
       };
 
-      environment = {
-        shellInit = self.lib.shellInitNushell;
-        # TODO: Single source of truth for all devices
-        systemPackages = [
-          pkgs.imagemagick
-          pkgs.openssl
-          pkgs.ripgrep
-          pkgs.unzip
-          pkgs.yq-go
-          pkgs.zip
-        ];
-      };
-
       users = {
-        users.emonadeo = {
-          home = /Users/emonadeo;
+        users.${self.lib.user.handle} = {
+          home = /Users/${self.lib.user.handle};
           description = self.lib.user.name;
-          packages = [
-            pkgs.mise
-          ];
         };
       };
 
@@ -60,7 +46,7 @@
       };
 
       # TODO: Remove once obsolete
-      system.primaryUser = "emonadeo";
+      system.primaryUser = self.lib.user.handle;
 
       system.stateVersion = 6;
     };

@@ -15,6 +15,7 @@
         inputs.wrappers-b.wrappers.nushell.wrap {
           inherit pkgs;
           extraPackages = [
+            pkgs.imagemagick
             self'.packages.git
             self'.packages.jujutsu
             self'.packages.neovim

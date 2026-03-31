@@ -51,7 +51,8 @@
               format = "[ $symbol $name ]($style)[](fg:blue bg:#101817)";
               style = "fg:#101817 bg:blue";
               symbol = "";
-              heuristic = pkgs.stdenv.hostPlatform.isDarwin;
+              # BUG: Starship can detect `nix-shell` but not `nix shell`
+              # See <https://github.com/NixOS/nix/issues/6677>
             };
             directory = {
               format = "[ $path]($style)[$read_only]($read_only_style)[ ]($style)";
