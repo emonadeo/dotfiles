@@ -111,8 +111,6 @@
 
       services.getty.autologinUser = self.lib.user.handle;
 
-      services.openssh.enable = true;
-
       environment = {
         pathsToLink = [
           "/share/xdg-desktop-portal"
@@ -121,19 +119,6 @@
         # TODO: Single source of truth for all devices
         systemPackages = [
           inputs.affinity.packages.${pkgs.stdenv.hostPlatform.system}.default
-          pkgs.bitwarden-cli
-          pkgs.bitwarden-desktop
-          pkgs.blender
-          pkgs.imagemagick
-          pkgs.openssl
-          pkgs.ripgrep
-          pkgs.unzip
-          pkgs.wl-clipboard
-          pkgs.xdg-utils
-          pkgs.yq-go
-          pkgs.zip
-          self.packages.ghostty
-          self.packages.neovim
         ];
       };
 

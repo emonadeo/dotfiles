@@ -1,6 +1,6 @@
-{ inputs, self, ... }:
-{
-  flake.wrapperModules.neovim =
+{ inputs, ... }:
+let
+  wrapperModule =
     { pkgs, ... }:
     {
       imports = [ inputs.wrappers-b.lib.wrapperModules.neovim ];
@@ -24,20 +24,26 @@
         pkgs.vue-language-server
       ];
     };
-
+in
+{
   perSystem =
     { pkgs, ... }:
     {
-      # TODO: Neovim with wrapped config
       packages.neovim = inputs.wrappers-b.lib.wrapPackage ({
         inherit pkgs;
-        imports = [ self.wrapperModules.neovim ];
+        imports = [ wrapperModule ];
+        # TODO: Wrap config
+        meta.description = ''
+          Neovim with bundled config and language servers
+        '';
       });
 
-      # TODO: Neovim with dynamic config
       packages.neovim-test = inputs.wrappers-b.lib.wrapPackage ({
         inherit pkgs;
-        imports = [ self.wrapperModules.neovim ];
+        imports = [ wrapperModule ];
+        meta.description = ''
+          Neovim with bundled language servers
+        '';
       });
     };
 }
