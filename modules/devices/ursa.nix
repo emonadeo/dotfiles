@@ -50,7 +50,12 @@
         extraModulePackages = [ ];
         supportedFilesystems = [ "ntfs" ];
         loader = {
-          systemd-boot.enable = true;
+          systemd-boot = {
+            enable = true;
+            # Limit boot configurations to prevent /boot from filling up
+            # See <https://github.com/NixOS/nixpkgs/issues/23926>
+            configurationLimit = 16;
+          };
           efi.canTouchEfiVariables = true;
         };
       };
