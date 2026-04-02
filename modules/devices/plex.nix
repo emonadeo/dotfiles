@@ -16,33 +16,11 @@
 
       nixpkgs.hostPlatform = "aarch64-darwin";
 
-      nix-homebrew = {
-        enable = true;
-        user = "emonadeo";
-        autoMigrate = true;
-        taps = {
-          "homebrew/homebrew-core" = inputs.homebrew-core;
-          "homebrew/homebrew-cask" = inputs.homebrew-cask;
-        };
-      };
-
       users = {
         users.${self.lib.user.handle} = {
           home = /Users/${self.lib.user.handle};
           description = self.lib.user.name;
         };
-      };
-
-      homebrew = {
-        enable = true;
-        brews = [ ];
-        casks = [
-          "affinity"
-          "element"
-          "helium-browser"
-          "steam"
-          "telegram"
-        ];
       };
 
       # TODO: Remove once obsolete

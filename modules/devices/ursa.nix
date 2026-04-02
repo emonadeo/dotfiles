@@ -121,10 +121,6 @@
           "/share/xdg-desktop-portal"
           "/share/applications"
         ];
-        # TODO: Single source of truth for all devices
-        systemPackages = [
-          inputs.affinity.packages.${pkgs.stdenv.hostPlatform.system}.default
-        ];
       };
 
       hardware = {
