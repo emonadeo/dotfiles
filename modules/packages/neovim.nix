@@ -1,7 +1,15 @@
-{ inputs, ... }:
-let
-  wrapperModule =
+{
+  getSystem,
+  inputs,
+  self,
+  ...
+}:
+{
+  flake.wrapperModules.neovim =
     { pkgs, ... }:
+    let
+      self' = (getSystem pkgs.stdenv.hostPlatform.system);
+    in
     {
       imports = [ inputs.wrappers-b.lib.wrapperModules.neovim ];
       extraPackages = [
@@ -25,16 +33,17 @@ let
         pkgs.typescript-go
         pkgs.vscode-langservers-extracted
         pkgs.vue-language-server
+        self'.packages.git
+        self'.packages.jujutsu
       ];
     };
-in
-{
+
   perSystem =
     { pkgs, ... }:
     {
       packages.neovim = inputs.wrappers-b.lib.wrapPackage ({
         inherit pkgs;
-        imports = [ wrapperModule ];
+        imports = [ self.wrapperModules.neovim ];
         # TODO: Wrap config
         meta.description = ''
           Neovim with bundled config and language servers
@@ -43,7 +52,7 @@ in
 
       packages.neovim-test = inputs.wrappers-b.lib.wrapPackage ({
         inherit pkgs;
-        imports = [ wrapperModule ];
+        imports = [ self.wrapperModules.neovim ];
         meta.description = ''
           Neovim with bundled language servers
         '';

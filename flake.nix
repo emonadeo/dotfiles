@@ -87,6 +87,7 @@
           lib = lib.mkOption { };
           darwinModules = lib.mkOption { };
           sharedModules = lib.mkOption { };
+          wrapperModules = lib.mkOption { };
         };
 
         config = {

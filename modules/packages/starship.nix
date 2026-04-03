@@ -22,11 +22,13 @@
               "$nix_shell"
               "$directory"
               "$\{custom.jj\}"
+              "$\{git_branch\}"
               "[](fg:#101817)"
               "[ ]()"
             ];
             right_format = inputs.nixpkgs.lib.concatStrings [
               "$\{custom.jj_status\}"
+              "$\{git_status\}"
               "$c"
               "$dart"
               "$deno"
@@ -48,7 +50,7 @@
             # Left
 
             nix_shell = {
-              format = "[ $symbol $name ]($style)[](fg:blue bg:#101817)";
+              format = "[ $symbol ($name )]($style)[](fg:blue bg:#101817)";
               style = "fg:#101817 bg:blue";
               symbol = "";
               # BUG: Starship can detect `nix-shell` but not `nix shell`
@@ -60,8 +62,8 @@
               read_only = " ";
               read_only_style = "bold fg:red bg:#101817";
             };
-            # `git_branch` is currently unused (btw I use jujutsu)
             git_branch = {
+              detect_folders = [ "!.jj" ];
               format = "[]($style fg:bright-black)[ $symbol $branch(:$remote_branch) ]($style)";
               style = "fg:green bg:#101817";
               symbol = "";
@@ -117,8 +119,8 @@
 
             # Right
 
-            # `git_status` is currently unused (btw I use jujutsu)
             git_status = {
+              detect_folders = [ "!.jj" ];
               style = "";
               format = "[$all_status$ahead_behind]($style)";
               conflicted = "[](fg:red)";

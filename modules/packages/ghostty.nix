@@ -2,11 +2,12 @@
 
 {
   inputs,
+  self,
   withSystem,
   ...
 }:
-let
-  wrapperModule =
+{
+  flake.wrapperModules.ghostty =
     {
       config,
       lib,
@@ -84,8 +85,7 @@ let
         "open -na ${placeholder config.outputName}/Applications/Ghostty.app --args --config-file=${configFile} \"$@\""
       );
     };
-in
-{
+
   perSystem =
     {
       config,
@@ -96,7 +96,7 @@ in
     {
       packages.ghostty = inputs.wrappers-b.lib.wrapPackage ({
         inherit pkgs;
-        imports = [ wrapperModule ];
+        imports = [ self.wrapperModules.ghostty ];
         meta.description = ''
           Preconfigured Ghostty
         '';
@@ -104,7 +104,7 @@ in
 
       packages.ghostty-with-env = inputs.wrappers-b.lib.wrapPackage ({
         inherit pkgs;
-        imports = [ wrapperModule ];
+        imports = [ self.wrapperModules.ghostty ];
         flags = {
           "--command" = "${self'.packages.nushell}/bin/nu";
         };
