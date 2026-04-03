@@ -1,20 +1,17 @@
-{ lib, withSystem, ... }:
+{ lib, self, ... }:
 {
   flake.darwinModules.paneru =
     { pkgs, ... }:
-    (withSystem pkgs.stdenv.hostPlatform.system (
-      { self', ... }:
-      {
-        launchd.user.agents.paneru = {
-          command = lib.getExe self'.packages.paneru;
-          serviceConfig = {
-            KeepAlive = {
-              Crashed = true;
-              SuccessfulExit = false;
-            };
-            RunAtLoad = true;
+    {
+      environment.launchAgents.paneru = {
+        text = lib.generators.toPlist { escape = true; } {
+          ProgramArguments = lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.paneru;
+          KeepAlive = {
+            Crashed = true;
+            SuccessfulExit = false;
           };
+          RunAtLoad = true;
         };
-      }
-    ));
+      };
+    };
 }

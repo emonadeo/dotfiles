@@ -1,4 +1,9 @@
-{ inputs, self, ... }:
+{
+  inputs,
+  self,
+  withSystem,
+  ...
+}:
 {
   flake.darwinConfigurations.plex = inputs.nix-darwin.lib.darwinSystem {
     modules = [ self.darwinModules.plex ];
@@ -16,15 +21,16 @@
 
       nixpkgs.hostPlatform = "aarch64-darwin";
 
-      users = {
-        users.${self.lib.user.handle} = {
-          home = /Users/${self.lib.user.handle};
-          description = self.lib.user.name;
-        };
-      };
-
-      # TODO: Remove once obsolete
-      system.primaryUser = self.lib.user.handle;
+      environment.systemPackages = withSystem pkgs.stdenv.hostPlatform.system (
+        { self', ... }:
+        [
+          self'.packages.ghostty-with-env
+          self'.packages.helium
+          self'.packages.mpv
+          self'.packages.spotify
+          self'.packages.vesktop
+        ]
+      );
 
       system.stateVersion = 6;
     };

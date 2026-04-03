@@ -81,10 +81,14 @@
       { lib, ... }:
       {
         imports = [ (inputs.import-tree ./modules) ];
+
         # TODO: Should this be defined elsewhere?
-        options.flake.lib = lib.mkOption {
-          type = lib.types.attrsOf lib.types.anything;
+        options.flake = {
+          lib = lib.mkOption { };
+          darwinModules = lib.mkOption { };
+          sharedModules = lib.mkOption { };
         };
+
         config = {
           systems = [
             "aarch64-darwin"

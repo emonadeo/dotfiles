@@ -70,10 +70,6 @@
               format = "[]($style fg:bright-black)[ $output ]($style)";
               style = "fg:green bg:#101817";
               detect_folders = [ ".jj" ];
-              shell = [
-                "nu"
-                "-c"
-              ];
               command = "${
                 inputs.starship-jj.packages.${pkgs.stdenv.hostPlatform.system}.default
               }/bin/starship-jj --ignore-working-copy starship prompt --starship-config ${
@@ -139,10 +135,6 @@
             custom.jj_status = {
               detect_folders = [ ".jj" ];
               format = " [$output]($style)";
-              shell = [
-                "nu"
-                "-c"
-              ];
               command = "${
                 inputs.starship-jj.packages.${pkgs.stdenv.hostPlatform.system}.default
               }/bin/starship-jj --ignore-working-copy starship prompt --starship-config ${

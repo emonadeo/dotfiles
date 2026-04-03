@@ -5,15 +5,18 @@ let
     {
       imports = [ inputs.wrappers-b.lib.wrapperModules.neovim ];
       extraPackages = [
-        pkgs.nodejs # Needed by some plugins
         pkgs.astro-language-server
         pkgs.astro-language-server
         pkgs.ccls # C/C++
         pkgs.dprint # Universal formatter
         pkgs.emmet-language-server
         pkgs.jdt-language-server # Java
+        # TODO: Replace with self'.packages.jujutsu
+        pkgs.jujutsu
         pkgs.nil # Nix LSP
         pkgs.nixfmt
+        pkgs.nodejs # Needed by some plugins
+        pkgs.ripgrep # Needed by `snacks.picker`
         pkgs.rust-analyzer
         pkgs.rustfmt
         pkgs.stylua # Lua

@@ -21,6 +21,8 @@
             self'.packages.neovim
             self'.packages.starship
             self'.packages.yazi
+            # BUG: Nushell not available inside nushell.
+            # Cannot add `self'.packages.nushell` here due to infinite recursion.
           ];
           "config.nu".content = # nu
             ''
