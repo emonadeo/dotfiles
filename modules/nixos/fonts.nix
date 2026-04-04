@@ -7,12 +7,14 @@
         { config, ... }:
         {
           enableDefaultPackages = false;
-          packages = builtins.concatLists [
-            (map (font: font.package) config.fonts.emoji)
-            (map (font: font.package) config.fonts.monospace)
-            (map (font: font.package) config.fonts.sans)
-            (map (font: font.package) config.fonts.serif)
-          ];
+          packages = map (font: font.package) (
+            builtins.concatLists [
+              config.fonts.emoji
+              config.fonts.monospace
+              config.fonts.sans
+              config.fonts.serif
+            ]
+          );
           fontconfig = {
             localConf = # xml
               ''

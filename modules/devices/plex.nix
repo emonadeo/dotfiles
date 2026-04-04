@@ -13,6 +13,7 @@
     { pkgs, ... }:
     {
       imports = [
+        self.darwinModules.fonts
         self.darwinModules.paneru
         self.darwinModules.shell
         self.sharedModules.nix

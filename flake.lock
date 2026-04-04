@@ -28,25 +28,24 @@
         "type": "github"
       }
     },
-    "apple-emoji": {
+    "apple-emoji-ttf": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
         ],
-        "treefmt-nix": "treefmt-nix_2"
+        "ttc": "ttc"
       },
       "locked": {
-        "lastModified": 1771347507,
-        "narHash": "sha256-zbAQafwYYt62oVput8pQvTSV55h4xBO3v2kDElSa4mo=",
+        "lastModified": 1772747337,
+        "narHash": "sha256-WY4Yc/8V+eVyVgoCHEaQyW6EitHnB3dc1F2hW/N95Fo=",
         "owner": "samuelngs",
-        "repo": "apple-emoji-linux",
-        "rev": "e56448ab6b556c9a3be63ce0fb1903b70fd87b61",
+        "repo": "apple-emoji-ttf",
+        "rev": "c7fdcac57946f5a34256b7d267acc5c1cde444c7",
         "type": "github"
       },
       "original": {
         "owner": "samuelngs",
-        "ref": "v1",
-        "repo": "apple-emoji-linux",
+        "repo": "apple-emoji-ttf",
         "type": "github"
       }
     },
@@ -650,7 +649,7 @@
     "root": {
       "inputs": {
         "affinity": "affinity",
-        "apple-emoji": "apple-emoji",
+        "apple-emoji-ttf": "apple-emoji-ttf",
         "catppuccin-ghostty": "catppuccin-ghostty",
         "ev357": "ev357",
         "flake-parts": "flake-parts_2",
@@ -761,26 +760,19 @@
         "type": "github"
       }
     },
-    "treefmt-nix_2": {
-      "inputs": {
-        "nixpkgs": [
-          "apple-emoji",
-          "nixpkgs"
-        ]
-      },
+    "ttc": {
+      "flake": false,
       "locked": {
-        "lastModified": 1748243702,
-        "narHash": "sha256-9YzfeN8CB6SzNPyPm2XjRRqSixDopTapaRsnTpXUEY8=",
-        "owner": "numtide",
-        "repo": "treefmt-nix",
-        "rev": "1f3f7b784643d488ba4bf315638b2b0a4c5fb007",
-        "type": "github"
+        "path": "path:./Apple Color Emoji.ttc",
+        "type": "path"
       },
       "original": {
-        "owner": "numtide",
-        "repo": "treefmt-nix",
-        "type": "github"
-      }
+        "path": "path:./Apple Color Emoji.ttc",
+        "type": "path"
+      },
+      "parent": [
+        "apple-emoji-ttf"
+      ]
     },
     "wrappers-b": {
       "inputs": {

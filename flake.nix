@@ -9,8 +9,8 @@
       url = "github:mrshmllow/affinity-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    apple-emoji = {
-      url = "github:samuelngs/apple-emoji-linux/v1";
+    apple-emoji-ttf = {
+      url = "github:samuelngs/apple-emoji-ttf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin-ghostty = {

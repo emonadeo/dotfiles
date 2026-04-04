@@ -109,9 +109,9 @@
           )
         );
       };
-      apple-color-emoji = {
+      apple-emoji = {
         name = "Apple Color Emoji";
-        package = inputs'.apple-emoji.packages.default;
+        package = inputs'.apple-emoji-ttf.packages.default;
       };
       ipaex-gothic = {
         name = "IPAexGothic";
@@ -162,7 +162,7 @@
     in
     {
       fonts = {
-        emoji = [ apple-color-emoji ];
+        emoji = [ apple-emoji ];
         monospace = [
           maple-mono
           symbols-nerd-font
