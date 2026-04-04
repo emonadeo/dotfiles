@@ -17,6 +17,7 @@
           {
             inherit pkgs;
             extraPackages = [
+              nix-index
               pkgs.imagemagick
               self'.packages.git
               self'.packages.jujutsu
@@ -24,6 +25,7 @@
               self'.packages.starship
               self'.packages.yazi
             ];
+
             "config.nu".content = # nu
               ''
                 $env.config.edit_mode = "vi"
@@ -53,14 +55,16 @@
                 # Starship prompt
                 # Source: <https://github.com/nix-community/home-manager/blob/e2e5f512b33ed19a7a3271d0b73ed5eefcc0be5f/modules/programs/starship.nix#L168-L179>
                 use ${
-                  pkgs.runCommand "starship-nushell-config.nu" { } # sh
+                  pkgs.runCommand "nushell-starship" { buildInputs = [ self'.packages.starship ]; }
+                    # sh
                     ''
-                      ${self'.packages.starship}/bin/starship init nu >> "$out"
+                      starship init nu >> "$out"
                     ''
                 }
                 # Correctly position right prompt of starship
                 $env.config.render_right_prompt_on_last_line = true
               '';
+
             # HACK: Make nushell available inside of itself.
             prefixVar = [
               [

@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, getSystem, ... }:
 {
   perSystem =
     { pkgs, ... }:
@@ -18,17 +18,20 @@
           inherit pkgs;
           settings = {
             line_break.disabled = true;
+            # TODO: Migrate to `vcs` module once released and supporting jj
+            # See <https://github.com/starship/starship/issues/6076>
+            # and <https://github.com/starship/starship/pull/6388>
             format = inputs.nixpkgs.lib.concatStrings [
               "$nix_shell"
               "$directory"
-              "$\{custom.jj\}"
-              "$\{git_branch\}"
+              "$\{custom.jj_change\}"
+              "$git_branch"
               "[](fg:#101817)"
               "[ ]()"
             ];
             right_format = inputs.nixpkgs.lib.concatStrings [
               "$\{custom.jj_status\}"
-              "$\{git_status\}"
+              "$git_status"
               "$c"
               "$dart"
               "$deno"
@@ -49,12 +52,12 @@
 
             # Left
 
+            # BUG: Starship can detect `nix-shell` but not `nix shell`
+            # See <https://github.com/NixOS/nix/issues/6677>
             nix_shell = {
               format = "[ $symbol ($name )]($style)[](fg:blue bg:#101817)";
               style = "fg:#101817 bg:blue";
               symbol = "";
-              # BUG: Starship can detect `nix-shell` but not `nix shell`
-              # See <https://github.com/NixOS/nix/issues/6677>
             };
             directory = {
               format = "[ $path]($style)[$read_only]($read_only_style)[ ]($style)";
@@ -63,14 +66,15 @@
               read_only_style = "bold fg:red bg:#101817";
             };
             git_branch = {
-              detect_folders = [ "!.jj" ];
+              disabled = true;
               format = "[]($style fg:bright-black)[ $symbol $branch(:$remote_branch) ]($style)";
               style = "fg:green bg:#101817";
               symbol = "";
             };
-            custom.jj = {
+            custom.jj_change = {
               format = "[]($style fg:bright-black)[ $output ]($style)";
               style = "fg:green bg:#101817";
+              ignore_timeout = true;
               detect_folders = [ ".jj" ];
               command = "${
                 inputs.starship-jj.packages.${pkgs.stdenv.hostPlatform.system}.default
@@ -113,14 +117,12 @@
                   ];
                 }
               }";
-              ignore_timeout = true;
-              use_stdin = false;
             };
 
             # Right
 
             git_status = {
-              detect_folders = [ "!.jj" ];
+              disabled = true;
               style = "";
               format = "[$all_status$ahead_behind]($style)";
               conflicted = "[](fg:red)";
@@ -135,8 +137,9 @@
               deleted = "[-$count](fg:red)";
             };
             custom.jj_status = {
-              detect_folders = [ ".jj" ];
               format = " [$output]($style)";
+              ignore_timeout = true;
+              detect_folders = [ ".jj" ];
               command = "${
                 inputs.starship-jj.packages.${pkgs.stdenv.hostPlatform.system}.default
               }/bin/starship-jj --ignore-working-copy starship prompt --starship-config ${
@@ -200,8 +203,6 @@
                   ];
                 }
               }";
-              ignore_timeout = true;
-              use_stdin = false;
             };
             c = {
               format = " [$symbol $version]($style)";
