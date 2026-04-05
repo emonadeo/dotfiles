@@ -75,15 +75,18 @@
         "share/dbus-1/services/com.mitchellh.ghostty.service"
         "share/systemd/user/app-com.mitchellh.ghostty.service"
       ];
-      flagSeparator = lib.mkIf pkgs.stdenv.hostPlatform.isLinux "=";
-      flags = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
+      flagSeparator = "=";
+      flags = {
         "--config-file" = configFile;
       };
-      # HACK: Some disgusting monkey-patching for macOS
-      argv0type = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin (
-        _: # Ignore the original command
-        "open -na ${placeholder config.outputName}/Applications/Ghostty.app --args --config-file=${configFile} \"$@\""
-      );
+      # HACK: Some monkey-patching for macOS
+      # See <https://github.com/BirdeeHub/nix-wrapper-modules/discussions/409>
+      wrapperImplementation = "binary";
+      wrapperVariants.ghostty = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
+        wrapperImplementation = "binary"; # BUG: Seems to have no effect
+        exePath = "Applications/Ghostty.app/Contents/MacOS/ghostty";
+        binDir = "Applications/Ghostty.app/Contents/MacOS";
+      };
     };
 
   perSystem =
