@@ -81,9 +81,8 @@
       };
       # HACK: Some monkey-patching for macOS
       # See <https://github.com/BirdeeHub/nix-wrapper-modules/discussions/409>
-      wrapperImplementation = "binary";
       wrapperVariants.ghostty = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
-        wrapperImplementation = "binary"; # BUG: Seems to have no effect
+        wrapperImplementation = "binary";
         exePath = "Applications/Ghostty.app/Contents/MacOS/ghostty";
         binDir = "Applications/Ghostty.app/Contents/MacOS";
       };
