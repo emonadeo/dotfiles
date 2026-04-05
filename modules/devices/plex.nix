@@ -25,7 +25,7 @@
       environment.systemPackages = withSystem pkgs.stdenv.hostPlatform.system (
         { self', ... }:
         [
-          self'.packages.ghostty-with-env
+          self'.packages.ghostty
           self'.packages.helium
           self'.packages.mpv
           self'.packages.spotify

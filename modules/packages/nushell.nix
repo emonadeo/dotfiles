@@ -28,6 +28,8 @@
 
             "config.nu".content = # nu
               ''
+                $env.EDITOR = "nvim"
+
                 $env.config.edit_mode = "vi"
                 # Remove vi mode indicator from prompt
                 $env.PROMPT_INDICATOR_VI_INSERT = {||}

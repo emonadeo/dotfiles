@@ -48,17 +48,8 @@
         window-padding-y = 16;
         window-inherit-working-directory = true;
         window-decoration = pkgs.stdenv.hostPlatform.isDarwin;
-        # TODO: Add select and copy actions once Ghostty supports it.
+        # TODO: Add keybinds once Ghostty supports select and copy actions.
         # See <https://github.com/ghostty-org/ghostty/discussions/3708>
-        keybind = [
-          "ctrl+j=scroll_page_lines:1"
-          "ctrl+k=scroll_page_lines:-1"
-          "ctrl+d=scroll_page_down"
-          "ctrl+u=scroll_page_up"
-          "ctrl+slash=start_search"
-          "ctrl+n=navigate_search:next"
-          "ctrl+shift+n=navigate_search:previous"
-        ];
       };
       # Generate config file from `settings`
       configFile = toString (
