@@ -1,4 +1,4 @@
-{ inputs, getSystem, ... }:
+{ inputs, ... }:
 {
   perSystem =
     { pkgs, ... }:

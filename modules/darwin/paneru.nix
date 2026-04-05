@@ -3,13 +3,10 @@
   flake.darwinModules.paneru =
     { pkgs, ... }:
     {
-      environment.launchAgents.paneru = {
-        text = lib.generators.toPlist { escape = true; } {
-          ProgramArguments = lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.paneru;
-          KeepAlive = {
-            Crashed = true;
-            SuccessfulExit = false;
-          };
+      launchd.agents.paneru = {
+        command = lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.paneru;
+        serviceConfig = {
+          KeepAlive = true;
           RunAtLoad = true;
         };
       };
