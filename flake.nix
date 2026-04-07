@@ -21,10 +21,6 @@
       url = "github:sahaj-b/ghostty-cursor-shaders";
       flake = false;
     };
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -61,8 +57,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     paneru = {
-      url = "github:karinushka/paneru";
+      url = "github:emonadeo/paneru";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nix-darwin.follows = "nix-darwin";
     };
     yazi-flavors = {
       url = "github:yazi-rs/flavors";

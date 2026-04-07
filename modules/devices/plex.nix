@@ -33,6 +33,8 @@
         ]
       );
 
+      system.primaryUser = self.lib.user.handle;
+
       system.stateVersion = 6;
     };
 }
