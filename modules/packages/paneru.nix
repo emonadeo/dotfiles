@@ -31,6 +31,7 @@
           # Toggles the window for management. If unmanaged, the window will be "floating".
           window_manage = "ctrl + alt - t";
           # Stacks and unstacks a window into the left column. Each window gets a 1/N of the height.
+          # BUG: `[` and `]` bindings not working
           window_stack = "ctrl + alt - [";
           window_unstack = "ctrl + alt - ]";
           # Quits the window manager.
@@ -43,8 +44,9 @@
         };
         # Prevent active border from being cut off
         padding = {
-          left = 1;
-          right = 1;
+          left = 16;
+          right = 16;
+          bottom = 16;
         };
       };
     }
