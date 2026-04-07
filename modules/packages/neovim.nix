@@ -9,116 +9,9 @@
     { pkgs, ... }:
     let
       self' = (getSystem pkgs.stdenv.hostPlatform.system);
-      # TODO: Commented grammars do not provide `highlights.scm`
-      treeSitterGrammars = [
-        "astro"
-        "bash"
-        "c"
-        "clojure"
-        "cpp"
-        "css"
-        # "csv"
-        "cuda"
-        "cue"
-        "dart"
-        "dockerfile"
-        # "editorconfig"
-        "elixir"
-        "erlang"
-        # "gitignore"
-        "gleam"
-        "glsl"
-        "go"
-        "graphql"
-        "groovy"
-        # "hcl"
-        "html"
-        "ini"
-        "java"
-        "javascript"
-        "jsdoc"
-        "json"
-        "json5"
-        # "just"
-        "kdl"
-        "kotlin"
-        # "latex"
-        "lua"
-        # "luadoc"
-        "markdown"
-        # "markdown_inline"
-        "meson"
-        "nginx"
-        "nickel"
-        # "ninja"
-        "nix"
-        "nu"
-        # "ocaml"
-        "odin"
-        # "php"
-        "python"
-        "query"
-        "regex"
-        "rust"
-        "scss"
-        "svelte"
-        "swift"
-        "toml"
-        # "tsx"
-        # "typescript"
-        "typespec"
-        "typst"
-        "vala"
-        "vim"
-        # "vimdoc"
-        # "vue"
-        "wgsl"
-        "xml"
-        "yaml"
-        "zig"
-      ];
     in
     {
       package = pkgs.neovim-unwrapped;
-      prefixVar = [
-        [
-          "XDG_CONFIG_DIRS"
-          ":"
-          (pkgs.symlinkJoin {
-            name = "nvim-treesitter-parsers";
-            postBuild = # sh
-              ''
-                mkdir -p $out/nvim
-                mv $out/parser $out/nvim/parser
-              '';
-            paths = (map (lang: pkgs.vimPlugins.nvim-treesitter-parsers.${lang}) treeSitterGrammars);
-          })
-        ]
-        [
-          "XDG_CONFIG_DIRS"
-          ":"
-          (pkgs.symlinkJoin {
-            name = "nvim-treesitter-queries";
-            paths = (
-              map (
-                lang:
-                pkgs.runCommand "nvim-treesitter-queries-${lang}" { } ''
-                  mkdir -p $out/nvim/queries/${lang}
-                  if [ -d "${pkgs.tree-sitter-grammars."tree-sitter-${lang}"}/queries/${lang}" ]; then
-                    cp ${
-                      pkgs.tree-sitter-grammars."tree-sitter-${lang}"
-                    }/queries/${lang}/highlights.scm $out/nvim/queries/${lang}/highlights.scm
-                  else
-                    cp ${
-                      pkgs.tree-sitter-grammars."tree-sitter-${lang}"
-                    }/queries/highlights.scm $out/nvim/queries/${lang}/highlights.scm
-                  fi
-                ''
-              ) treeSitterGrammars
-            );
-          })
-        ]
-      ];
       extraPackages = [
         pkgs.astro-language-server
         pkgs.ccls # C/C++
@@ -136,6 +29,7 @@
         pkgs.stylua # Lua
         pkgs.svelte-language-server
         pkgs.tombi # TOML
+        pkgs.tree-sitter
         pkgs.vscode-langservers-extracted
         pkgs.vtsls # TypeScript
         pkgs.vue-language-server
