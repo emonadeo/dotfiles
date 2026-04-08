@@ -3,7 +3,7 @@
 {
   inputs,
   self,
-  withSystem,
+  getSystem,
   ...
 }:
 {
@@ -16,13 +16,12 @@
     }:
     let
       mkTheme = themes: "light:${themes.light},dark:${themes.dark}";
+      config = getSystem pkgs.stdenv.hostPlatform.system;
       # Only use a single font, since Ghostty does not support font-specific font features
       # See <https://github.com/ghostty-org/ghostty/issues/11464>
       # and <https://ghostty.org/docs/config/reference#font-feature>
       # TODO: Include fallbacks once supported
-      font = withSystem pkgs.stdenv.hostPlatform.system (
-        { config, ... }: (builtins.elemAt config.fonts.monospace 0)
-      );
+      font = builtins.elemAt config.fonts.monospace 0;
       settings = {
         adjust-underline-thickness = 1;
         adjust-overline-thickness = 1;

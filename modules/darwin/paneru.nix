@@ -1,13 +1,19 @@
-{ inputs, self, ... }:
 {
-  flake.darwinModules.paneru =
-    { pkgs, ... }:
+  inputs,
+  moduleWithSystem,
+  ...
+}:
+{
+  flake.darwinModules.paneru = moduleWithSystem (
+    _perSystem@{ self', ... }:
+    _darwin@{ pkgs, ... }:
     {
       imports = [ inputs.paneru.darwinModules.paneru ];
 
       services.paneru = {
         enable = true;
-        package = self.packages.${pkgs.stdenv.hostPlatform.system}.paneru;
+        package = self'.packages.paneru;
       };
-    };
+    }
+  );
 }

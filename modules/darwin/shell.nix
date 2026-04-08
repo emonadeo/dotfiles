@@ -1,7 +1,8 @@
-{ getSystem, ... }:
+{ moduleWithSystem, ... }:
 {
-  flake.darwinModules.shell =
-    { pkgs, ... }:
+  flake.darwinModules.shell = moduleWithSystem (
+    _perSystem@{ self', ... }:
+    _darwin@{ pkgs, ... }:
     {
       # Bash/Zsh script that spawns Nushell if current shell has no other Nushell ancestors.
       #
@@ -15,8 +16,9 @@
             else
                 LOGIN_OPTION='''
             fi
-            exec "${(getSystem pkgs.stdenv.hostPlatform.system).packages.nushell}/bin/nu" "$LOGIN_OPTION"
+            exec "${self'.packages.nushell}/bin/nu" "$LOGIN_OPTION"
           fi
         '';
-    };
+    }
+  );
 }

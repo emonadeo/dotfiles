@@ -1,7 +1,7 @@
 {
   inputs,
   self,
-  withSystem,
+  moduleWithSystem,
   ...
 }:
 {
@@ -9,11 +9,12 @@
     modules = [ self.darwinModules.plex ];
   };
 
-  flake.darwinModules.plex =
-    { pkgs, ... }:
+  flake.darwinModules.plex = moduleWithSystem (
+    _perSystem@{ self', ... }:
+    _darwin@{ pkgs, ... }:
     {
       imports = [
-        self.darwinModules.fonts
+        self.darwinModules.ghostty
         self.darwinModules.paneru
         self.darwinModules.shell
         self.sharedModules.nix
@@ -22,19 +23,17 @@
 
       nixpkgs.hostPlatform = "aarch64-darwin";
 
-      environment.systemPackages = withSystem pkgs.stdenv.hostPlatform.system (
-        { self', ... }:
-        [
-          self'.packages.ghostty
-          self'.packages.helium
-          self'.packages.mpv
-          self'.packages.spotify
-          self'.packages.vesktop
-        ]
-      );
+      environment.systemPackages = [
+        self'.packages.helium
+        self'.packages.mpv
+        self'.packages.spotify
+        self'.packages.vesktop
+      ];
 
+      # TODO: Remove once obsolete
       system.primaryUser = self.lib.user.handle;
 
       system.stateVersion = 6;
-    };
+    }
+  );
 }
