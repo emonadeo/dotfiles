@@ -57,7 +57,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     paneru = {
-      url = "github:emonadeo/paneru";
+      url = "github:karinushka/paneru";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nix-darwin.follows = "nix-darwin";
     };
