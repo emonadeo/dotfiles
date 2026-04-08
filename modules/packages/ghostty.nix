@@ -17,11 +17,6 @@
     let
       mkTheme = themes: "light:${themes.light},dark:${themes.dark}";
       config = getSystem pkgs.stdenv.hostPlatform.system;
-      # Only use a single font, since Ghostty does not support font-specific font features
-      # See <https://github.com/ghostty-org/ghostty/issues/11464>
-      # and <https://ghostty.org/docs/config/reference#font-feature>
-      # TODO: Include fallbacks once supported
-      font = builtins.elemAt config.fonts.monospace 0;
       settings = {
         adjust-underline-thickness = 1;
         adjust-overline-thickness = 1;
@@ -35,11 +30,13 @@
           dark = "${inputs.catppuccin-ghostty}/themes/catppuccin-mocha.conf";
           light = "${inputs.catppuccin-ghostty}/themes/catppuccin-latte.conf";
         };
-        font-family = [
-          "" # Override config at `$XDG_CONFIG_DIR/ghostty/config.ghostty`
-          font.name
-        ];
-        font-feature = font.features.ghostty or null;
+        # Add "" to override config at `$XDG_CONFIG_DIR/ghostty/config.ghostty` instead of adding as fallbacks
+        font-family = [ "" ] ++ (map (font: font.name) config.fonts.monospace);
+        # TODO: Add font-specific font features once ghostty supports it.
+        # See <https://github.com/ghostty-org/ghostty/issues/11464>
+        # and <https://ghostty.org/docs/config/reference#font-feature>.
+        # For now use font features of the topmost font.
+        font-feature = (builtins.elemAt config.fonts.monospace 0).features.ghostty or null;
         font-size = 13.5;
         macos-titlebar-style = "hidden";
         window-padding-balance = true;
@@ -59,7 +56,7 @@
       # TODO: Replace with `pkgs.ghostty` once available for darwin
       package = if pkgs.stdenv.hostPlatform.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
       env.FONTCONFIG_FILE = lib.mkIf pkgs.stdenv.hostPlatform.isLinux (
-        pkgs.makeFontsConf { fontDirectories = [ font.package ]; }
+        pkgs.makeFontsConf { fontDirectories = map (font: font.package) config.fonts.monospace; }
       );
       filesToPatch = lib.mkIf pkgs.stdenv.hostPlatform.isLinux [
         "share/dbus-1/services/com.mitchellh.ghostty.service"
