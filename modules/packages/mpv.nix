@@ -39,10 +39,10 @@ in
             profile = "high-quality";
             ytdl-format = "bestvideo+bestaudio";
           };
-          scripts = [
-            pkgs.mpvScripts.uosc
-            (lib.mkIf pkgs.stdenv.hostPlatform.isLinux pkgs.mpvScripts.mpris)
-          ];
+          script = {
+            uosc.path = pkgs.mpvScripts.uosc;
+            mpris.path = (lib.mkIf pkgs.stdenv.hostPlatform.isLinux pkgs.mpvScripts.mpris);
+          };
         }
       );
     };

@@ -8,10 +8,10 @@
     { inputs', pkgs, ... }:
     pkgs.stdenvNoCC.mkDerivation (finalAttrs: {
       pname = "helium";
-      version = "0.10.7.1";
+      version = "0.10.9.1";
       src = pkgs.fetchurl {
         url = "https://github.com/imputnet/helium-macos/releases/download/${finalAttrs.version}/helium_${finalAttrs.version}_arm64-macos.dmg";
-        hash = "sha256-zQUIP9LoZnjPKyvxPAOmyOsNp/cr0EBSxX0YEdmJO58=";
+        hash = "sha256-qLsd9TNAri8ytp2LyRiRQmCxrvC60r/JYQZCpdEP8es=";
       };
       nativeBuildInputs = [
         pkgs._7zz

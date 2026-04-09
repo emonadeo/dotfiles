@@ -24,6 +24,7 @@
       nixpkgs.hostPlatform = "aarch64-darwin";
 
       environment.systemPackages = [
+        pkgs.element-desktop
         self'.packages.helium
         self'.packages.mpv
         self'.packages.spotify
