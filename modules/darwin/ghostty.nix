@@ -1,14 +1,11 @@
-{
-  moduleWithSystem,
-  ...
-}:
+{ moduleWithSystem, ... }:
 {
   flake.darwinModules.ghostty = moduleWithSystem (
     _perSystem@{ config, self', ... }:
     _darwin@{ pkgs, ... }:
     {
       environment.systemPackages = [
-        config.packages.ghostty
+        self'.packages.ghostty
       ];
 
       fonts.packages = map (font: font.package) config.fonts.monospace;

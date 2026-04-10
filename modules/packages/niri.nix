@@ -1,12 +1,3 @@
-# Undocumented flag `-l`.
-# See <https://github.com/YaLTeR/niri/issues/1914>
-# TODO: Launch niri in tty1
-#   programs.zsh.profileExtra = lib.mkIf config.programs.niri.enable ''
-#     if [ "$(tty)" = "/dev/tty1" ]; then
-#       exec niri-session -l
-#     fi
-#   '';
-
 {
   inputs,
   lib,
@@ -31,10 +22,13 @@
         # TODO: Should `xdg-utils` go here?
         pkgs.xdg-utils
         self'.packages.rofi
-        self'.packages.ghostty-with-env
+        self'.packages.ghostty
       ];
       env = {
-        EDITOR = self'.packages.neovim;
+        EDITOR = "${self'.packages.neovim}/bin/neovim";
+        GDK_SCALE = "1.667";
+        NIXOS_OZONE_WL = "1";
+        QT_QPA_PLATFORM = "wayland";
         XCURSOR_PATH = "${self'.packages.tahoe-cursor}/share/icons";
       };
       settings = {
@@ -226,20 +220,21 @@
             matches = [ { namespace = "^wallpaper$"; } ];
             place-within-backdrop = true;
           }
-          {
-            matches = [ { namespace = "^rofi$"; } ];
-            shadow = {
-              on = null;
-              spread = 1024;
-              offset = {
-                _attrs = {
-                  x = 0;
-                  y = 0;
-                };
-              };
-            };
-            geometry-corner-radius = 13;
-          }
+          # BUG: Causes build failure
+          # {
+          #   matches = [ { namespace = "^rofi$"; } ];
+          #   shadow = {
+          #     on = null;
+          #     spread = 1024;
+          #     offset = {
+          #       _attrs = {
+          #         x = 0;
+          #         y = 0;
+          #       };
+          #     };
+          #   };
+          #   geometry-corner-radius = 13;
+          # }
         ];
         window-rules = [
           {

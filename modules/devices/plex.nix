@@ -1,7 +1,7 @@
 {
   inputs,
-  self,
   moduleWithSystem,
+  self,
   ...
 }:
 {

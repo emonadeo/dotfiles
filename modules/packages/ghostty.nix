@@ -21,7 +21,6 @@
         adjust-underline-thickness = 1;
         adjust-overline-thickness = 1;
         adjust-strikethrough-thickness = 1;
-        custom-shader-animation = false;
         custom-shader = [
           "${inputs.ghostty-cursor-shaders}/cursor_warp.glsl"
           "${inputs.ghostty-cursor-shaders}/sonic_boom_cursor.glsl"

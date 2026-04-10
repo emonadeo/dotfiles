@@ -1,6 +1,7 @@
 {
   getSystem,
   inputs,
+  lib,
   self,
   ...
 }:
@@ -12,6 +13,8 @@
     in
     {
       package = pkgs.neovim-unwrapped;
+      # Needed by `nvim-treesitter`
+      env.CC = lib.getExe pkgs.stdenv.cc;
       extraPackages = [
         pkgs.astro-language-server
         pkgs.ccls # C/C++

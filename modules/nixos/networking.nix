@@ -8,7 +8,6 @@
           enable = true;
           plugins = [ pkgs.networkmanager-openvpn ];
         };
-        useDHCP = true;
         interfaces = {
           enp11s0.useDHCP = true;
           wlp10s0.useDHCP = true;

@@ -1,9 +1,10 @@
 { moduleWithSystem, ... }:
 {
   flake.darwinModules.shell = moduleWithSystem (
-    _perSystem@{ self', ... }:
+    _perSystem@{ config, self', ... }:
     _darwin@{ pkgs, ... }:
     {
+
       # Bash/Zsh script that spawns Nushell if current shell has no other Nushell ancestors.
       #
       # See <https://github.com/nix-darwin/nix-darwin/issues/1028#issuecomment-2720875486>

@@ -162,7 +162,7 @@
     in
     {
       fonts = {
-        emoji = [ apple-emoji ];
+        emoji = lib.optionals pkgs.stdenv.hostPlatform.isLinux [ apple-emoji ];
         monospace = [
           maple-mono
           symbols-nerd-font

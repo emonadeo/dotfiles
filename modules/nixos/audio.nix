@@ -2,6 +2,10 @@
   flake.nixosModules.audio =
     { pkgs, ... }:
     {
+      # Daemon for playerctld to track currently active media player
+      services.playerctld.enable = true;
+
+      # Audio server
       services.pipewire = {
         enable = true;
         alsa = {

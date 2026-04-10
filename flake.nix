@@ -10,7 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     apple-emoji-ttf = {
-      url = "github:samuelngs/apple-emoji-ttf";
+      url = "github:samuelngs/apple-emoji-ttf/v1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin-ghostty = {
@@ -70,6 +70,10 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # home-manager = {
+    #   url = "github:nix-community/home-manager";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs =

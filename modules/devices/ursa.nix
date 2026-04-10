@@ -1,11 +1,26 @@
-{ inputs, self, ... }:
+# TODO: Launch niri in tty1 (or using systemd? idk what the "proper" way is)
+# programs.zsh.profileExtra = lib.mkIf config.programs.niri.enable ''
+#   if [ "$(tty)" = "/dev/tty1" ]; then
+#     # Undocumented flag `-l`.
+#     # See <https://github.com/YaLTeR/niri/issues/1914>
+#     exec niri-session -l
+#   fi
+# '';
+
+{
+  inputs,
+  moduleWithSystem,
+  self,
+  ...
+}:
 {
   flake.nixosConfigurations.ursa = inputs.nixpkgs.lib.nixosSystem {
     modules = [ self.nixosModules.ursa ];
   };
 
-  flake.nixosModules.ursa =
-    {
+  flake.nixosModules.ursa = moduleWithSystem (
+    _perSystem@{ self', ... }:
+    _nixos@{
       config,
       lib,
       pkgs,
@@ -13,25 +28,43 @@
     }:
     {
       imports = [
+        # inputs.home-manager.nixosModules.home-manager
+        inputs.nixos-hardware.nixosModules.common-pc-ssd
+        inputs.nixos-hardware.nixosModules.common-hidpi
+        inputs.nixos-hardware.nixosModules.common-cpu-amd
+        inputs.nixos-hardware.nixosModules.common-gpu-amd
         self.nixosModules.audio
         self.nixosModules.fonts
         self.nixosModules.gaming
         self.nixosModules.networking
         self.nixosModules.shell
+        self.nixosModules.terminal
+        self.nixosModules.xdg
         self.sharedModules.nix
         self.sharedModules.time
       ];
 
-      nixpkgs = {
-        hostPlatform = "x86_64-linux";
-        config = {
-          cudaSupport = false;
-          rocmSupport = true;
-          allowUnfree = true;
-        };
-      };
+      # home-manager = {
+      #   useGlobalPkgs = true;
+      #   useUserPackages = true;
+      #   users.emonadeo = {
+      #     home.username = "emonadeo";
+      #     home.homeDirectory = "/home/emonadeo";
+      #     home.stateVersion = "25.11";
+      #   };
+      # };
 
-      hardware.cpu.amd.updateMicrocode = config.hardware.enableRedistributableFirmware;
+      nixpkgs.hostPlatform = "x86_64-linux";
+
+      environment.systemPackages = [
+        pkgs.element-desktop
+        self'.packages.helium
+        self'.packages.mpv
+        # TODO: Remove niri, run at start instead
+        self'.packages.niri
+        self'.packages.spotify
+        self'.packages.vesktop
+      ];
 
       boot = {
         initrd = {
@@ -54,7 +87,7 @@
             enable = true;
             # Limit boot configurations to prevent /boot from filling up
             # See <https://github.com/NixOS/nixpkgs/issues/23926>
-            configurationLimit = 16;
+            configurationLimit = 32;
           };
           efi.canTouchEfiVariables = true;
         };
@@ -87,17 +120,6 @@
 
       # Define a user account. Don't forget to set a password with ‘passwd’.
       users = {
-        # Use Zsh that spawns nushell as login shell.
-        #
-        # Ideally I would use nushell as my login shell, however this may cause
-        # problems because nushell is not POSIX-compliant.
-        #
-        # See <https://github.com/NixOS/nixpkgs/issues/193880#issuecomment-2639344679>.
-        # and <https://wiki.nixos.org/wiki/Fish#Setting_fish_as_default_shell>.
-        # This also works around <https://github.com/nix-community/home-manager/issues/4313>.
-        defaultUserShell = inputs.wrappers-b.zsh.wrap {
-          zshrc.content = self.lib.shellInitNu;
-        };
         users.${self.lib.user.handle} = {
           isNormalUser = true;
           description = self.lib.user.name;
@@ -129,6 +151,8 @@
           powerOnBoot = true;
         };
         keyboard.qmk.enable = true;
+        enableRedistributableFirmware = true;
+        cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
       };
 
       # This option defines the first version of NixOS you have installed on this particular machine,
@@ -149,5 +173,6 @@
       #
       # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
       system.stateVersion = "25.05"; # Did you read the comment?
-    };
+    }
+  );
 }
