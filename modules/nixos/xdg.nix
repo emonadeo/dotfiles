@@ -4,6 +4,19 @@
     _perSystem@{ self', ... }:
     _nixos@{ pkgs, ... }:
     {
+      programs.dconf = {
+        enable = true;
+        profiles.user.databases = [
+          {
+            settings = {
+              "org/gnome/desktop/interface" = {
+                color-scheme = "prefer-dark";
+              };
+            };
+          }
+        ];
+      };
+
       xdg = {
         mime = {
           enable = true;
@@ -24,8 +37,6 @@
                 "gnome"
               ];
               "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
-              # TODO: Find out whether `color-scheme` can be set to be
-              # constantly `dark` using `xdg-desktop-portal-gtk` or others.
             };
           };
         };

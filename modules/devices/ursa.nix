@@ -30,7 +30,6 @@
       imports = [
         # inputs.home-manager.nixosModules.home-manager
         inputs.nixos-hardware.nixosModules.common-pc-ssd
-        inputs.nixos-hardware.nixosModules.common-hidpi
         inputs.nixos-hardware.nixosModules.common-cpu-amd
         inputs.nixos-hardware.nixosModules.common-gpu-amd
         self.nixosModules.audio
@@ -129,8 +128,6 @@
           ];
         };
       };
-
-      programs.dconf.enable = true;
 
       # SSD maintenance
       services.fstrim.enable = true;

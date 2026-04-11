@@ -13,8 +13,7 @@
     in
     {
       package = pkgs.neovim-unwrapped;
-      # Needed by `nvim-treesitter`
-      env.CC = lib.getExe pkgs.stdenv.cc;
+      env.CC = lib.getExe pkgs.stdenv.cc; # Needed by `nvim-treesitter`
       extraPackages = [
         pkgs.astro-language-server
         pkgs.ccls # C/C++
@@ -22,17 +21,16 @@
         pkgs.emmet-language-server
         pkgs.lua-language-server
         pkgs.jdt-language-server # Java
-        # TODO: Replace with self'.packages.jujutsu
-        pkgs.jujutsu
-        pkgs.nil # Nix LSP
+        pkgs.nil # Nix
         pkgs.nixfmt
         pkgs.ripgrep # Needed by `snacks.picker`
+        pkgs.rumdl # Markdown
         pkgs.rust-analyzer
         pkgs.rustfmt
         pkgs.stylua # Lua
         pkgs.svelte-language-server
         pkgs.tombi # TOML
-        pkgs.tree-sitter
+        pkgs.tree-sitter # Needed by `nvim-treesitter`
         pkgs.vscode-langservers-extracted
         pkgs.vtsls # TypeScript
         pkgs.vue-language-server
