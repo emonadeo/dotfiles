@@ -56,7 +56,7 @@
       nixpkgs.hostPlatform = "x86_64-linux";
 
       environment.systemPackages = [
-        pkgs.element-desktop
+        pkgs.cinny-desktop
         self'.packages.helium
         self'.packages.mpv
         # TODO: Remove niri, run at start instead
