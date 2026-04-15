@@ -29,6 +29,7 @@
         self'.packages.mpv
         self'.packages.spotify
         self'.packages.vesktop
+        self'.packages.prismlauncher
       ];
 
       # TODO: Remove once obsolete
