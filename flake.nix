@@ -43,9 +43,8 @@
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
-    # NUR repository that provides `helium`.
-    ev357 = {
-      url = "github:Ev357/nur-packages";
+    nur = {
+      url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nvim = {

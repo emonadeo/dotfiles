@@ -32,6 +32,9 @@
   );
 
   flake.packages."x86_64-linux".helium = withSystem "x86_64-linux" (
-    { inputs', ... }: inputs'.ev357.packages.helium
+    { pkgs, ... }:
+    pkgs.nur.repos.Ev357.helium.override {
+      enableWideVine = true;
+    }
   );
 }
