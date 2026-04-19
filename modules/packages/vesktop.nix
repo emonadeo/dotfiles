@@ -26,6 +26,9 @@
       };
     in
     {
+      # BUG: Patched vesktop fork to split settings from state not working properly
+      # Quick solution: Go back to upstream vesktop and symlink settings into e.g. `/etc/vesktop`
+      # Pretty solution: Contribute to vesktop to make readonly settings pointing to `/nix/store` possible.
       # TODO: Extract into wrapper module
       packages.vesktop = inputs.wrappers-b.lib.wrapPackage {
         inherit pkgs;

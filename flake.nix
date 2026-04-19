@@ -41,7 +41,7 @@
       url = "github:NixOS/nixos-hardware";
     };
     nixpkgs = {
-      url = "github:nixos/nixpkgs?rev=4eb3c802539f72fe7538cb049c65ae2cb27a45e6";
+      url = "github:nixos/nixpkgs/nixos-unstable";
     };
     nur = {
       url = "github:nix-community/NUR";

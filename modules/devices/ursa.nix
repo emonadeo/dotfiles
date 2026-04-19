@@ -41,7 +41,6 @@
         self.nixosModules.xdg
         self.sharedModules.nix
         self.sharedModules.time
-        self.sharedModules.vesktop
       ];
 
       # home-manager = {
@@ -58,6 +57,7 @@
 
       environment.systemPackages = [
         pkgs.cinny-desktop
+        pkgs.telegram-desktop
         self'.packages.helium
         self'.packages.mpv
         # TODO: Remove niri, run at start instead
