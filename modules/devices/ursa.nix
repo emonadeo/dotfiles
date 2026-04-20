@@ -41,6 +41,7 @@
         self.nixosModules.xdg
         self.sharedModules.nix
         self.sharedModules.time
+        self.sharedModules.vesktop
       ];
 
       # home-manager = {

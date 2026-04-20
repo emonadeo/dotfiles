@@ -31,12 +31,7 @@
         inherit pkgs;
         package = pkgs.vesktop.overrideAttrs (
           finalAttrs: old: {
-            src = pkgs.fetchFromGitHub {
-              owner = "emonadeo";
-              repo = "Vesktop";
-              rev = "feat/settings-env";
-              hash = "sha256-Ho2LiLMtkrYKDRDfVbj+ghmZiiE/ckt/evF0HxE8S/4=";
-            };
+            src = inputs.vesktop;
           }
         );
         env.VESKTOP_SETTINGS_DIR =

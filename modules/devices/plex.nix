@@ -28,9 +28,9 @@
         pkgs.cinny-desktop
         self'.packages.helium
         self'.packages.mpv
+        self'.packages.prismlauncher
         self'.packages.spotify
         self'.packages.vesktop
-        self'.packages.prismlauncher
       ];
 
       # TODO: Remove once obsolete
