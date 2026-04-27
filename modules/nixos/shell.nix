@@ -20,6 +20,16 @@
             exec "${self'.packages.nushell}/bin/nu" "$LOGIN_OPTION"
           fi
         '';
+
+      # Start niri at login.
+      # See <https://wiki.archlinux.org/title/Xinit#Autostart_X_at_login>
+      # and <https://bbs.archlinux.org/viewtopic.php?id=295903>
+      programs.bash.loginShellInit = # sh
+        ''
+          if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
+            exec ${self'.packages.niri}/bin/niri-session -l
+          fi
+        '';
     }
   );
 }

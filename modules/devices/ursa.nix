@@ -1,12 +1,3 @@
-# TODO: Launch niri in tty1 (or using systemd? idk what the "proper" way is)
-# programs.zsh.profileExtra = lib.mkIf config.programs.niri.enable ''
-#   if [ "$(tty)" = "/dev/tty1" ]; then
-#     # Undocumented flag `-l`.
-#     # See <https://github.com/YaLTeR/niri/issues/1914>
-#     exec niri-session -l
-#   fi
-# '';
-
 {
   inputs,
   moduleWithSystem,
@@ -43,16 +34,6 @@
         self.sharedModules.time
       ];
 
-      # home-manager = {
-      #   useGlobalPkgs = true;
-      #   useUserPackages = true;
-      #   users.emonadeo = {
-      #     home.username = "emonadeo";
-      #     home.homeDirectory = "/home/emonadeo";
-      #     home.stateVersion = "25.11";
-      #   };
-      # };
-
       nixpkgs.hostPlatform = "x86_64-linux";
 
       environment.systemPackages = [
@@ -60,7 +41,6 @@
         pkgs.telegram-desktop
         self'.packages.helium
         self'.packages.mpv
-        # TODO: Remove niri, run at start instead
         self'.packages.niri
         self'.packages.spotify
         self'.packages.vesktop

@@ -45,8 +45,8 @@
             accel-profile = "flat";
           };
           touchpad = {
-            natural-scroll = null;
-            tap = null;
+            natural-scroll = _: { };
+            tap = _: { };
           };
         };
 
@@ -55,7 +55,7 @@
             scale = 1.667;
           };
           "HDMI-A-1" = {
-            focus-at-startup = null;
+            focus-at-startup = _: { };
             scale = 1.667;
           };
         };
@@ -63,9 +63,9 @@
         layout = {
           gaps = 13.0;
           background-color = "transparent";
-          focus-ring.off = null;
+          focus-ring.off = _: { };
           border = {
-            on = null;
+            on = _: { };
             width = 3;
             inactive-color = "#ffffff44";
             active-color = "#ffffff";
@@ -82,7 +82,7 @@
 
         overview = {
           workspace-shadow = {
-            off = null;
+            off = _: { };
           };
         };
 
@@ -99,39 +99,39 @@
         };
         # Based on <https://yalter.github.io/niri/Getting-Started.html#main-default-hotkeys>
         binds = {
-          "Mod+Q".close-window = null;
-          "Mod+Shift+Q".quit = {
-            _attrs = {
+          "Mod+Q".close-window = _: { };
+          "Mod+Shift+Q".quit = _: {
+            props = {
               skip-confirmation = false;
             };
           };
 
-          "Mod+R".switch-preset-column-width = null;
-          "Mod+Shift+R".switch-preset-window-height = null;
-          "Mod+C".center-column = null;
+          "Mod+R".switch-preset-column-width = _: { };
+          "Mod+Shift+R".switch-preset-window-height = _: { };
+          "Mod+C".center-column = _: { };
           "Mod+Minus".set-column-width = "+10%";
           "Mod+Equal".set-column-width = "-10%";
           "Mod+Shift+Minus".set-window-height = "+10%";
           "Mod+Shift+Equal".set-window-height = "-10%";
-          "Mod+F".maximize-column = null;
-          "Mod+Shift+F".fullscreen-window = null;
-          "Mod+Comma".consume-window-into-column = null;
-          "Mod+Period".expel-window-from-column = null;
-          "Mod+BracketLeft".consume-or-expel-window-left = null;
-          "Mod+BracketRight".consume-or-expel-window-right = null;
+          "Mod+F".maximize-column = _: { };
+          "Mod+Shift+F".fullscreen-window = _: { };
+          "Mod+Comma".consume-window-into-column = _: { };
+          "Mod+Period".expel-window-from-column = _: { };
+          "Mod+BracketLeft".consume-or-expel-window-left = _: { };
+          "Mod+BracketRight".consume-or-expel-window-right = _: { };
 
-          "Mod+V".switch-focus-between-floating-and-tiling = null;
-          "Mod+Shift+V".toggle-window-floating = null;
+          "Mod+V".switch-focus-between-floating-and-tiling = _: { };
+          "Mod+Shift+V".toggle-window-floating = _: { };
 
           # FIXME: Syntactic sugar using `config.lib.niri.actions` is currently broken.
           # See <https://github.com/sodiboo/niri-flake/issues/1380>
-          "Mod+P".screenshot = {
-            _attrs = {
+          "Mod+P".screenshot = _: {
+            props = {
               show-pointer = true;
             };
           };
-          "Mod+Shift+P".screenshot-window = {
-            _attrs = {
+          "Mod+Shift+P".screenshot-window = _: {
+            props = {
               write-to-disk = false;
             };
           };
@@ -153,33 +153,33 @@
           "Mod+Shift+2".move-column-to-workspace = "secondary";
           "Mod+Shift+3".move-column-to-workspace = "tertiary";
 
-          "Mod+H".focus-column-or-monitor-left = null;
-          "Mod+Shift+H".move-column-left-or-to-monitor-left = null;
-          "Mod+J".focus-window-down-or-top = null;
-          "Mod+Shift+J".move-window-down = null;
-          "Mod+K".focus-window-up-or-bottom = null;
-          "Mod+Shift+K".move-window-up = null;
-          "Mod+L".focus-column-or-monitor-right = null;
-          "Mod+Shift+L".move-column-right-or-to-monitor-right = null;
+          "Mod+H".focus-column-or-monitor-left = _: { };
+          "Mod+Shift+H".move-column-left-or-to-monitor-left = _: { };
+          "Mod+J".focus-window-down-or-top = _: { };
+          "Mod+Shift+J".move-window-down = _: { };
+          "Mod+K".focus-window-up-or-bottom = _: { };
+          "Mod+Shift+K".move-window-up = _: { };
+          "Mod+L".focus-column-or-monitor-right = _: { };
+          "Mod+Shift+L".move-column-right-or-to-monitor-right = _: { };
 
-          "Mod+Left".focus-column-or-monitor-left = null;
-          "Mod+Shift+Left".focus-column-or-monitor-left = null;
-          "Mod+Down".focus-window-down-or-top = null;
-          "Mod+Shift+Down".focus-window-down-or-top = null;
-          "Mod+Up".focus-window-up-or-bottom = null;
-          "Mod+Shift+Up".focus-window-up-or-bottom = null;
-          "Mod+Right".focus-column-or-monitor-right = null;
-          "Mod+Shift+Right".focus-column-or-monitor-right = null;
+          "Mod+Left".focus-column-or-monitor-left = _: { };
+          "Mod+Shift+Left".focus-column-or-monitor-left = _: { };
+          "Mod+Down".focus-window-down-or-top = _: { };
+          "Mod+Shift+Down".focus-window-down-or-top = _: { };
+          "Mod+Up".focus-window-up-or-bottom = _: { };
+          "Mod+Shift+Up".focus-window-up-or-bottom = _: { };
+          "Mod+Right".focus-column-or-monitor-right = _: { };
+          "Mod+Shift+Right".focus-column-or-monitor-right = _: { };
 
-          "Mod+Home".focus-column-first = null;
-          "Mod+Shift+Home".move-column-to-first = null;
-          "Mod+End".focus-column-last = null;
-          "Mod+Shift+End".move-column-to-last = null;
+          "Mod+Home".focus-column-first = _: { };
+          "Mod+Shift+Home".move-column-to-first = _: { };
+          "Mod+End".focus-column-last = _: { };
+          "Mod+Shift+End".move-column-to-last = _: { };
 
-          "Mod+Prior".focus-monitor-previous = null;
-          "Mod+Shift+Prior".move-workspace-to-monitor-previous = null;
-          "Mod+Next".focus-monitor-next = null;
-          "Mod+Shift+Next".move-workspace-to-monitor-next = null;
+          "Mod+Prior".focus-monitor-previous = _: { };
+          "Mod+Shift+Prior".move-workspace-to-monitor-previous = _: { };
+          "Mod+Next".focus-monitor-next = _: { };
+          "Mod+Shift+Next".move-workspace-to-monitor-next = _: { };
 
           # Audio
           "XF86AudioRaiseVolume".spawn = [
@@ -224,10 +224,10 @@
           # {
           #   matches = [ { namespace = "^rofi$"; } ];
           #   shadow = {
-          #     on = null;
+          #     on = _: {};
           #     spread = 1024;
-          #     offset = {
-          #       _attrs = {
+          #     offset = _: {
+          #       props = {
           #         x = 0;
           #         y = 0;
           #       };
@@ -242,9 +242,9 @@
             geometry-corner-radius = 8;
           }
         ];
-        gestures.hot-corners.off = null;
+        gestures.hot-corners.off = _: { };
         # Do not save screenshots
-        screenshot-path = null;
+        screenshot-path = _: { };
         xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
         spawn-at-startup = [
