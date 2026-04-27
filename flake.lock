@@ -688,6 +688,22 @@
         "type": "github"
       }
     },
+    "nu_scripts": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1777288154,
+        "narHash": "sha256-ZoJweCXqXaGQr6QjWdqCHmdcAKkAWvhPE45d+EgjbtU=",
+        "owner": "nushell",
+        "repo": "nu_scripts",
+        "rev": "2a5e510ffd945c4e7244806d471664ab3acea11c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nushell",
+        "repo": "nu_scripts",
+        "type": "github"
+      }
+    },
     "nur": {
       "inputs": {
         "flake-parts": "flake-parts_3",
@@ -797,6 +813,7 @@
         "nix-rosetta-builder": "nix-rosetta-builder",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
+        "nu_scripts": "nu_scripts",
         "nur": "nur",
         "nvim": "nvim",
         "paneru": "paneru",

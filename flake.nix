@@ -47,6 +47,10 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nu_scripts = {
+      url = "github:nushell/nu_scripts";
+      flake = false;
+    };
     nvim = {
       url = "github:emonadeo/nvim";
       flake = false;
@@ -77,10 +81,6 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # home-manager = {
-    #   url = "github:nix-community/home-manager";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 
   outputs =
