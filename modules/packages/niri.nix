@@ -123,8 +123,6 @@
           "Mod+V".switch-focus-between-floating-and-tiling = _: { };
           "Mod+Shift+V".toggle-window-floating = _: { };
 
-          # FIXME: Syntactic sugar using `config.lib.niri.actions` is currently broken.
-          # See <https://github.com/sodiboo/niri-flake/issues/1380>
           "Mod+P".screenshot = _: {
             props = {
               show-pointer = true;
