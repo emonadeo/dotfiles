@@ -71,8 +71,14 @@
             active-color = "#ffffff";
           };
           default-column-width = {
-            proportion = 0.66667;
+            proportion = 0.75;
           };
+          preset-column-widths = [
+            { proportion = 0.375; }
+            { proportion = 0.5; }
+            { proportion = 0.625; }
+            { proportion = 0.75; }
+          ];
         };
 
         cursor = {
@@ -218,21 +224,20 @@
             matches = [ { namespace = "^wallpaper$"; } ];
             place-within-backdrop = true;
           }
-          # BUG: Causes build failure
-          # {
-          #   matches = [ { namespace = "^rofi$"; } ];
-          #   shadow = {
-          #     on = _: {};
-          #     spread = 1024;
-          #     offset = _: {
-          #       props = {
-          #         x = 0;
-          #         y = 0;
-          #       };
-          #     };
-          #   };
-          #   geometry-corner-radius = 13;
-          # }
+          {
+            matches = [ { namespace = "^rofi$"; } ];
+            shadow = {
+              on = _: { };
+              spread = 1024;
+              offset = _: {
+                props = {
+                  x = 0;
+                  y = 0;
+                };
+              };
+            };
+            geometry-corner-radius = 13;
+          }
         ];
         window-rules = [
           {

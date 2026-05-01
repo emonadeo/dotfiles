@@ -7,11 +7,9 @@
       environment.systemPackages = [
         pkgs.dolphin-emu # Gamecube/Wii Emulator
         pkgs.heroic # Epic Games
-        # BUG: Build failure due to openldap
-        # pkgs.lutris
+        pkgs.lutris
         pkgs.ryubing # Switch Emulator
-        # BUG: Build failure due to hash mismatch
-        # pkgs.shipwright # The Legend of Zelda: Ocarina of Time
+        pkgs.shipwright # The Legend of Zelda: Ocarina of Time
         self'.packages.prismlauncher # Minecraft
       ];
 

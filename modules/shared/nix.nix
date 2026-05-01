@@ -6,7 +6,10 @@
       _module.args.pkgs = import inputs.nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        overlays = [ inputs.nur.overlays.default ];
+        overlays = [
+          inputs.affinity.overlays.default
+          inputs.nur.overlays.default
+        ];
       };
     };
 

@@ -28,7 +28,8 @@
       '';
     })
   );
+
   flake.packages."x86_64-linux".affinity = withSystem "x86_64-linux" (
-    { inputs', ... }: inputs'.affinity.packages.default
+    { pkgs, ... }: pkgs.affinity-v3
   );
 }
