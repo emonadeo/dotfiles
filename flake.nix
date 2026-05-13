@@ -37,7 +37,7 @@
       url = "github:NixOS/nixos-hardware";
     };
     nixpkgs = {
-      url = "github:nixos/nixpkgs/nixos-unstable";
+      url = "github:nixos/nixpkgs/nixpkgs-unstable";
     };
     nur = {
       url = "github:nix-community/NUR";
@@ -71,11 +71,6 @@
     yazi-flavors = {
       url = "github:yazi-rs/flavors";
       flake = false;
-    };
-    # TODO: Migrate to official flake once available
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 

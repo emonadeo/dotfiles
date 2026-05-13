@@ -37,12 +37,6 @@
           # Quits the window manager.
           quit = "ctrl + alt - q";
         };
-        # NOTE: Experimental
-        decorations.active.border = {
-          enabled = true;
-          width = 2.0;
-        };
-        # Prevent active border from being cut off
         padding = {
           left = 16;
           right = 16;
