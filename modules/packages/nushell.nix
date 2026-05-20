@@ -16,7 +16,7 @@
           { config, ... }:
           {
             inherit pkgs;
-            extraPackages = [
+            runtimePkgs = [
               nix-index
               pkgs.imagemagick
               self'.packages.git

@@ -17,7 +17,7 @@
     in
     inputs.wrappers-b.wrappers.niri.wrap {
       inherit pkgs;
-      extraPackages = [
+      runtimePkgs = [
         pkgs.wl-clipboard
         # TODO: Should `xdg-utils` go here?
         pkgs.xdg-utils

@@ -14,7 +14,7 @@
     {
       package = pkgs.neovim-unwrapped;
       env.CC = lib.getExe pkgs.stdenv.cc; # Needed by `nvim-treesitter`
-      extraPackages = [
+      runtimePkgs = [
         pkgs.astro-language-server
         pkgs.ccls # C/C++
         pkgs.dprint # Universal formatter
