@@ -42,6 +42,10 @@
           right = 16;
           bottom = 16;
         };
+        decorations = {
+          workspace_menu_status = false;
+          workspace_popup_status = false;
+        };
       };
     }
   );
