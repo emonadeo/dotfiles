@@ -39,6 +39,7 @@
       environment.systemPackages = [
         pkgs.cinny-desktop
         pkgs.telegram-desktop
+        self'.packages.affinity
         self'.packages.helium
         self'.packages.mpv
         self'.packages.niri

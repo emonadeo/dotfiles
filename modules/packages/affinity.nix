@@ -3,15 +3,15 @@
   flake.packages."aarch64-darwin".affinity = withSystem "aarch64-darwin" (
     { inputs', pkgs, ... }:
     let
-      version = "3.1.0";
-      versionId = "4231";
+      version = "3.2.1";
+      versionId = "4425";
     in
     pkgs.stdenvNoCC.mkDerivation (finalAttrs: {
       pname = "affinity";
       inherit version;
       src = pkgs.fetchurl {
         url = "https://affinity-update.s3.amazonaws.com/mac2/retail/Affinity%20Affinity%20Store%20${versionId}.zip";
-        hash = "sha256-PVOeKjLY0tl3j1N1UZt6PnLvRuzJg5ZbyYyZ1uYsby4=";
+        hash = "sha256-ui1cNilv8xvzhBCUTyKNWxam5um+fV5ZYAV0aP9kS2k=";
       };
       nativeBuildInputs = [
         pkgs.makeBinaryWrapper

@@ -9,6 +9,7 @@
       url = "github:mrshmllow/affinity-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # BUG: v2 is broken
     apple-emoji-ttf = {
       url = "github:samuelngs/apple-emoji-ttf/v1";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,7 +23,7 @@
       flake = false;
     };
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/master";
+      url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-index-database = {
@@ -37,7 +38,7 @@
       url = "github:NixOS/nixos-hardware";
     };
     nixpkgs = {
-      url = "github:nixos/nixpkgs/nixpkgs-unstable";
+      url = "github:nixos/nixpkgs/nixos-26.05";
     };
     nur = {
       url = "github:nix-community/NUR";
@@ -91,10 +92,9 @@
 
         config = {
           systems = [
-            "aarch64-darwin"
-            "aarch64-linux"
-            "x86_64-darwin"
             "x86_64-linux"
+            "aarch64-linux"
+            "aarch64-darwin"
           ];
         };
       }
