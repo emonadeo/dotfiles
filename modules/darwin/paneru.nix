@@ -52,7 +52,7 @@
           decorations = {
             workspace_menu_status = false;
             workspace_popup_status = false;
-            inactive.dim.opacity = -0.25;
+            inactive.dim.opacity = -0.1;
           };
           # Disable swipe gestures
           swipe.gestures = {

@@ -16,6 +16,7 @@
       imports = [
         self.darwinModules.builder
         self.darwinModules.ghostty
+        self.darwinModules.music
         self.darwinModules.paneru
         self.darwinModules.shell
         self.sharedModules.nix
