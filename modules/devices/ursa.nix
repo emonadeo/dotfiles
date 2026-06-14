@@ -37,8 +37,9 @@
       nixpkgs.hostPlatform = "x86_64-linux";
 
       environment.systemPackages = [
-        pkgs.cinny-desktop
+        pkgs.cinny-desktop # Matrix client
         pkgs.telegram-desktop
+        pkgs.zulip-term
         self'.packages.affinity
         self'.packages.helium
         self'.packages.mpv

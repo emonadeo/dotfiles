@@ -26,7 +26,8 @@
       nixpkgs.hostPlatform = "aarch64-darwin";
 
       environment.systemPackages = [
-        pkgs.cinny-desktop
+        pkgs.cinny-desktop # Matrix client
+        pkgs.zulip-term
         self'.packages.affinity
         self'.packages.helium
         self'.packages.mpv
