@@ -42,6 +42,7 @@
         pkgs.zulip-term
         self'.packages.affinity
         self'.packages.helium
+        self'.packages.librewolf
         self'.packages.mpv
         self'.packages.niri
         self'.packages.spotify
