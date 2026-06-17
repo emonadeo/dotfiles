@@ -17,11 +17,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1781331278,
-        "narHash": "sha256-8IM7jJnnkhbKDbq39q4BS+DbE5CrsT4UhFtmcUDvVjE=",
+        "lastModified": 1781688715,
+        "narHash": "sha256-brhFyhDel7E6rmwViRF0yehhiLb5ICYRnznTwdA0+cA=",
         "owner": "mrshmllow",
         "repo": "affinity-nix",
-        "rev": "f112cdef13bbd13e1067e72804c18c7622357547",
+        "rev": "2c764c934bf7b772b43f8cfaed1fac474c7d2807",
         "type": "github"
       },
       "original": {
@@ -271,11 +271,11 @@
     "ghostty-cursor-shaders": {
       "flake": false,
       "locked": {
-        "lastModified": 1778252515,
-        "narHash": "sha256-G/UIr1bKnxn1AcHl/4FL/jou6b7M2VeREslYVELxdmw=",
+        "lastModified": 1781606293,
+        "narHash": "sha256-B7B6K7Ee4uJlW8zzLP3ILgddnbcIQyNimY+rVllzbR0=",
         "owner": "sahaj-b",
         "repo": "ghostty-cursor-shaders",
-        "rev": "06d4e90fb5410e9c4d0b3131584060adddf89406",
+        "rev": "0a274beac8b93ee6ce6b94402b7313a0417b8e38",
         "type": "github"
       },
       "original": {
@@ -422,11 +422,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1781168557,
-        "narHash": "sha256-LOnLQ2tpYF9gqIDDr3+j3DbpJJr/QCH6zPRT2GzEUOE=",
+        "lastModified": 1781622756,
+        "narHash": "sha256-JrPh4M6S7aPsEE9tOENuZrxC6o2szSLlK+t4+nLke9s=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "6358ff76821101c178e3ab4919a62799bfe3652e",
+        "rev": "08018c72174a4df5657f8d94178ac69fb9c243e5",
         "type": "github"
       },
       "original": {
@@ -613,11 +613,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781433410,
-        "narHash": "sha256-BK3T89sc/Bpn/yZ9LRKOyibyaqtul40wgbMAnH8LwoI=",
+        "lastModified": 1781687722,
+        "narHash": "sha256-AdU2jc4K5gjMtxwpOc/RhTZ/i0kWp9ol80ZYKDCLbj4=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "627888804ca62d9bb2c58510f59f616705b12dd3",
+        "rev": "c65f357c4e224de7d7912c2e2c2f8bdac7691b2b",
         "type": "github"
       },
       "original": {
@@ -762,11 +762,11 @@
     "spotx": {
       "flake": false,
       "locked": {
-        "lastModified": 1781180294,
-        "narHash": "sha256-kfv3sddMKsAmlUlQK2Y7vZd1RKFmvP/1F9FN5C8C5R4=",
+        "lastModified": 1781548851,
+        "narHash": "sha256-oolBCQA42bm7D/cAWleRD8a5xyPL69KPdsjIDy/6dds=",
         "owner": "SpotX-Official",
         "repo": "SpotX-Bash",
-        "rev": "5b5674949bfa0d53b9ee490ed662bd46f6997ba9",
+        "rev": "72e85be7cc25eba9d4e7c4e04e65120d353cff4b",
         "type": "github"
       },
       "original": {
