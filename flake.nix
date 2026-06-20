@@ -86,7 +86,7 @@
     inputs.flake-parts.lib.mkFlake { inherit inputs; } (
       { lib, ... }:
       {
-        imports = [ (inputs.import-tree ./modules) ];
+        imports = [ (inputs.import-tree ./nix) ];
 
         # TODO: Should this be defined elsewhere?
         options.flake = {
