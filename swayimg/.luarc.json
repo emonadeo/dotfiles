@@ -1,0 +1,14 @@
+{
+	"$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+	"format": {
+		"enable": false
+	},
+	"runtime": {
+		"version": "LuaJIT",
+		"path": [
+			"?.lua",
+			"init.lua"
+		]
+	},
+	"workspace.library": ["/run/current-system/sw/share/swayimg/swayimg.lua"]
+}

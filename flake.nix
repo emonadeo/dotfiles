@@ -40,6 +40,12 @@
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-26.05";
     };
+    # TODO: Remove when obsolete
+    # Currently used by these packages that are not in the stable NixOS channel:
+    # - swayimg
+    nixpkgs-unstable = {
+      url = "github:nixos/nixpkgs/nixos-unstable";
+    };
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";

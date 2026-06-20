@@ -10,7 +10,11 @@
   };
 
   flake.nixosModules.ursa = moduleWithSystem (
-    _perSystem@{ self', ... }:
+    _perSystem@{
+      self',
+      system,
+      ...
+    }:
     _nixos@{
       config,
       lib,
@@ -39,6 +43,7 @@
       environment.systemPackages = [
         pkgs.cinny-desktop # Matrix client
         pkgs.telegram-desktop
+        pkgs.zathura
         pkgs.zulip-term
         self'.packages.affinity
         self'.packages.helium
@@ -46,6 +51,7 @@
         self'.packages.mpv
         self'.packages.niri
         self'.packages.spotify
+        self'.packages.swayimg
         self'.packages.vesktop
       ];
 
@@ -121,8 +127,9 @@
 
       environment = {
         pathsToLink = [
-          "/share/xdg-desktop-portal"
           "/share/applications"
+          "/share/swayimg" # Contains swayimg.lua for LSP
+          "/share/xdg-desktop-portal"
         ];
       };
 
