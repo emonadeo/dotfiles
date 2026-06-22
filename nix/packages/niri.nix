@@ -31,6 +31,19 @@
         QT_QPA_PLATFORM = "wayland";
         XCURSOR_PATH = "${self'.packages.tahoe-cursor}/share/icons";
       };
+      prefixVar = [
+        [
+          "XDG_CONFIG_DIRS"
+          ":"
+          (toString (
+            pkgs.writeTextDir "gtk-3.0/settings.ini" ''
+              [Settings]
+              gtk-cursor-theme-name=Tahoe
+              gtk-cursor-theme-size=36
+            ''
+          ))
+        ]
+      ];
       settings = {
         # Make niri ask applications to omit their client-side decorations.
         prefer-no-csd = true;
