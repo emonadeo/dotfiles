@@ -55,7 +55,7 @@
             inactive.dim.opacity = -0.1;
           };
           # Disable swipe gestures
-          swipe.gestures = {
+          swipe.gesture = {
             fingers_count = 0;
             vertical = false;
           };
