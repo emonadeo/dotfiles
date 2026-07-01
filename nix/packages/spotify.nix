@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 {
   perSystem =
     { pkgs, ... }:
@@ -13,17 +13,11 @@
             pkgs.zip
             pkgs.curl
           ])
-          ++ (
-            if pkgs.stdenv.hostPlatform.isDarwin then
-              [
-                # macOS
-                pkgs.darwin.DarwinTools
-                pkgs.darwin.sigtool
-                pkgs.sysctl
-              ]
-            else
-              [ ]
-          );
+          ++ (lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
+            pkgs.darwin.DarwinTools
+            pkgs.darwin.sigtool
+            pkgs.sysctl
+          ]);
 
         installPhase =
           let

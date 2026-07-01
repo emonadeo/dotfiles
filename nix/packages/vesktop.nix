@@ -32,17 +32,11 @@
       # TODO: Extract into wrapper module
       packages.vesktop = inputs.wrappers-b.lib.wrapPackage {
         inherit pkgs;
-        package =
-          # BUG: Build failure due to CVEs in pnpm 10.29.2
-          # See <https://github.com/NixOS/nixpkgs/issues/536623>
-          (pkgs.vesktop.override {
-            pnpm_10_29_2 = pkgs.pnpm_10;
-          }).overrideAttrs
-            (
-              finalAttrs: old: {
-                src = inputs.vesktop;
-              }
-            );
+        package = pkgs.vesktop.overrideAttrs (
+          finalAttrs: old: {
+            src = inputs.vesktop;
+          }
+        );
         env.VESKTOP_SETTINGS_DIR =
           pkgs.runCommand "vesktop-settings"
             {
