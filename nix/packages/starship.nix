@@ -23,6 +23,7 @@
             # and <https://github.com/starship/starship/pull/6388>
             format = inputs.nixpkgs.lib.concatStrings [
               "$nix_shell"
+              "$shlvl"
               "$directory"
               "$\{custom.jj_change\}"
               "$git_branch"
@@ -58,6 +59,12 @@
               format = "[ $symbol ($name )]($style)[](fg:blue bg:#101817)";
               style = "fg:#101817 bg:blue";
               symbol = "";
+            };
+            shlvl = {
+              disabled = false;
+              format = "[ $symbol $shlvl ]($style)[]($style fg:bright-black)";
+              style = "fg:white bg:#101817";
+              symbol = "󰁄";
             };
             directory = {
               format = "[ $path]($style)[$read_only]($read_only_style)[ ]($style)";
@@ -205,77 +212,77 @@
               }";
             };
             c = {
-              format = " [$symbol $version]($style)";
+              format = " [$symbol( $version)]($style)";
               style = "fg:blue";
               symbol = "";
             };
             dart = {
-              format = " [$symbol $version]($style)";
+              format = " [$symbol( $version)]($style)";
               style = "fg:teal";
               symbol = "";
             };
             deno = {
-              format = " [$symbol $version]($style)";
+              format = " [$symbol( $version)]($style)";
               style = "fg:text";
               symbol = "󰛦";
             };
             elixir = {
-              format = " [$symbol $version]($style)";
+              format = " [$symbol( $version)]($style)";
               style = "fg:purple";
               symbol = "";
             };
             gleam = {
-              format = " [$symbol $version]($style)";
+              format = " [$symbol( $version)]($style)";
               style = "fg:purple";
               symbol = "󰦥";
             };
             golang = {
-              format = " [$symbol $version]($style)";
+              format = " [$symbol( $version)]($style)";
               style = "fg:blue";
               symbol = "󰟓";
             };
             haskell = {
-              format = " [$symbol $version]($style)";
+              format = " [$symbol( $version)]($style)";
               style = "fg:purple";
               symbol = "";
             };
             java = {
-              format = " [$symbol $version]($style)";
+              format = " [$symbol( $version)]($style)";
               style = "fg:blue";
               symbol = "";
             };
             kotlin = {
-              format = " [$symbol $version]($style)";
+              format = " [$symbol( $version)]($style)";
               style = "fg:purple";
               symbol = "";
             };
             lua = {
-              format = " [$symbol $version]($style)";
+              format = " [$symbol( $version)]($style)";
               style = "fg:blue";
               symbol = "";
             };
             nodejs = {
-              format = " [$symbol $version]($style)";
+              format = " [$symbol( $version)]($style)";
               style = "fg:green";
               symbol = "";
             };
             ocaml = {
-              format = " [$symbol $version]($style)";
+              format = " [$symbol( $version)]($style)";
               style = "fg:orange";
               symbol = "";
             };
             python = {
-              format = " [$symbol $version]($style)";
+              format = " [$symbol( $version)]($style)";
               style = "fg:yellow";
               symbol = "";
             };
             rust = {
-              format = " [$symbol $version]($style)";
+              format = " [$symbol( $version)]($style)";
               style = "fg:red";
               symbol = "";
             };
             zig = {
-              format = " [$symbol $version]($style)";
+              format = " [$symbol( $version)]($style)";
               style = "fg:orange";
               symbol = "";
             };
