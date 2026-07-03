@@ -29,6 +29,7 @@
         GDK_SCALE = "1.667";
         NIXOS_OZONE_WL = "1";
         QT_QPA_PLATFORM = "wayland";
+        SHLVL = "1";
         XCURSOR_PATH = "${self'.packages.tahoe-cursor}/share/icons";
       };
       prefixVar = [
