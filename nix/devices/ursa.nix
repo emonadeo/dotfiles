@@ -42,7 +42,9 @@
 
       environment.systemPackages = [
         pkgs.cinny-desktop # Matrix client
+        pkgs.teamspeak6-client
         pkgs.telegram-desktop
+        pkgs.vesktop
         pkgs.zathura
         pkgs.zulip-term
         self'.packages.affinity
@@ -52,7 +54,6 @@
         self'.packages.niri
         self'.packages.spotify
         self'.packages.swayimg
-        self'.packages.vesktop
       ];
 
       boot = {

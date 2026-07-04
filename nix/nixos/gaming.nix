@@ -5,6 +5,7 @@
     _nixos@{ pkgs, ... }:
     {
       environment.systemPackages = [
+        pkgs.balatro-mod-manager
         pkgs.dolphin-emu # Gamecube/Wii Emulator
         pkgs.heroic # Epic Games
         pkgs.lutris

@@ -27,6 +27,7 @@
 
       environment.systemPackages = [
         pkgs.cinny-desktop # Matrix client
+        pkgs.vesktop
         pkgs.zulip-term
         self'.packages.affinity
         self'.packages.helium
@@ -34,7 +35,6 @@
         self'.packages.mpv
         self'.packages.prismlauncher
         self'.packages.spotify
-        self'.packages.vesktop
       ];
 
       # TODO: Remove once obsolete
