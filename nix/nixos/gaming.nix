@@ -8,7 +8,16 @@
         pkgs.balatro-mod-manager
         pkgs.dolphin-emu # Gamecube/Wii Emulator
         pkgs.heroic # Epic Games
-        pkgs.lutris
+        (pkgs.lutris.override {
+          extraPkgs = pkgs: [
+            pkgs.wineWow64Packages.waylandFull
+          ];
+          extraLibraries =
+            pkgs: with pkgs; [
+              libadwaita
+              gtk4
+            ];
+        })
         pkgs.ryubing # Switch Emulator
         pkgs.shipwright # The Legend of Zelda: Ocarina of Time
         self'.packages.prismlauncher # Minecraft
