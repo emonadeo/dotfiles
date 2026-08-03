@@ -4,6 +4,10 @@
     _perSystem@{ self', ... }:
     _nixos@{ pkgs, ... }:
     {
+      environment.systemPackages = [
+        pkgs.xdg-utils
+      ];
+
       programs.dconf = {
         enable = true;
         profiles.user.databases = [

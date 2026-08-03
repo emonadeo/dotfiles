@@ -18,15 +18,11 @@
     inputs.wrappers-b.wrappers.niri.wrap {
       inherit pkgs;
       runtimePkgs = [
-        pkgs.wl-clipboard
-        # TODO: Should `xdg-utils` go here?
-        pkgs.xdg-utils
         self'.packages.rofi
         self'.packages.ghostty
       ];
       env = {
         EDITOR = "${self'.packages.neovim}/bin/neovim";
-        GDK_SCALE = "1.667";
         NIXOS_OZONE_WL = "1";
         QT_QPA_PLATFORM = "wayland";
         SHLVL = "1";
@@ -66,11 +62,25 @@
 
         outputs = {
           "HDMI-A-2" = {
-            scale = 1.667;
+            mode = "2560x1440@279.961";
+            scale = 1.5;
+            position = _: {
+              props = {
+                x = 0;
+                y = 0;
+              };
+            };
           };
-          "HDMI-A-1" = {
+          "DP-1" = {
             focus-at-startup = _: { };
-            scale = 1.667;
+            mode = "2560x1440@279.961";
+            variable-refresh-rate = _: { };
+            position = _: {
+              props = {
+                x = 2560;
+                y = 0;
+              };
+            };
           };
         };
 
@@ -108,7 +118,7 @@
 
         workspaces = {
           "primary" = {
-            open-on-output = "HDMI-A-1";
+            open-on-output = "DP-1";
           };
           "secondary" = {
             open-on-output = "HDMI-A-2";

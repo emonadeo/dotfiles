@@ -44,6 +44,7 @@
         pkgs.teamspeak6-client
         pkgs.telegram-desktop
         pkgs.vesktop
+        pkgs.wl-clipboard
         pkgs.zathura
         pkgs.zulip-term
         self'.packages.affinity
