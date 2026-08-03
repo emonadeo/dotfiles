@@ -120,6 +120,9 @@
         };
       };
 
+      # Required when using Rust managed by mise, which uses rustup-init
+      programs.nix-ld.enable = true;
+
       # SSD maintenance
       services.fstrim.enable = true;
       services.fwupd.enable = true;

@@ -32,6 +32,7 @@
         pkgs.tombi # TOML
         pkgs.tree-sitter # Needed by `nvim-treesitter`
         pkgs.vscode-langservers-extracted
+        # TODO: Migrate to TypeScript 7 which will include an LSP
         pkgs.vtsls # TypeScript
         pkgs.vue-language-server
         self'.packages.git

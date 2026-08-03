@@ -1,7 +1,7 @@
 { withSystem, ... }:
 {
   flake.packages."aarch64-darwin".affinity = withSystem "aarch64-darwin" (
-    { inputs', pkgs, ... }:
+    { pkgs, ... }:
     let
       version = "3.2.1";
       versionId = "4425";
