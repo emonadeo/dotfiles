@@ -8,10 +8,6 @@
   flake.packages."x86_64-linux".niri = withSystem "x86_64-linux" (
     { pkgs, self', ... }:
     let
-      wallpaper = pkgs.fetchurl {
-        url = "https://cdnb.artstation.com/p/assets/images/images/079/201/991/4k/darek-zabrocki-r2-006b-darekzabrocki.jpg";
-        hash = "sha256-FEWLOc1k/jFtneG5BtkMAwmJXVdIgqit47ZjIo6qzDA=";
-      };
       playerctl = lib.getExe pkgs.playerctl;
       wpctl = "${pkgs.wireplumber}/bin/wpctl";
     in
@@ -62,6 +58,7 @@
 
         outputs = {
           "HDMI-A-2" = {
+            backdrop-color = "#000000";
             mode = "2560x1440@279.961";
             scale = 1.5;
             position = _: {
@@ -72,6 +69,7 @@
             };
           };
           "DP-1" = {
+            backdrop-color = "#000000";
             focus-at-startup = _: { };
             mode = "2560x1440@279.961";
             variable-refresh-rate = _: { };
@@ -85,7 +83,13 @@
         };
 
         layout = {
-          gaps = 13.0;
+          gaps = 24.0;
+          struts = {
+            left = -24.0;
+            right = -24.0;
+            top = -24.0;
+            bottom = -24.0;
+          };
           background-color = "transparent";
           focus-ring.off = _: { };
           border = {
@@ -273,21 +277,7 @@
         # Do not save screenshots
         screenshot-path = _: { };
         xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
-
-        spawn-at-startup = [
-          (lib.getExe (
-            inputs.wrappers-b.lib.wrapPackage {
-              inherit pkgs;
-              package = pkgs.swaybg;
-              flags = {
-                "-m" = "fill";
-                "-i" = wallpaper;
-              };
-            }
-          ))
-        ];
       };
     }
-
   );
 }

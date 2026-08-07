@@ -7,6 +7,7 @@
       environment.systemPackages = [
         pkgs.balatro-mod-manager
         pkgs.dolphin-emu # Gamecube/Wii Emulator
+        pkgs.dusklight # The Legend of Zelda: Twilight Princess
         pkgs.heroic # Epic Games
         (pkgs.lutris.override {
           extraPkgs = pkgs: [
