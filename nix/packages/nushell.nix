@@ -18,7 +18,11 @@
             inherit pkgs;
             runtimePkgs = [
               nix-index
+              pkgs._7zz # TODO: Package with `scripts/edit_zip.nu`
               pkgs.imagemagick
+              pkgs.television # TODO: Add channels
+              pkgs.unzip
+              pkgs.zip
               self'.packages.git
               self'.packages.jujutsu
               self'.packages.neovim
