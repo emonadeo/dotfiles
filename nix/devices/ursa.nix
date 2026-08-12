@@ -26,6 +26,7 @@
         inputs.nixos-hardware.nixosModules.common-pc-ssd
         inputs.nixos-hardware.nixosModules.common-cpu-amd
         inputs.nixos-hardware.nixosModules.common-gpu-amd
+        self.nixosModules.ai
         self.nixosModules.audio
         self.nixosModules.fonts
         self.nixosModules.gaming
