@@ -141,7 +141,6 @@
           };
 
           "Mod+R".switch-preset-column-width = _: { };
-          "Mod+Shift+R".switch-preset-window-height = _: { };
           "Mod+C".center-column = _: { };
           "Mod+Minus".set-column-width = "+10%";
           "Mod+Equal".set-column-width = "-10%";
