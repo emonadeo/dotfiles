@@ -24,14 +24,6 @@
           rev = "bb4531cda34d1ea09d9814959ed4d5833cf2a4c8";
           hash = "sha256-gj0fOGjCI1D8Bc8I/QNBX7xSncppPDqhijumKWUFSSk=";
         })
-        (pkgs'.fetchFromHuggingFace {
-          name = "Qwen3.8-27B-Q8_0";
-          backend = "lfs";
-          repoId = "unsloth/Qwen3.8-27B-GGUF";
-          rootDir = "Qwen3.8-27B-Q8_0.gguf";
-          rev = "fdd03b8bbd279c1694563650e79d85a2373d9934";
-          hash = "sha256-LZPcMBYZ9mtAHcvsyTxkdFD11iu0poU62tBPGXLd+kE=";
-        })
       ];
     in
     {
@@ -58,7 +50,7 @@
         '';
         extraFlags = [
           "-c"
-          "16384"
+          "0"
         ];
       };
     }
