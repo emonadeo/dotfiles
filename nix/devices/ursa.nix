@@ -47,7 +47,6 @@
         pkgs.vesktop
         pkgs.wl-clipboard
         pkgs.zathura
-        pkgs.zulip-term
         self'.packages.affinity
         self'.packages.helium
         self'.packages.librewolf

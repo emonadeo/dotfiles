@@ -28,7 +28,6 @@
       environment.systemPackages = [
         pkgs.cinny-desktop # Matrix client
         pkgs.vesktop
-        pkgs.zulip-term
         self'.packages.affinity
         self'.packages.helium
         self'.packages.librewolf

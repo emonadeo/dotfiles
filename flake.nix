@@ -23,7 +23,7 @@
       flake = false;
     };
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
+      url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-index-database = {
@@ -38,12 +38,6 @@
       url = "github:NixOS/nixos-hardware";
     };
     nixpkgs = {
-      url = "github:nixos/nixpkgs/nixos-26.05";
-    };
-    # TODO: Remove when obsolete
-    # Currently used by these packages that are not in the stable NixOS channel:
-    # - swayimg
-    nixpkgs-unstable = {
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
     nur = {

@@ -28,8 +28,8 @@
             --replace-fail "/usr/bin/xcrun" "xcrun"
         '';
 
-        dependencies = with pkgs.python3Packages; [
-          pyobjc-core
+        dependencies = [
+          pkgs.python3Packages.pyobjc-core
           pyobjc-framework-AVFoundation
         ];
 
@@ -69,12 +69,12 @@
             --replace-fail "/usr/bin/xcrun" "xcrun"
         '';
 
-        dependencies = with pkgs.python3Packages; [
-          pyobjc-core
-          pyobjc-framework-Cocoa
-          pyobjc-framework-CoreAudio
+        dependencies = [
+          pkgs.python3Packages.pyobjc-core
+          pkgs.python3Packages.pyobjc-framework-Cocoa
+          pkgs.python3Packages.pyobjc-framework-CoreAudio
+          pkgs.python3Packages.pyobjc-framework-Quartz
           pyobjc-framework-CoreMedia
-          pyobjc-framework-Quartz
         ];
 
         env.NIX_CFLAGS_COMPILE = toString [
@@ -113,10 +113,10 @@
             --replace-fail "/usr/bin/xcrun" "xcrun"
         '';
 
-        dependencies = with pkgs.python3Packages; [
-          pyobjc-core
-          pyobjc-framework-Cocoa
-          pyobjc-framework-Security
+        dependencies = [
+          pkgs.python3Packages.pyobjc-core
+          pkgs.python3Packages.pyobjc-framework-Cocoa
+          pkgs.python3Packages.pyobjc-framework-Security
         ];
 
         env.NIX_CFLAGS_COMPILE = toString [
@@ -142,18 +142,18 @@
           hash = "sha256-isAiLbOwt5+nCYWbsMx40PbztnwXIcWh0vWsDNn7ZsQ=";
         };
         build-system = [ pkgs.python3Packages.pdm-backend ];
-        dependencies = with pkgs.python3Packages; [
-          aiocache
-          pyobjc-framework-MediaPlayer
+        dependencies = [
+          pkgs.python3Packages.aiocache
+          pkgs.python3Packages.boltons
+          pkgs.python3Packages.ormsgpack
+          pkgs.python3Packages.pydantic
+          pkgs.python3Packages.python-mpd2
+          pkgs.python3Packages.pytomlpp
+          pkgs.python3Packages.rich
+          pkgs.python3Packages.xdg-base-dirs
+          pkgs.python3Packages.yarl
           pyobjc-framework-AVFoundation
-          mpd2
-          xdg-base-dirs
-          pytomlpp
-          yarl
-          boltons
-          pydantic
-          rich
-          ormsgpack
+          pyobjc-framework-MediaPlayer
         ];
         meta = {
           description = "Expose your MPD server as a 'now playable' app on MacOS";

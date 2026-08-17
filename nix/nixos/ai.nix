@@ -4,11 +4,9 @@
     _perSystem@{ inputs', pkgs, ... }:
     _nixos@{ lib, ... }:
     let
-      # TODO: Switch to stable channel once possible
-      pkgs' = inputs'.nixpkgs-unstable.legacyPackages;
       # PERF: These models take up a lot of disk space. Choose one in the future.
       models = [
-        (pkgs'.fetchFromHuggingFace {
+        (pkgs.fetchFromHuggingFace {
           name = "gemma-4-12B-it-Q8_0";
           backend = "lfs";
           repoId = "ggml-org/gemma-4-12B-it-GGUF";
@@ -16,7 +14,7 @@
           rev = "7e0fbb8205d1f4857f4606a38a65023aaeb5f544";
           hash = "sha256-RTBGQx5MxhiNe4L3JOrbAwkkgFW1OccTMwoXmkM0Hz0=";
         })
-        (pkgs'.fetchFromHuggingFace {
+        (pkgs.fetchFromHuggingFace {
           name = "gemma-4-26B-A4B-it-Q8_0";
           backend = "lfs";
           repoId = "ggml-org/gemma-4-26B-A4B-it-GGUF";
@@ -35,15 +33,15 @@
         # files that get modified at runtime. As such pointing $PI_CODING_AGENT_DIR
         # to /nix/store is not possible.
         (inputs.wrappers-b.lib.wrapPackage ({
-          pkgs = pkgs';
-          package = pkgs'.pi-coding-agent;
+          inherit pkgs;
+          package = pkgs.pi-coding-agent;
           runtimePkgs = [ pkgs.nodejs ];
         }))
       ];
 
       services.llama-cpp = {
         enable = true;
-        package = pkgs'.llama-cpp-vulkan;
+        package = pkgs.llama-cpp-vulkan;
         modelsDir = pkgs.runCommand "llama-models" { } ''
           mkdir -p $out
           ${lib.join "\n" (map (model: "ln -s ${model} $out/${model.name}.gguf") models)}

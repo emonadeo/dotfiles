@@ -1,4 +1,3 @@
-# TODO: Configure
 { inputs, ... }:
 {
   perSystem =
@@ -12,7 +11,7 @@
     {
       packages.swayimg = inputs.wrappers-b.lib.wrapPackage {
         inherit pkgs;
-        package = inputs'.nixpkgs-unstable.legacyPackages.swayimg;
+        package = pkgs.swayimg;
         flagSeparator = "=";
         flags = {
           "--config" = ../../swayimg/init.lua;

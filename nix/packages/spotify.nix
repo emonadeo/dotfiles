@@ -15,8 +15,9 @@
           ])
           ++ (lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
             pkgs.darwin.DarwinTools
-            pkgs.darwin.sigtool
-            pkgs.sysctl
+            # pkgs.darwin.sigtool
+            pkgs.darwin.system_cmds
+            pkgs.util-linux
           ]);
 
         installPhase =
@@ -26,8 +27,9 @@
           builtins.replaceStrings
             [ "runHook postInstall" ]
             [
+              # TODO: Do not skip codesigning
               ''
-                SSL_CERT_FILE="${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt" bash ${inputs.spotx + /spotx.sh} --force --blockupdates -P "${path}"
+                SSL_CERT_FILE="${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt" bash ${inputs.spotx + /spotx.sh} --force --blockupdates --skipcodesign -P "${path}"
                 runHook postInstall
               ''
             ]
