@@ -14,7 +14,6 @@
     _darwin@{ pkgs, ... }:
     {
       imports = [
-        self.darwinModules.builder
         self.darwinModules.ghostty
         self.darwinModules.music
         self.darwinModules.paneru
