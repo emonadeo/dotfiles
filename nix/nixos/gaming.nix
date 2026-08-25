@@ -24,7 +24,6 @@
         pkgs.ryubing # Switch Emulator
         pkgs.shipwright # The Legend of Zelda: Ocarina of Time
         self'.packages.prismlauncher # Minecraft
-        self'.packages.vintagestory
       ];
 
       hardware = {

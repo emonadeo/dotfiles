@@ -25,8 +25,14 @@
       nixpkgs.hostPlatform = "aarch64-darwin";
 
       environment.systemPackages = [
+        pkgs.aseprite
         pkgs.cinny-desktop # Matrix client
+        pkgs.croc
+        pkgs.dolphin-emu # Gamecube/Wii Emulator
+        pkgs.proton-vpn
+        pkgs.ryubing # Switch Emulator
         pkgs.vesktop
+        pkgs.zathura
         self'.packages.affinity
         self'.packages.helium
         self'.packages.librewolf

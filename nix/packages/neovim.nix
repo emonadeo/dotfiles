@@ -19,8 +19,9 @@
         pkgs.ccls # C/C++
         pkgs.dprint # Universal formatter
         pkgs.emmet-language-server
-        pkgs.lua-language-server
+        pkgs.gdscript-formatter
         pkgs.jdt-language-server # Java
+        pkgs.lua-language-server
         pkgs.nil # Nix
         pkgs.nixfmt
         pkgs.ripgrep # Needed by `snacks.picker`

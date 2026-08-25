@@ -2,7 +2,7 @@
   inputs = {
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
-    wrappers-b.url = "github:BirdeeHub/nix-wrapper-modules";
+    wrappers-b.url = "github:nix-community/nix-wrapper-modules";
     wrappers-l.url = "github:lassulus/wrappers";
 
     affinity = {
