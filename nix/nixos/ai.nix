@@ -42,14 +42,13 @@
       services.llama-cpp = {
         enable = true;
         package = pkgs.llama-cpp-vulkan;
-        modelsDir = pkgs.runCommand "llama-models" { } ''
-          mkdir -p $out
-          ${lib.join "\n" (map (model: "ln -s ${model} $out/${model.name}.gguf") models)}
-        '';
-        extraFlags = [
-          "-c"
-          "0"
-        ];
+        settings = {
+          ctx-size = 0;
+          models-dir = pkgs.runCommand "llama-models" { } ''
+            mkdir -p $out
+            ${lib.join "\n" (map (model: "ln -s ${model} $out/${model.name}.gguf") models)}
+          '';
+        };
       };
     }
   );

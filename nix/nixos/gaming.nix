@@ -7,7 +7,8 @@
       environment.systemPackages = [
         pkgs.balatro-mod-manager
         pkgs.dolphin-emu # Gamecube/Wii Emulator
-        pkgs.dusklight # The Legend of Zelda: Twilight Princess
+        # BUG: Build failure
+        # pkgs.dusklight # The Legend of Zelda: Twilight Princess
         pkgs.heroic # Epic Games
         (pkgs.lutris.override {
           extraPkgs = pkgs: [
@@ -23,6 +24,7 @@
         pkgs.ryubing # Switch Emulator
         pkgs.shipwright # The Legend of Zelda: Ocarina of Time
         self'.packages.prismlauncher # Minecraft
+        self'.packages.vintagestory
       ];
 
       hardware = {
