@@ -29,6 +29,7 @@
         pkgs.rustfmt
         pkgs.stylua # Lua
         pkgs.svelte-language-server
+        pkgs.tailwindcss-language-server
         pkgs.tombi # TOML
         pkgs.tree-sitter # Needed by `nvim-treesitter`
         pkgs.vscode-langservers-extracted
