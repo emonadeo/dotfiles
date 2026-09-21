@@ -6,7 +6,12 @@
 }:
 {
   flake.packages."x86_64-linux".niri = withSystem "x86_64-linux" (
-    { pkgs, self', ... }:
+    {
+      pkgs,
+      self',
+      system,
+      ...
+    }:
     let
       playerctl = lib.getExe pkgs.playerctl;
       wpctl = "${pkgs.wireplumber}/bin/wpctl";
@@ -275,7 +280,9 @@
         gestures.hot-corners.off = _: { };
         # Do not save screenshots
         screenshot-path = _: { };
-        xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
+        xwayland-satellite.path =
+          lib.getExe
+            inputs.nixpkgs-xwayland-satellite-0-8-1.legacyPackages.${system}.xwayland-satellite;
       };
     }
   );

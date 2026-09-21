@@ -36,6 +36,11 @@
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
+    # TODO: Remove hotfix once regression in xwayland-satellite 0.8.2 is fixed
+    # See <https://github.com/Supreeeme/xwayland-satellite/pull/494>
+    nixpkgs-xwayland-satellite-0-8-1 = {
+      url = "github:nixos/nixpkgs?rev=edfd59b795cd752c36d2dae60870cffcd23d3fb1";
+    };
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
