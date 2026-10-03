@@ -280,9 +280,7 @@
         gestures.hot-corners.off = _: { };
         # Do not save screenshots
         screenshot-path = _: { };
-        xwayland-satellite.path =
-          lib.getExe
-            inputs.nixpkgs-xwayland-satellite-0-8-1.legacyPackages.${system}.xwayland-satellite;
+        xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
       };
     }
   );
