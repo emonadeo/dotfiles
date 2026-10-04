@@ -41,6 +41,7 @@
       nixpkgs.hostPlatform = "x86_64-linux";
 
       environment.systemPackages = [
+        pkgs.audacity
         pkgs.cinny-desktop # Matrix client
         pkgs.teamspeak6-client
         pkgs.telegram-desktop

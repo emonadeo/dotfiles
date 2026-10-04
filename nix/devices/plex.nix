@@ -25,6 +25,7 @@
       nixpkgs.hostPlatform = "aarch64-darwin";
 
       environment.systemPackages = [
+        pkgs.audacity
         pkgs.aseprite
         pkgs.cinny-desktop # Matrix client
         pkgs.croc
