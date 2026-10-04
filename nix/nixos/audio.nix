@@ -100,7 +100,7 @@
           Type = "dbus";
           Restart = "on-failure";
           RestartSec = "5s";
-          ExecStart = "${pkgs.mpd-mpris}/bin/mpd-mpris -no-instance";
+          ExecStart = "${pkgs.mpd-mpris}/bin/mpd-mpris -no-instance -network unix -host /run/mpd/socket";
           BusName = "org.mpris.MediaPlayer2.mpd";
         };
       };
