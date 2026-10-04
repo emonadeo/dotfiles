@@ -21,6 +21,8 @@
         ];
       };
 
+      # TODO: Set XDG_CONFIG_HOME and other directories
+      # but does it make sense to do so system-wide?
       xdg = {
         mime = {
           enable = true;

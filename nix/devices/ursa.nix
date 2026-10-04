@@ -108,9 +108,10 @@
         useXkbConfig = true; # use xkb.options in tty.
       };
 
-      # Define a user account. Don't forget to set a password with ‘passwd’.
       users = {
         users.${self.lib.user.handle} = {
+          # Needs to be set for mpd/pipewire workaround in `nix/nixos/audio.nix`
+          uid = 1000;
           isNormalUser = true;
           description = self.lib.user.name;
           extraGroups = [
