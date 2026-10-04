@@ -4,7 +4,7 @@
   ...
 }:
 {
-  flake.darwinModules.music = moduleWithSystem (
+  flake.darwinModules.audio = moduleWithSystem (
     _perSystem@{ self', ... }:
     _darwin@{ pkgs, ... }:
     let

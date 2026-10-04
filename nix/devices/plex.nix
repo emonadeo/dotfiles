@@ -14,8 +14,8 @@
     _darwin@{ pkgs, ... }:
     {
       imports = [
+        self.darwinModules.audio
         self.darwinModules.ghostty
-        self.darwinModules.music
         self.darwinModules.paneru
         self.darwinModules.shell
         self.sharedModules.nix
