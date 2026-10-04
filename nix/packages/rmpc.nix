@@ -17,7 +17,7 @@
             # ron
             ''
               (
-                cache_dir: Some("~/.cache/rmpc"),
+                cache_dir: Some("/tmp/rmpc"),
                 address: "/run/mpd/socket",
               )
             '';
