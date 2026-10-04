@@ -1,12 +1,17 @@
 # TODO: Consider (re)adding home-manager because MPD and Pipewire without it
 # is a pain in the ass but i dont want another module ecosystem :(
 
-{ self, ... }:
 {
-  flake.nixosModules.audio =
-    { config, pkgs, ... }:
+  moduleWithSystem,
+  self,
+  ...
+}:
+{
+  flake.nixosModules.audio = moduleWithSystem (
+    _perSystem@{ self', ... }:
+    _darwin@{ config, pkgs, ... }:
     {
-      environment.systemPackages = [ pkgs.rmpc ];
+      environment.systemPackages = [ self'.packages.rmpc ];
 
       # Daemon for playerctld to track currently active media player
       services.playerctld.enable = true;
@@ -60,15 +65,18 @@
         user = self.lib.user.handle;
         startWhenNeeded = true;
         settings = {
-          # TODO: Use XDG music directory
-          # This might not be doable or ugly without home manager
-          music_directory = "${config.users.users.${self.lib.user.handle}.home}/Music";
           audio_output = [
             {
               type = "pipewire";
               name = "Pipewire";
             }
           ];
+          # Use socket instead of TCP to prevent permission problems with
+          # local files (i.e. downloaded by yt-dlp)
+          bind_to_address = "/run/mpd/socket";
+          # TODO: Use XDG music directory
+          # This might not be doable or ugly without home manager
+          music_directory = "${config.users.users.${self.lib.user.handle}.home}/Music";
         };
       };
 
@@ -96,5 +104,6 @@
           BusName = "org.mpris.MediaPlayer2.mpd";
         };
       };
-    };
+    }
+  );
 }

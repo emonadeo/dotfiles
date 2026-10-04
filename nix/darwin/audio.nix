@@ -14,7 +14,7 @@
       '';
     in
     {
-      environment.systemPackages = [ pkgs.rmpc ];
+      environment.systemPackages = [ self'.packages.rmpc ];
 
       launchd.user.agents.mpd = {
         serviceConfig = {

@@ -2,7 +2,10 @@
   inputs = {
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
-    wrappers-b.url = "github:nix-community/nix-wrapper-modules";
+    wrappers-b = {
+      url = "github:nix-community/nix-wrapper-modules";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     wrappers-l.url = "github:lassulus/wrappers";
 
     affinity = {
@@ -72,14 +75,16 @@
     inputs.flake-parts.lib.mkFlake { inherit inputs; } (
       { lib, ... }:
       {
-        imports = [ (inputs.import-tree ./nix) ];
+        imports = [
+          (inputs.import-tree ./nix)
+          inputs.wrappers-b.flakeModules.wrappers
+        ];
 
         # TODO: Should this be defined elsewhere?
         options.flake = {
           lib = lib.mkOption { };
           darwinModules = lib.mkOption { };
           sharedModules = lib.mkOption { };
-          wrapperModules = lib.mkOption { };
         };
 
         config = {
@@ -88,6 +93,8 @@
             "aarch64-linux"
             "aarch64-darwin"
           ];
+          # Do not build packages from wrappers by default
+          perSystem = { pkgs, ... }: { wrappers.control_type = "build"; };
         };
       }
     );
