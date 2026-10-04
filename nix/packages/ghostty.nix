@@ -22,8 +22,8 @@
         adjust-overline-thickness = 1;
         adjust-strikethrough-thickness = 1;
         custom-shader = [
-          "${inputs.ghostty-cursor-shaders}/cursor_warp.glsl"
-          "${inputs.ghostty-cursor-shaders}/sonic_boom_cursor.glsl"
+          "${inputs.cursor-shaders}/ghostty/cursor_warp.glsl"
+          "${inputs.cursor-shaders}/ghostty/sonic_boom_cursor.glsl"
         ];
         theme = mkTheme {
           dark = "${inputs.catppuccin-ghostty}/themes/catppuccin-mocha.conf";

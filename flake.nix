@@ -18,8 +18,8 @@
       url = "github:catppuccin/ghostty";
       flake = false;
     };
-    ghostty-cursor-shaders = {
-      url = "github:sahaj-b/ghostty-cursor-shaders";
+    cursor-shaders = {
+      url = "github:sahaj-b/cursor-shaders";
       flake = false;
     };
     nix-darwin = {
