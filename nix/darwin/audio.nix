@@ -1,6 +1,7 @@
 {
   lib,
   moduleWithSystem,
+  self,
   ...
 }:
 {
@@ -8,13 +9,28 @@
     _perSystem@{ self', ... }:
     _darwin@{ pkgs, ... }:
     let
+      mpdAddress = "/tmp/mpd.socket";
       mpdConf = ''
+        bind_to_address "${mpdAddress}"
         music_directory "~/Music"
         log_file "~/Library/Logs/mpd.log"
       '';
+      rmpc = self.wrappers.rmpc.wrap {
+        config = {
+          inherit pkgs;
+          config =
+            # ron
+            ''
+              (
+                cache_dir: Some("/tmp/rmpc"),
+                address: "${mpdAddress}",
+              )
+            '';
+        };
+      };
     in
     {
-      environment.systemPackages = [ self'.packages.rmpc ];
+      environment.systemPackages = [ rmpc ];
 
       launchd.user.agents.mpd = {
         serviceConfig = {
@@ -39,6 +55,9 @@
           RunAtLoad = true;
           StandardOutPath = "/tmp/mpd-now-playable.log";
           StandardErrorPath = "/tmp/mpd-now-playable.err.log";
+          EnvironmentVariables = {
+            MPD_HOST = mpdAddress;
+          };
           Program = lib.getExe self'.packages.mpd-now-playable;
         };
       };

@@ -135,7 +135,6 @@
         pname = "mpd-now-playable";
         version = "1.6.1";
         pyproject = true;
-
         src = pkgs.fetchPypi {
           pname = "mpd_now_playable";
           inherit version;

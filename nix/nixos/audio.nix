@@ -10,8 +10,24 @@
   flake.nixosModules.audio = moduleWithSystem (
     _perSystem@{ self', ... }:
     _darwin@{ config, pkgs, ... }:
+    let
+      mpdAddress = "/run/mpd/socket";
+      rmpc = self.wrappers.rmpc.wrap {
+        config = {
+          inherit pkgs;
+          config =
+            # ron
+            ''
+              (
+                cache_dir: Some("/tmp/rmpc"),
+                address: "${mpdAddress}",
+              )
+            '';
+        };
+      };
+    in
     {
-      environment.systemPackages = [ self'.packages.rmpc ];
+      environment.systemPackages = [ rmpc ];
 
       # Daemon for playerctld to track currently active media player
       services.playerctld.enable = true;
@@ -73,7 +89,7 @@
           ];
           # Use socket instead of TCP to prevent permission problems with
           # local files (i.e. downloaded by yt-dlp)
-          bind_to_address = "/run/mpd/socket";
+          bind_to_address = mpdAddress;
           # TODO: Use XDG music directory
           # This might not be doable or ugly without home manager
           music_directory = "${config.users.users.${self.lib.user.handle}.home}/Music";
@@ -100,7 +116,7 @@
           Type = "dbus";
           Restart = "on-failure";
           RestartSec = "5s";
-          ExecStart = "${pkgs.mpd-mpris}/bin/mpd-mpris -no-instance -network unix -host /run/mpd/socket";
+          ExecStart = "${pkgs.mpd-mpris}/bin/mpd-mpris -no-instance -network unix -host ${mpdAddress}";
           BusName = "org.mpris.MediaPlayer2.mpd";
         };
       };

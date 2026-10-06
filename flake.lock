@@ -371,11 +371,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1790948122,
-        "narHash": "sha256-fDMYyzY1lI5b8RuCMrvoaIgTeRwNnTG4dNk1ucROlQE=",
+        "lastModified": 1791128201,
+        "narHash": "sha256-rlsYY/Dg/LhbIj51Aa6TLvRpZeb3KZgUTd7llQ5XcJE=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "0953bb1a609df63013176e3463393f8df993d3ef",
+        "rev": "31cc5f4d9b9ba601071e8b8504601b9b176e2756",
         "type": "github"
       },
       "original": {
@@ -476,11 +476,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1790822859,
-        "narHash": "sha256-69xHQhAeMAD2wDXO7T2pcOZIF9Sga2W+JkmY2a11Ops=",
+        "lastModified": 1791048980,
+        "narHash": "sha256-KgItSKML8Xvte0B7/uGnBDsYzSnnKHcOaiUbgWBXLXw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c59305bab2065cfecc4944690d9eedbb56f3a9fa",
+        "rev": "a7868a727837f3c09cee2ce0ca671c76b1589fed",
         "type": "github"
       },
       "original": {
@@ -509,11 +509,11 @@
     "nu_scripts": {
       "flake": false,
       "locked": {
-        "lastModified": 1790968488,
-        "narHash": "sha256-/6nbTNfpkNRUJcXnQKw9yrm3UAvgfUoyKbNRUkQAfPY=",
+        "lastModified": 1791198554,
+        "narHash": "sha256-P9qxCykVBOmHAB4D16ArNBmDJpEcJa3/sIEv2y6V7ow=",
         "owner": "nushell",
         "repo": "nu_scripts",
-        "rev": "3ffc5aa43194bb4d5295dec9fbf0a18b3a2dddfc",
+        "rev": "4033ddf35966612e8dc1f28980170f5f54709f74",
         "type": "github"
       },
       "original": {
@@ -530,11 +530,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791114875,
-        "narHash": "sha256-YLT4XLMnA5gtKRFLA3GqUbYZzhskVK7tC1OuC7ovWIw=",
+        "lastModified": 1791214342,
+        "narHash": "sha256-08xD2zCkGGGFYfgAtnTT0yQGKcae1J54VEHcfBKwDmc=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "f15af5255f44d990552632df6672f5daa4f1b2d0",
+        "rev": "dfd09fa8faa91447fcc4ebf9bf6d259fea2cac5d",
         "type": "github"
       },
       "original": {
@@ -791,15 +791,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1788981141,
-        "narHash": "sha256-7xWS16u13YGlRNKWaAPzRbEyh4OLOXJe31k7h4AnXNU=",
-        "owner": "nix-community",
+        "lastModified": 1791214487,
+        "narHash": "sha256-2+IHnqcwCT6a7Tjujj6kpRF943gOWtTERCscHjzdMoo=",
+        "owner": "emonadeo",
         "repo": "nix-wrapper-modules",
-        "rev": "1db3c116a6aa61823f8d8f3c47c306846428fc54",
+        "rev": "7123e86a24f72235a83c60793ac7b737b77628ca",
         "type": "github"
       },
       "original": {
-        "owner": "nix-community",
+        "owner": "emonadeo",
+        "ref": "ghostty-app-bundle",
         "repo": "nix-wrapper-modules",
         "type": "github"
       }

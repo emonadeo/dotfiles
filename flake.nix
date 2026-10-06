@@ -3,7 +3,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
     wrappers-b = {
-      url = "github:nix-community/nix-wrapper-modules";
+      url = "github:emonadeo/nix-wrapper-modules/ghostty-app-bundle";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     wrappers-l.url = "github:lassulus/wrappers";
