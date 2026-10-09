@@ -49,7 +49,7 @@
       };
     in
     {
-      packages.ghostty = inputs.wrappers-b.wrappers.ghostty.wrap ({
+      packages.ghostty = inputs.wrappers.wrappers.ghostty.wrap ({
         inherit pkgs settings;
         env.FONTCONFIG_FILE = lib.mkIf pkgs.stdenv.hostPlatform.isLinux fontsConf;
         meta.description = ''
@@ -60,7 +60,7 @@
       # BUG: On macOS the nix-darwin environment is not available because zsh invocation is skipped.
       # This includes most notably the `nix` command.
       # See <https://github.com/nix-darwin/nix-darwin/blob/06648f4902343228ce2de79f291dd5a58ee12146/modules/programs/zsh/default.nix#L150-L175>
-      packages.ghostty-with-env = inputs.wrappers-b.wrappers.ghostty.wrap ({
+      packages.ghostty-with-env = inputs.wrappers.wrappers.ghostty.wrap ({
         inherit pkgs settings;
         env.FONTCONFIG_FILE = lib.mkIf pkgs.stdenv.hostPlatform.isLinux fontsConf;
         flags = {

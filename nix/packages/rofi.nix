@@ -7,7 +7,7 @@
       self',
       ...
     }:
-    inputs.wrappers-b.wrappers.rofi.wrap {
+    inputs.wrappers.wrappers.rofi.wrap {
       inherit pkgs;
       settings = {
         terminal = "${self'.packages.ghostty-with-env}/bin/ghostty";

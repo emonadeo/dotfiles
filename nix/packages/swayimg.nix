@@ -9,7 +9,7 @@
       ...
     }:
     {
-      packages.swayimg = inputs.wrappers-b.lib.wrapPackage {
+      packages.swayimg = inputs.wrappers.lib.wrapPackage {
         inherit pkgs;
         package = pkgs.swayimg;
         flagSeparator = "=";

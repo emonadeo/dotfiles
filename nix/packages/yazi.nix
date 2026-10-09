@@ -4,7 +4,7 @@
     { pkgs, ... }:
     {
       packages.yazi = (
-        inputs.wrappers-b.lib.wrapPackage {
+        inputs.wrappers.lib.wrapPackage {
           inherit pkgs;
           package = pkgs.yazi;
           # TODO: Is this the best way to combine files into a single path?

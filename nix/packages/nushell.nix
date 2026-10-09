@@ -12,7 +12,7 @@
     in
     {
       packages.nushell = (
-        inputs.wrappers-b.wrappers.nushell.wrap (
+        inputs.wrappers.wrappers.nushell.wrap (
           { config, ... }:
           {
             inherit pkgs;

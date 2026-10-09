@@ -14,7 +14,7 @@
     in
     {
       packages.starship = (
-        (inputs.wrappers-l.wrapperModules.starship.apply {
+        inputs.wrappers.wrappers.starship.wrap {
           inherit pkgs;
           settings = {
             line_break.disabled = true;
@@ -287,7 +287,7 @@
               symbol = "";
             };
           };
-        }).wrapper
+        }
       );
     };
 }

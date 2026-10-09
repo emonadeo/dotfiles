@@ -32,7 +32,7 @@
         # pi's config files live in $PI_CODING_AGENT_DIR together with other stateful
         # files that get modified at runtime. As such pointing $PI_CODING_AGENT_DIR
         # to /nix/store is not possible.
-        (inputs.wrappers-b.lib.wrapPackage ({
+        (inputs.wrappers.lib.wrapPackage ({
           inherit pkgs;
           package = pkgs.pi-coding-agent;
           runtimePkgs = [ pkgs.nodejs ];

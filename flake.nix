@@ -2,12 +2,10 @@
   inputs = {
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
-    wrappers-b = {
-      url = "github:emonadeo/nix-wrapper-modules/ghostty-app-bundle";
+    wrappers = {
+      url = "github:nix-community/nix-wrapper-modules";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    wrappers-l.url = "github:lassulus/wrappers";
-
     affinity = {
       url = "github:mrshmllow/affinity-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -77,7 +75,7 @@
       {
         imports = [
           (inputs.import-tree ./nix)
-          inputs.wrappers-b.flakeModules.wrappers
+          inputs.wrappers.flakeModules.wrappers
         ];
 
         # TODO: Should this be defined elsewhere?

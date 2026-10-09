@@ -3,7 +3,7 @@
   perSystem =
     { self', pkgs, ... }:
     {
-      packages.iamb = inputs.wrappers-b.lib.wrapPackage {
+      packages.iamb = inputs.wrappers.lib.wrapPackage {
         inherit pkgs;
         # BUG: Build failure
         # See <https://github.com/NixOS/nixpkgs/pull/501997>

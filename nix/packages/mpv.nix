@@ -29,7 +29,7 @@ in
     { pkgs, ... }:
     {
       packages.mpv = (
-        inputs.wrappers-b.wrappers.mpv.wrap {
+        inputs.wrappers.wrappers.mpv.wrap {
           inherit pkgs;
           "mpv.conf".content = renderOptions {
             # Builtin profiles:

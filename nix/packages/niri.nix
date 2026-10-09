@@ -16,7 +16,7 @@
       playerctl = lib.getExe pkgs.playerctl;
       wpctl = "${pkgs.wireplumber}/bin/wpctl";
     in
-    inputs.wrappers-b.wrappers.niri.wrap {
+    inputs.wrappers.wrappers.niri.wrap {
       inherit pkgs;
       runtimePkgs = [
         self'.packages.rofi

@@ -25,6 +25,7 @@
           pkgs.lua-language-server
           pkgs.nil # Nix
           pkgs.nixfmt
+          pkgs.nodejs # Needed by some treesitter grammars
           pkgs.ripgrep # Needed by `snacks.picker`
           pkgs.rumdl # Markdown
           pkgs.rust-analyzer

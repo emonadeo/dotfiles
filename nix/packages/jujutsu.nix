@@ -4,7 +4,7 @@
     { pkgs, ... }:
     {
       packages.jujutsu = (
-        inputs.wrappers-b.wrappers.jujutsu.wrap {
+        inputs.wrappers.wrappers.jujutsu.wrap {
           inherit pkgs;
           runtimePkgs = [ pkgs.less ];
           settings = {
