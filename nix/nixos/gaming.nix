@@ -1,10 +1,11 @@
 { moduleWithSystem, ... }:
 {
   flake.nixosModules.gaming = moduleWithSystem (
-    _perSystem@{ self', ... }:
+    _perSystem@{ inputs', self', ... }:
     _nixos@{ pkgs, ... }:
     {
       environment.systemPackages = [
+        inputs'.hytale-launcher.packages.hytale-launcher
         pkgs.balatro-mod-manager
         pkgs.dolphin-emu # Gamecube/Wii Emulator
         # BUG: Build failure
