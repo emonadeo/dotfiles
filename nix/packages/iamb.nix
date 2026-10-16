@@ -5,8 +5,6 @@
     {
       packages.iamb = inputs.wrappers.lib.wrapPackage {
         inherit pkgs;
-        # BUG: Build failure
-        # See <https://github.com/NixOS/nixpkgs/pull/501997>
         package = pkgs.iamb;
         flags = {
           "-c" = (pkgs.formats.toml { }).generate "iamb-config" {

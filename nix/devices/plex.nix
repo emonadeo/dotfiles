@@ -26,14 +26,15 @@
 
       environment.systemPackages = [
         pkgs.audacity
-        pkgs.aseprite
         pkgs.cinny-desktop # Matrix client
         pkgs.croc
         pkgs.dolphin-emu # Gamecube/Wii Emulator
         pkgs.proton-vpn
-        pkgs.ryubing # Switch Emulator
+        pkgs.typst
         pkgs.vesktop
         pkgs.zathura
+        # BUG: Build failure
+        # pkgs.zed-editor
         self'.packages.affinity
         self'.packages.helium
         self'.packages.librewolf

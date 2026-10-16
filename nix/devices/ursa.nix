@@ -44,14 +44,17 @@
         pkgs.aseprite
         pkgs.audacity
         pkgs.cinny-desktop # Matrix client
-        pkgs.ffmpeg-full
+        pkgs.croc
+        (pkgs.ffmpeg-full.override { withUnfree = true; })
         pkgs.godot
         pkgs.proton-vpn
         pkgs.teamspeak6-client
         pkgs.telegram-desktop
+        pkgs.typst
         pkgs.vesktop
         pkgs.wl-clipboard
         pkgs.zathura
+        pkgs.zed-editor
         self'.packages.affinity
         self'.packages.helium
         self'.packages.librewolf

@@ -57,10 +57,6 @@
       url = "github:SpotX-Official/SpotX-Bash";
       flake = false;
     };
-    starship-jj = {
-      url = "gitlab:lanastara_foss/starship-jj";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     paneru = {
       url = "github:karinushka/paneru";
       inputs.nixpkgs.follows = "nixpkgs";

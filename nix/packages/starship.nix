@@ -2,37 +2,22 @@
 {
   perSystem =
     { pkgs, ... }:
-    let
-      tomlFormat = pkgs.formats.toml { };
-      bgColor = {
-        TrueColor = {
-          r = 16;
-          g = 24;
-          b = 23;
-        };
-      };
-    in
     {
       packages.starship = (
         inputs.wrappers.wrappers.starship.wrap {
           inherit pkgs;
           settings = {
             line_break.disabled = true;
-            # TODO: Migrate to `vcs` module once released and supporting jj
-            # See <https://github.com/starship/starship/issues/6076>
-            # and <https://github.com/starship/starship/pull/6388>
             format = inputs.nixpkgs.lib.concatStrings [
               "$nix_shell"
               "$shlvl"
               "$directory"
-              "$\{custom.jj_change\}"
-              "$git_branch"
+              "$vcs"
+              "[ ](bg:#101817)"
               "[](fg:#101817)"
-              "[ ]()"
+              " "
             ];
             right_format = inputs.nixpkgs.lib.concatStrings [
-              "$\{custom.jj_status\}"
-              "$git_status"
               "$c"
               "$dart"
               "$deno"
@@ -67,63 +52,46 @@
               symbol = "󰁄";
             };
             directory = {
-              format = "[ $path]($style)[$read_only]($read_only_style)[ ]($style)";
+              format = "[ $path]($style)[$read_only]($read_only_style)";
               style = "bold fg:blue bg:#101817";
               read_only = " ";
               read_only_style = "bold fg:red bg:#101817";
             };
+            vcs = {
+              order = [
+                "jj"
+                "git"
+              ];
+              jj_modules = "$jj_bookmark$jj_status$jj_metrics";
+            };
             git_branch = {
-              disabled = true;
-              format = "[]($style fg:bright-black)[ $symbol $branch(:$remote_branch) ]($style)";
-              style = "fg:green bg:#101817";
+              format = "[ ]($style fg:bright-black)[ $symbol $branch(:$remote_branch)(@$remote_name) ]($style)";
+              style = "fg:purple bg:#101817";
               symbol = "";
             };
-            custom.jj_change = {
-              format = "[]($style fg:bright-black)[ $output ]($style)";
-              style = "fg:green bg:#101817";
-              ignore_timeout = true;
-              detect_folders = [ ".jj" ];
-              command = "${
-                inputs.starship-jj.packages.${pkgs.stdenv.hostPlatform.system}.default
-              }/bin/starship-jj --ignore-working-copy starship prompt --starship-config ${
-                tomlFormat.generate "starship-jj.toml" {
-                  module_separator = " ";
-                  reset_color = false;
-                  bookmarks = {
-                    search_depth = 100;
-                    exclude = [ ];
-                  };
-                  module = [
-                    {
-                      type = "Symbol";
-                      symbol = "";
-                      color = "Green";
-                      bg_color = bgColor;
-                    }
-                    {
-                      type = "Bookmarks";
-                      separator = " ";
-                      behind_symbol = "↘";
-                      surround_with_quotes = false;
-                      ignore_empty_commits = "None";
-                      bg_color = bgColor;
-                    }
-                    {
-                      type = "Commit";
-                      previous_message_symbol = "↗";
-                      max_length = 24;
-                      show_previous_if_empty = false;
-                      empty_text = "(no description set)";
-                      surround_with_quotes = false;
-                      bg_color = bgColor;
-                      non_unique = {
-                        color = "Black";
-                        bg_color = bgColor;
-                      };
-                    }
-                  ];
-                }
-              }";
+            jj_bookmark = {
+              format = "[ ]($style fg:bright-black)[ $symbol $bookmark(@$remote)$diverged( \\(+$overflow_count others\\))]($style)";
+              style = "fg:purple bg:#101817";
+              symbol = "";
+            };
+            jj_change.disabled = true;
+            jj_status = {
+              format = "([ ](bg:#101817)$description)([ ](bg:#101817)$conflicted$hidden$immutable$added$copied$deleted$modified$renamed)";
+              conflicted = "[!](fg:red bg:#101817)";
+              description_empty = "[◌](bg:#101817)";
+              description_present = "";
+              hidden = "[󰈉](fg:black bg:#101817)";
+              immutable = "[](fg:yellow bg:#101817)";
+              added = "[+$count](fg:green bg:#101817)";
+              copied = "[=$count](fg:black bg:#101817)";
+              deleted = "[-$count](fg:red bg:#101817)";
+              modified = "[±$count](fg:yellow bg:#101817)";
+              renamed = "[»$count](fg:yellow bg:#101817)";
+            };
+            jj_metrics = {
+              format = "([┊](fg:bright-black bg:#101817)[(+($added)L)]($added_style)[(-($deleted)L)]($deleted_style))";
+              added_style = "fg:green bg:#101817";
+              deleted_style = "fg:red bg:#101817";
             };
 
             # Right
@@ -142,74 +110,6 @@
               staged = "[+$count](fg:green)";
               renamed = "[~$count](fg:yellow)";
               deleted = "[-$count](fg:red)";
-            };
-            custom.jj_status = {
-              format = " [$output]($style)";
-              ignore_timeout = true;
-              detect_folders = [ ".jj" ];
-              command = "${
-                inputs.starship-jj.packages.${pkgs.stdenv.hostPlatform.system}.default
-              }/bin/starship-jj --ignore-working-copy starship prompt --starship-config ${
-                tomlFormat.generate "starship-jj.toml" {
-                  module_separator = " ";
-                  reset_color = false;
-                  bookmarks = {
-                    search_depth = 100;
-                    exclude = [ ];
-                  };
-                  module = [
-                    {
-                      type = "State";
-                      separator = " ";
-                      conflict = {
-                        disabled = false;
-                        text = "";
-                        color = "Red";
-                      };
-                      divergent = {
-                        disabled = false;
-                        text = "";
-                        color = "Cyan";
-                      };
-                      empty = {
-                        disabled = false;
-                        text = "";
-                        color = "Yellow";
-                      };
-                      immutable = {
-                        disabled = false;
-                        text = "";
-                        color = "Yellow";
-                      };
-                      hidden = {
-                        disabled = false;
-                        text = "󰈉";
-                        color = "Yellow";
-                      };
-                    }
-                    {
-                      type = "Metrics";
-                      template = "{removed}{changed}{added}";
-                      hide_if_empty = false;
-                      changed_files = {
-                        prefix = "±";
-                        suffix = "";
-                        color = "Yellow";
-                      };
-                      added_lines = {
-                        prefix = "+";
-                        suffix = "";
-                        color = "Green";
-                      };
-                      removed_lines = {
-                        prefix = "-";
-                        suffix = "";
-                        color = "Red";
-                      };
-                    }
-                  ];
-                }
-              }";
             };
             c = {
               format = " [$symbol( $version)]($style)";
