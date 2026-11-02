@@ -253,26 +253,6 @@
         "type": "github"
       }
     },
-    "hytale-launcher": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1793131380,
-        "narHash": "sha256-tfYbdYm06B/rmvcO/BMulrOzoSXsiJnVEiKi62rZVpI=",
-        "owner": "JPyke3",
-        "repo": "hytale-launcher-nix",
-        "rev": "6109ad9860b00cea42d26cdd908725688fbdb54b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "JPyke3",
-        "repo": "hytale-launcher-nix",
-        "type": "github"
-      }
-    },
     "import-tree": {
       "locked": {
         "lastModified": 1788467110,
@@ -586,7 +566,6 @@
         "catppuccin-ghostty": "catppuccin-ghostty",
         "cursor-shaders": "cursor-shaders",
         "flake-parts": "flake-parts_2",
-        "hytale-launcher": "hytale-launcher",
         "import-tree": "import-tree",
         "nix-darwin": "nix-darwin",
         "nix-index-database": "nix-index-database",

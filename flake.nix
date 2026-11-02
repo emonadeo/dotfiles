@@ -23,10 +23,6 @@
       url = "github:sahaj-b/cursor-shaders";
       flake = false;
     };
-    hytale-launcher = {
-      url = "github:JPyke3/hytale-launcher-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";

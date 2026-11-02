@@ -5,7 +5,7 @@
     _nixos@{ pkgs, ... }:
     {
       environment.systemPackages = [
-        inputs'.hytale-launcher.packages.hytale-launcher
+        pkgs.nur.repos.forkprince.hytale
         pkgs.dolphin-emu # Gamecube/Wii Emulator
         # BUG: Build failure
         # pkgs.dusklight # The Legend of Zelda: Twilight Princess
