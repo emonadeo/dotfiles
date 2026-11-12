@@ -31,6 +31,7 @@
         self.nixosModules.fonts
         self.nixosModules.gaming
         self.nixosModules.networking
+        self.nixosModules.notifications
         self.nixosModules.shell
         self.nixosModules.terminal
         self.nixosModules.xdg
